@@ -1,0 +1,63 @@
+# Compiled files
+*.class
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# Logs and databases
+*.log
+*.sql
+*.sqlite
+*.sqlite3
+*.h2.db
+
+# Maven and Gradle
+/target/
+/.mvn/
+.gradle/
+.gradle-wrapper/
+build/
+build.bat
+
+# Spring Boot
+application*.properties
+application*.yml
+
+# IntelliJ IDEA
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# NetBeans
+nbproject/
+.classpath
+.project
+.settings/
+nbactions.xml
+nb-configuration.xml
+
+# Eclipse
+.classpath
+.project
+.settings/
+
+# Visual Studio Code
+.vscode/
+.settings.json
+.code-workspace
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# Linux
+lost+found/
+
+# Others
+.config/
