@@ -24,6 +24,8 @@ namespace EventManager.Database
                 .WithOne(evento => evento.Usuario)
                 .HasForeignKey(evento => evento.UsuarioId);
 
+            modelBuilder.Entity<Usuario>().HasIndex(u => u.Nombre).IsUnique();
+
             modelBuilder
                 .Entity<Evento>()
                 .HasMany(evento => evento.Clientes)
