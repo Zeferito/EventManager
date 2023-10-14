@@ -20,6 +20,6 @@ namespace EventManager.Core.Database.Models
         [Required][Column("nombre")] public string Nombre { get; set; }
         [Required][Column("tipo")] public TipoAgregable Tipo { get; set; }
         [Required][Column("cantidad")] public int Cantidad { get; set; }
-        public List<EventoAgregable> EventoAgregables { get; set; }
+        public List<EventoAgregable> EventoAgregables { get; set; } = new List<EventoAgregable>();
     }
 }

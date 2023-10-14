@@ -11,6 +11,6 @@ namespace EventManager.Core.Database.Models
     {
         [Key][Column("id")] public int Id { get; set; }
         [Required][Column("nombre")] public string Nombre { get; set; }
-        public List<EventoEmpleado> EventoEmpleados { get; set; }
+        public List<EventoEmpleado> EventoEmpleados { get; set; } = new List<EventoEmpleado>();
     }
 }

@@ -15,6 +15,8 @@ namespace EventManager.Core.Database
         public DbSet<Empleado> Empleados { get; set; }
         public DbSet<Sala> Salas { get; set; }
         public DbSet<Agregable> Agregables { get; set; }
+        public DbSet<EventoAgregable> EventoAgregables { get; set; }
+        public DbSet<EventoEmpleado> EventoEmpleados { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

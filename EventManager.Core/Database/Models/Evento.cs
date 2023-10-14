@@ -15,7 +15,7 @@ namespace EventManager.Core.Database.Models
         public Usuario Usuario { get; set; }
         public List<Cliente> Clientes { get; set; }
         public List<Sala> Salas { get; set; }
-        public List<EventoEmpleado> EventoEmpleados { get; set; }
-        public List<EventoAgregable> EventoAgregables { get; set; }
+        public List<EventoEmpleado> EventoEmpleados { get; set; } = new List<EventoEmpleado>();
+        public List<EventoAgregable> EventoAgregables { get; set; } = new List<EventoAgregable>();
     }
 }

@@ -20,6 +20,6 @@ namespace EventManager.Core.Database.Models
         [Required][Column("nombre")] public string Nombre { get; set; }
         [Required][Column("password")] public string Password { get; set; }
         [Required][Column("tipo")] public TipoUsuario Tipo { get; set; }
-        public List<Evento> Eventos { get; set; }
+        public List<Evento> Eventos { get; set; } = new List<Evento>();
     }
 }
