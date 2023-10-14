@@ -18,53 +18,63 @@ namespace EventManager.Database
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Usuario>()
-            .HasMany(usuario => usuario.Eventos)
-            .WithOne(evento => evento.Usuario)
-            .HasForeignKey(evento => evento.UsuarioId);
+            modelBuilder
+                .Entity<Usuario>()
+                .HasMany(usuario => usuario.Eventos)
+                .WithOne(evento => evento.Usuario)
+                .HasForeignKey(evento => evento.UsuarioId);
 
-            modelBuilder.Entity<Evento>()
-            .HasMany(evento => evento.Clientes)
-            .WithOne(cliente => cliente.Evento)
-            .HasForeignKey(cliente => cliente.EventoId);
+            modelBuilder
+                .Entity<Evento>()
+                .HasMany(evento => evento.Clientes)
+                .WithOne(cliente => cliente.Evento)
+                .HasForeignKey(cliente => cliente.EventoId);
 
-            modelBuilder.Entity<Evento>()
-            .HasMany(evento => evento.Salas)
-            .WithOne(sala => sala.Evento)
-            .HasForeignKey(sala => sala.EventoId);
+            modelBuilder
+                .Entity<Evento>()
+                .HasMany(evento => evento.Salas)
+                .WithOne(sala => sala.Evento)
+                .HasForeignKey(sala => sala.EventoId);
 
-            modelBuilder.Entity<EventoEmpleado>()
-            .HasKey(ee => new { ee.EventoId, ee.EmpleadoId });
+            modelBuilder.Entity<EventoEmpleado>().HasKey(ee => new { ee.EventoId, ee.EmpleadoId });
 
-            modelBuilder.Entity<EventoEmpleado>()
-            .HasOne(ee => ee.Evento)
-            .WithMany(evento => evento.EventoEmpleados)
-            .HasForeignKey(ee => ee.EventoId);
+            modelBuilder
+                .Entity<EventoEmpleado>()
+                .HasOne(ee => ee.Evento)
+                .WithMany(evento => evento.EventoEmpleados)
+                .HasForeignKey(ee => ee.EventoId);
 
-            modelBuilder.Entity<EventoEmpleado>()
-            .HasOne(ee => ee.Empleado)
-            .WithMany(empleado => empleado.EventoEmpleados)
-            .HasForeignKey(ee => ee.EmpleadoId);
+            modelBuilder
+                .Entity<EventoEmpleado>()
+                .HasOne(ee => ee.Empleado)
+                .WithMany(empleado => empleado.EventoEmpleados)
+                .HasForeignKey(ee => ee.EmpleadoId);
 
-            modelBuilder.Entity<EventoAgregable>()
-            .HasKey(ea => new { ea.EventoId, ea.AgregableId });
+            modelBuilder
+                .Entity<EventoAgregable>()
+                .HasKey(ea => new { ea.EventoId, ea.AgregableId });
 
-            modelBuilder.Entity<EventoAgregable>()
-            .HasOne(ea => ea.Evento)
-            .WithMany(evento => evento.EventoAgregables)
-            .HasForeignKey(ea => ea.EventoId);
+            modelBuilder
+                .Entity<EventoAgregable>()
+                .HasOne(ea => ea.Evento)
+                .WithMany(evento => evento.EventoAgregables)
+                .HasForeignKey(ea => ea.EventoId);
 
-            modelBuilder.Entity<EventoAgregable>()
-            .HasOne(ea => ea.Agregable)
-            .WithMany(agregable => agregable.EventoAgregables)
-            .HasForeignKey(ea => ea.AgregableId);
+            modelBuilder
+                .Entity<EventoAgregable>()
+                .HasOne(ea => ea.Agregable)
+                .WithMany(agregable => agregable.EventoAgregables)
+                .HasForeignKey(ea => ea.AgregableId);
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            if (optionsBuilder.IsConfigured) return;
+            if (optionsBuilder.IsConfigured)
+                return;
 
-            string connectionString = ConfigurationManager.ConnectionStrings["DatabaseContext"].ConnectionString;
+            string connectionString = ConfigurationManager.ConnectionStrings[
+                "DatabaseContext"
+            ].ConnectionString;
 
             optionsBuilder.UseMySQL(connectionString);
         }
