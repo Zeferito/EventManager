@@ -11,7 +11,7 @@ namespace EventManager.Database.Models
     {
         [Key][Column("id")] public int Id { get; set; }
         [Required][Column("nombre")] public string Nombre { get; set; }
-        [Required][Column("tipo_salon")] public string TipoSalon { get; set; }
+        [Required][Column("tipo")] public string TipoSalon { get; set; }
         [Required][Column("evento_id")] public int EventoId { get; set; }
         public Evento Evento { get; set; }
     }
