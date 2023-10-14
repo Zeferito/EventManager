@@ -12,7 +12,7 @@ namespace EventManager.Database.Models
         public enum TipoUsuario
         {
             JEFE,
-            ENCARFGADA,
+            ENCARGADA,
             OTROS
         }
 
