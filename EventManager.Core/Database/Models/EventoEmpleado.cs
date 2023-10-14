@@ -4,13 +4,13 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace EventManager.Database.Models
+namespace EventManager.Core.Database.Models
 {
-    [Table("evento_agregable")]
-    public class EventoAgregable
+    [Table("evento_empleados")]
+    public class EventoEmpleado
     {
-        [Required][Column("agregable_id")] public int AgregableId { get; set; }
-        public Agregable Agregable { get; set; }
+        [Required][Column("empleado_id")] public int EmpleadoId { get; set; }
+        public Empleado Empleado { get; set; }
         [Required][Column("evento_id")] public int EventoId { get; set; }
         public Evento Evento { get; set; }
     }

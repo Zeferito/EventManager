@@ -4,15 +4,15 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace EventManager.Database.Models
+namespace EventManager.Core.Database.Models
 {
-    [Table("sala")]
-    public class Sala
+    [Table("cliente")]
+    public class Cliente
     {
         [Key][Column("id")] public int Id { get; set; }
-        [Required][Column("nombre")] public string Nombre { get; set; }
-        [Required][Column("tipo")] public string TipoSalon { get; set; }
         [Required][Column("evento_id")] public int EventoId { get; set; }
         public Evento Evento { get; set; }
+        [Required][Column("nombre")] public string Nombre { get; set; }
+        [Required][Column("telefono")] public string Telefono { get; set; }
     }
 }

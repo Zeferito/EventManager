@@ -4,7 +4,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace EventManager.Database.Models
+namespace EventManager.Core.Database.Models
 {
     [Table("evento")]
     public class Evento

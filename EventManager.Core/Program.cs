@@ -1,7 +1,12 @@
 ﻿// Copyright (c) Miguel Angel De La Rosa Martínez, Alec Demian Santana Celaya, Jaime Valdez Tanori, Martin Ricardo Yocupicio Ramos. Licensed under the MIT Licence.
 // See the LICENSE file in the repository root for full license text.
 
-namespace EventManager
+
+using EventManager.Core.Database;
+using EventManager.Core.Database.Models;
+using EventManager.Core.Database.Services;
+
+namespace EventManager.Core
 {
     public static class Program
     {

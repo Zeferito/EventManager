@@ -2,10 +2,10 @@
 // See the LICENSE file in the repository root for full license text.
 
 using System.Configuration;
-using EventManager.Database.Models;
+using EventManager.Core.Database.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace EventManager.Database
+namespace EventManager.Core.Database
 {
     public class DatabaseContext : DbContext
     {
