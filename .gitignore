@@ -341,3 +341,6 @@ inspectcode
 FodyWeavers.xsd
 
 app*.config
+
+# Database migrations files
+**/Migrations/*.cs
