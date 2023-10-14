@@ -18,6 +18,11 @@ namespace EventManager.Database
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Usuario>()
+            .HasMany(usuario => usuario.Eventos)
+            .WithOne(evento => evento.Usuario)
+            .HasForeignKey(evento => evento.UsuarioId);
+
             modelBuilder.Entity<Evento>()
             .HasMany(evento => evento.Clientes)
             .WithOne(cliente => cliente.Evento)

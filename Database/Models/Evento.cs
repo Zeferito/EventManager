@@ -11,6 +11,8 @@ namespace EventManager.Database.Models
     {
         [Key][Column("id")] public int Id { get; set; }
         [Required][Column("fecha")] public DateTime Fecha { get; set; }
+        [Required][Column("usuario_id")] public int UsuarioId { get; set; }
+        public Usuario Usuario { get; set; }
         public List<Cliente> Clientes { get; set; }
         public List<Sala> Salas { get; set; }
         public List<EventoEmpleado> EventoEmpleados { get; set; }
