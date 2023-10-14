@@ -9,10 +9,17 @@ namespace EventManager.Database.Models
     [Table("usuario")]
     public class Usuario
     {
+        public enum TipoUsuario
+        {
+            JEFE,
+            ENCARFGADA,
+            OTROS
+        }
+
         [Key][Column("id")] public int Id { get; set; }
         [Required][Column("nombre")] public string Nombre { get; set; }
         [Required][Column("password")] public string Password { get; set; }
-        [Required][Column("tipo_usuario")] public string TipoUsuario { get; set; }
+        [Required][Column("tipo")] public TipoUsuario Tipo { get; set; }
         public List<Evento> Eventos { get; set; }
     }
 }

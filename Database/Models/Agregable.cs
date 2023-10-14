@@ -9,9 +9,16 @@ namespace EventManager.Database.Models
     [Table("agregable")]
     public class Agregable
     {
+        public enum TipoAgregable
+        {
+            MATERIAL,
+            EQUIPO,
+            MOBILIARIO
+        }
+
         [Key][Column("id")] public int Id { get; set; }
         [Required][Column("nombre")] public string Nombre { get; set; }
-        [Required][Column("tipo_agregable")] public string TipoAgregable { get; set; }
+        [Required][Column("tipo")] public TipoAgregable Tipo { get; set; }
         [Required][Column("cantidad")] public int Cantidad { get; set; }
         public List<EventoAgregable> EventoAgregables { get; set; }
     }
