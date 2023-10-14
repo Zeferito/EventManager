@@ -1,13 +1,16 @@
 // Copyright (c) Miguel Angel De La Rosa Martínez, Alec Demian Santana Celaya, Jaime Valdez Tanori, Martin Ricardo Yocupicio Ramos. Licensed under the MIT Licence.
 // See the LICENSE file in the repository root for full license text.
 
+using EventManager.Database.Models;
+using Microsoft.EntityFrameworkCore;
+
 namespace EventManager.Database.Services
 {
     public class UsuarioService
     {
-        private readonly EventManagerContext _context;
+        private readonly DatabaseContext _context;
 
-        public UsuarioService(EventManagerContext context)
+        public UsuarioService(DatabaseContext context)
         {
             _context = context;
         }
