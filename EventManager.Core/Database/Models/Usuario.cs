@@ -16,10 +16,26 @@ namespace EventManager.Core.Database.Models
             OTROS
         }
 
-        [Key][Column("id")] public int Id { get; set; }
-        [Required][Column("nombre")] public string Nombre { get; set; }
-        [Required][Column("password")] public string Password { get; set; }
-        [Required][Column("tipo")] public TipoUsuario Tipo { get; set; }
+        [Key]
+        [Column("id")]
+        public int Id { get; set; }
+
+        [Required]
+        [Column("nombre")]
+        public string Nombre { get; set; }
+
+        [Required]
+        [Column("password")]
+        public string Password { get; set; }
+
+        [Required]
+        [Column("tipo")]
+        public TipoUsuario Tipo { get; set; }
         public List<Evento> Eventos { get; set; } = new List<Evento>();
+
+        public override string ToString()
+        {
+            return $"Usuario: {Nombre}";
+        }
     }
 }

@@ -32,13 +32,15 @@ namespace EventManager.Core.Database
                 .Entity<Evento>()
                 .HasMany(evento => evento.Clientes)
                 .WithOne(cliente => cliente.Evento)
-                .HasForeignKey(cliente => cliente.EventoId);
+                .HasForeignKey(cliente => cliente.EventoId)
+                .OnDelete(DeleteBehavior.SetNull);
 
             modelBuilder
                 .Entity<Evento>()
                 .HasMany(evento => evento.Salas)
                 .WithOne(sala => sala.Evento)
-                .HasForeignKey(sala => sala.EventoId);
+                .HasForeignKey(sala => sala.EventoId)
+                .OnDelete(DeleteBehavior.SetNull);
 
             modelBuilder.Entity<EventoEmpleado>().HasKey(ee => new { ee.EventoId, ee.EmpleadoId });
 
@@ -46,29 +48,33 @@ namespace EventManager.Core.Database
                 .Entity<EventoEmpleado>()
                 .HasOne(ee => ee.Evento)
                 .WithMany(evento => evento.EventoEmpleados)
-                .HasForeignKey(ee => ee.EventoId);
+                .HasForeignKey(ee => ee.EventoId)
+                .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder
                 .Entity<EventoEmpleado>()
                 .HasOne(ee => ee.Empleado)
                 .WithMany(empleado => empleado.EventoEmpleados)
-                .HasForeignKey(ee => ee.EmpleadoId);
+                .HasForeignKey(ee => ee.EmpleadoId)
+                .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder
                 .Entity<EventoAgregable>()
-                .HasKey(ea => new { ea.EventoId, ea.AgregableId });
+                .HasKey(ea => new { ea.EventoId, ea.AgregableId});
 
             modelBuilder
                 .Entity<EventoAgregable>()
                 .HasOne(ea => ea.Evento)
                 .WithMany(evento => evento.EventoAgregables)
-                .HasForeignKey(ea => ea.EventoId);
+                .HasForeignKey(ea => ea.EventoId)
+                .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder
                 .Entity<EventoAgregable>()
                 .HasOne(ea => ea.Agregable)
                 .WithMany(agregable => agregable.EventoAgregables)
-                .HasForeignKey(ea => ea.AgregableId);
+                .HasForeignKey(ea => ea.AgregableId)
+                .OnDelete(DeleteBehavior.Cascade);
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

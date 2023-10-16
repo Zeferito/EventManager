@@ -20,10 +20,32 @@ namespace EventManager.Core.Database.Services
             return await _context.Eventos.ToListAsync();
         }
 
-        public async Task<Evento> GetEventoAsync(int id)
+        public async Task<Evento> GetEventoByIdAsync(int id)
         {
             return await _context.Eventos.FindAsync(id);
         }
+
+        public async Task<Evento?> GetEventoByIdEagerAsync(int id)
+        {
+            var evento = await _context.Eventos
+                .Include(evento => evento.Usuario)
+                .Include(evento => evento.Salas)
+                .Include(evento => evento.EventoAgregables)
+                .ThenInclude(ea => ea.Agregable)
+                .Include(evento => evento.EventoEmpleados)
+                .ThenInclude(ee => ee.Empleado)
+                .Include(evento => evento.Clientes)
+                .FirstOrDefaultAsync(evento => evento.Id == id);
+
+            return evento;
+        }
+
+        /**
+        public async Task<Evento> GetEventoByDateAsync(Datetime date)
+        {
+            return await _context.Eventos.FindAsync(id);
+        }
+        **/
 
         public async Task<Evento> CreateEventoAsync(Evento evento)
         {
@@ -55,7 +77,11 @@ namespace EventManager.Core.Database.Services
             return await _context.Eventos.AnyAsync(e => e.Id == id);
         }
 
-        public async Task<EventoAgregable> EventoAddAgregableAsync(int eventoId, int agregableId, int cantidad)
+        public async Task<EventoAgregable> EventoAddAgregableAsync(
+            int eventoId,
+            int agregableId,
+            int cantidad
+        )
         {
             var evento = _context.Eventos.FindAsync(eventoId).Result;
             var agregable = _context.Agregables.FindAsync(agregableId).Result;

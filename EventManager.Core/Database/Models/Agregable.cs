@@ -21,5 +21,10 @@ namespace EventManager.Core.Database.Models
         [Required][Column("tipo")] public TipoAgregable Tipo { get; set; }
         [Required][Column("total")] public int Total { get; set; }
         public List<EventoAgregable> EventoAgregables { get; set; } = new List<EventoAgregable>();
+
+        public override string ToString()
+        {
+            return $"Agregable: {Nombre}\n Tipo: {Tipo.ToString()}, Total: {Total}";
+        }
     }
 }

@@ -9,8 +9,18 @@ namespace EventManager.Core.Database.Models
     [Table("empleado")]
     public class Empleado
     {
-        [Key][Column("id")] public int Id { get; set; }
-        [Required][Column("nombre")] public string Nombre { get; set; }
+        [Key]
+        [Column("id")]
+        public int Id { get; set; }
+
+        [Required]
+        [Column("nombre")]
+        public string Nombre { get; set; }
         public List<EventoEmpleado> EventoEmpleados { get; set; } = new List<EventoEmpleado>();
+
+        public override string ToString()
+        {
+            return $"Empleado: {Nombre}";
+        }
     }
 }

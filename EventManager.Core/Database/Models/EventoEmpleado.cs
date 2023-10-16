@@ -13,5 +13,10 @@ namespace EventManager.Core.Database.Models
         public Empleado Empleado { get; set; }
         [Required][Column("evento_id")] public int EventoId { get; set; }
         public Evento Evento { get; set; }
+
+        public override string ToString()
+        {
+            return $"Empleado: {Empleado.Nombre}";
+        }
     }
 }

@@ -14,5 +14,10 @@ namespace EventManager.Core.Database.Models
         [Required][Column("evento_id")] public int EventoId { get; set; }
         public Evento Evento { get; set; }
         [Required][Column("cantidad")] public int Cantidad { get; set; }
+
+        public override string ToString()
+        {
+            return $"Agregable: {Agregable.Nombre} : Cantidad: {Cantidad}";
+        }
     }
 }

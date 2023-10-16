@@ -15,5 +15,10 @@ namespace EventManager.Core.Database.Models
         public Evento? Evento { get; set; }
         [Required][Column("nombre")] public string Nombre { get; set; }
         [Required][Column("telefono")] public string Telefono { get; set; }
+
+        public override string ToString()
+        {
+            return $"Cliente: {Nombre}";
+        }
     }
 }
