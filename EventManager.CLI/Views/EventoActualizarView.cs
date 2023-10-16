@@ -14,12 +14,9 @@ namespace EventManager.CLI.Views
         {
             using DatabaseContext context = new DatabaseContext();
 
-            // TODO: Display list of available entries
-            // TODO: Create cancellable loop for validation
-            Console.WriteLine(context.Eventos.ToList());
-            int eventoId = UserInputReader.ReadInt("Ingrese Id del Evento: ");
 
-            Evento? evento = context.Eventos.Find(eventoId);
+
+            Evento? evento = BibliotecaModelUtils.GetEventoById(true);
 
             if (evento == null)
             {

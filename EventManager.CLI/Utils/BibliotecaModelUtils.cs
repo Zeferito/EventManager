@@ -1,9 +1,11 @@
 // Copyright (c) Miguel Angel De La Rosa Martínez, Alec Demian Santana Celaya, Jaime Valdez Tanori, Martin Ricardo Yocupicio Ramos. Licensed under the MIT Licence.
 // See the LICENSE file in the repository root for full license text.
 
+using EventManager.CLI.DTO;
 using EventManager.Core.Database;
 using EventManager.Core.Models;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 
 namespace EventManager.CLI.Utils
 {
@@ -13,7 +15,25 @@ namespace EventManager.CLI.Utils
         {
             using DatabaseContext context = new DatabaseContext();
 
-            // TODO: Display list of available entries?
+            List<Evento> eventos = context.Eventos.ToList();
+            List<EventoDTO> eventoDTOs = new List<EventoDTO>();
+
+            foreach (Evento evento_ in eventos)
+            {
+                EventoDTO eventoDTO = new EventoDTO
+                {
+                    Id = evento_.Id,
+                    Nombre = evento_.Nombre,
+                    Descripcion = evento_.Descripcion,
+                    FechaInicio = evento_.FechaInicio,
+                    FechaTermino = evento_.FechaTermino
+                };
+                eventoDTOs.Add(eventoDTO);
+            }
+
+            string json = JsonConvert.SerializeObject(eventoDTOs, Formatting.Indented);
+            Console.WriteLine(json);
+
             // TODO: Create cancellable loop for validation
             int eventoId = UserInputReader.ReadInt("Ingrese Id del Evento: ");
 
@@ -49,7 +69,23 @@ namespace EventManager.CLI.Utils
         {
             using DatabaseContext context = new DatabaseContext();
 
-            // TODO: Display list of available entries
+            List<Cliente> clientes_ = context.Clientes.ToList();
+            List<ClienteDTO> clienteDTOs = new List<ClienteDTO>();
+
+            foreach (Cliente cliente_ in clientes_)
+            {
+                ClienteDTO clienteDTO = new ClienteDTO
+                {
+                    Id = cliente_.Id,
+                    Nombre = cliente_.Nombre,
+                    Telefono = cliente_.Telefono,
+                };
+                clienteDTOs.Add(clienteDTO);
+            }
+
+            string json = JsonConvert.SerializeObject(clienteDTOs, Formatting.Indented);
+            Console.WriteLine(json);
+
             // TODO: Create cancellable loop for validation
             int clienteId = UserInputReader.ReadInt("Ingrese Id del Cliente: ");
 
@@ -68,7 +104,23 @@ namespace EventManager.CLI.Utils
         {
             using DatabaseContext context = new DatabaseContext();
 
-            // TODO: Display list of available entries
+            List<Sala> salas_ = context.Salas.ToList();
+            List<SalaDTO> salaDTOs = new List<SalaDTO>();
+
+            foreach (Sala sala_ in salas_)
+            {
+                SalaDTO salaDTO = new SalaDTO
+                {
+                    Id = sala_.Id,
+                    Tipo = sala_.Tipo,
+                    Nombre = sala_.Nombre
+                };
+                salaDTOs.Add(salaDTO);
+            }
+
+            string json = JsonConvert.SerializeObject(salaDTOs, Formatting.Indented);
+            Console.WriteLine(json);
+
             // TODO: Create cancellable loop for validation
             int salaId = UserInputReader.ReadInt("Ingrese Id de la Sala: ");
 
@@ -87,7 +139,22 @@ namespace EventManager.CLI.Utils
         {
             using DatabaseContext context = new DatabaseContext();
 
-            // TODO: Display list of available entries
+            List<Empleado> empleados_ = context.Empleados.ToList();
+            List<EmpleadoDTO> empleadoDTOs = new List<EmpleadoDTO>();
+
+            foreach (Empleado empleado_ in empleados_)
+            {
+                EmpleadoDTO empleadoDTO = new EmpleadoDTO
+                {
+                    Id = empleado_.Id,
+                    Nombre = empleado_.Nombre
+                };
+                empleadoDTOs.Add(empleadoDTO);
+            }
+
+            string json = JsonConvert.SerializeObject(empleadoDTOs, Formatting.Indented);
+            Console.WriteLine(json);
+
             // TODO: Create cancellable loop for validation
             int empleadoId = UserInputReader.ReadInt("Ingrese Id del Empleado: ");
 
@@ -102,11 +169,30 @@ namespace EventManager.CLI.Utils
             empleados.Add(empleado);
         }
 
-        public static void AddAgregableCantidadToList(ICollection<AgregableCantidad> agregableCantidades)
+        public static void AddAgregableCantidadToList(
+            ICollection<AgregableCantidad> agregableCantidades
+        )
         {
             using DatabaseContext context = new DatabaseContext();
 
-            // TODO: Display list of available entries
+            List<Agregable> agregables_ = context.Agregables.ToList();
+            List<AgregableDTO> agregablesDTOs = new List<AgregableDTO>();
+
+            foreach (Agregable agregable_ in agregables_)
+            {
+                AgregableDTO agregableDTO = new AgregableDTO
+                {
+                    Id = agregable_.Id,
+                    Tipo = agregable_.Tipo,
+                    Nombre = agregable_.Nombre,
+                    Total = agregable_.Total
+                };
+                agregablesDTOs.Add(agregableDTO);
+            }
+
+            string json = JsonConvert.SerializeObject(agregablesDTOs, Formatting.Indented);
+            Console.WriteLine(json);
+
             // TODO: Create cancellable loop for validation
             int agregableId = UserInputReader.ReadInt("Ingrese Id del Agregable: ");
 
@@ -138,7 +224,25 @@ namespace EventManager.CLI.Utils
 
         public static void RemoveClienteFromList(IList<Cliente> clientes)
         {
-            // TODO: Display list of available entries
+            using DatabaseContext context = new DatabaseContext();
+
+            List<Cliente> clientes_ = context.Clientes.ToList();
+            List<ClienteDTO> clienteDTOs = new List<ClienteDTO>();
+
+            foreach (Cliente cliente_ in clientes_)
+            {
+                ClienteDTO clienteDTO = new ClienteDTO
+                {
+                    Id = cliente_.Id,
+                    Nombre = cliente_.Nombre,
+                    Telefono = cliente_.Telefono,
+                };
+                clienteDTOs.Add(clienteDTO);
+            }
+
+            string json = JsonConvert.SerializeObject(clienteDTOs, Formatting.Indented);
+            Console.WriteLine(json);
+
             // TODO: Create cancellable loop for validation
             int clienteIndex = UserInputReader.ReadInt("Ingrese indice del Cliente: ");
 
@@ -153,7 +257,25 @@ namespace EventManager.CLI.Utils
 
         public static void RemoveSalaFromList(IList<Sala> salas)
         {
-            // TODO: Display list of available entries
+            using DatabaseContext context = new DatabaseContext();
+
+            List<Sala> salas_ = context.Salas.ToList();
+            List<SalaDTO> salaDTOs = new List<SalaDTO>();
+
+            foreach (Sala sala_ in salas_)
+            {
+                SalaDTO salaDTO = new SalaDTO
+                {
+                    Id = sala_.Id,
+                    Tipo = sala_.Tipo,
+                    Nombre = sala_.Nombre
+                };
+                salaDTOs.Add(salaDTO);
+            }
+
+            string json = JsonConvert.SerializeObject(salaDTOs, Formatting.Indented);
+            Console.WriteLine(json);
+
             // TODO: Create cancellable loop for validation
             int salaIndex = UserInputReader.ReadInt("Ingrese indice de la Sala: ");
 
@@ -168,7 +290,24 @@ namespace EventManager.CLI.Utils
 
         public static void RemoveEmpleadoFromList(IList<Empleado> empleados)
         {
-            // TODO: Display list of available entries
+            using DatabaseContext context = new DatabaseContext();
+
+            List<Empleado> empleados_ = context.Empleados.ToList();
+            List<EmpleadoDTO> empleadoDTOs = new List<EmpleadoDTO>();
+
+            foreach (Empleado empleado_ in empleados_)
+            {
+                EmpleadoDTO empleadoDTO = new EmpleadoDTO
+                {
+                    Id = empleado_.Id,
+                    Nombre = empleado_.Nombre
+                };
+                empleadoDTOs.Add(empleadoDTO);
+            }
+
+            string json = JsonConvert.SerializeObject(empleadoDTOs, Formatting.Indented);
+            Console.WriteLine(json);
+
             // TODO: Create cancellable loop for validation
             int empleadoIndex = UserInputReader.ReadInt("Ingrese indice del Empleado: ");
 
@@ -181,9 +320,30 @@ namespace EventManager.CLI.Utils
             empleados.Remove(empleados[empleadoIndex]);
         }
 
-        public static void RemoveAgregableCantidadFromList(IList<AgregableCantidad> agregableCantidades)
+        public static void RemoveAgregableCantidadFromList(
+            IList<AgregableCantidad> agregableCantidades
+        )
         {
-            // TODO: Display list of available entries
+            using DatabaseContext context = new DatabaseContext();
+
+            List<Agregable> agregables_ = context.Agregables.ToList();
+            List<AgregableDTO> agregablesDTOs = new List<AgregableDTO>();
+
+            foreach (Agregable agregable_ in agregables_)
+            {
+                AgregableDTO agregableDTO = new AgregableDTO
+                {
+                    Id = agregable_.Id,
+                    Tipo = agregable_.Tipo,
+                    Nombre = agregable_.Nombre,
+                    Total = agregable_.Total
+                };
+                agregablesDTOs.Add(agregableDTO);
+            }
+
+            string json = JsonConvert.SerializeObject(agregablesDTOs, Formatting.Indented);
+            Console.WriteLine(json);
+
             // TODO: Create cancellable loop for validation
             int agregableIndex = UserInputReader.ReadInt("Ingrese indice del Agregable: ");
 
