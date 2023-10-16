@@ -46,9 +46,17 @@ namespace EventManager.CLI.Views
                         descripcion = UserInputReader.ReadString("Ingrese la descripcion del Evento: ");
                         break;
                     case "3":
-                        // TODO: Add period validation
-                        fechaInicio = UserInputReader.ReadDateTime("Ingrese la fecha y hora de inicio del Evento: ");
-                        fechaTermino = UserInputReader.ReadDateTime("Ingrese la fecha y hora de termino del Evento: ");
+                        DateTime fechaInicioCon = UserInputReader.ReadDateTime("Ingrese la fecha y hora de inicio del Evento: ");
+                        DateTime fechaTerminoCon = UserInputReader.ReadDateTime("Ingrese la fecha y hora de termino del Evento: ");
+
+                        if (fechaInicioCon > fechaTerminoCon)
+                        {
+                            Console.WriteLine("La fecha de inicio no puede ser mayor a la de terminacion");
+                            break;
+                        }
+
+                        fechaInicio = fechaInicioCon;
+                        fechaTermino = fechaTerminoCon;
                         break;
                     case "4":
                         ShowSubMenuClientes(clientes);
