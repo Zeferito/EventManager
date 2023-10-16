@@ -85,6 +85,8 @@ namespace EventManager.CLI.Views
             List<Cliente> newClientesState = new List<Cliente>();
             newClientesState.AddRange(clientes);
 
+            using DatabaseContext context = new DatabaseContext();
+
             while (true)
             {
                 Console.WriteLine("\nClientes Submenu —");
@@ -107,7 +109,15 @@ namespace EventManager.CLI.Views
 
                         Cliente cliente = new Cliente { Nombre = nombre, Telefono = telefono };
 
-                        newClientesState.Add(cliente);
+                        Cliente insertedCliente = context.Clientes.Add(cliente).Entity;
+
+                        if (insertedCliente == null)
+                        {
+                            Console.WriteLine("No se ha podido guardar el Cliente");
+                            break;
+                        }
+
+                        newClientesState.Add(insertedCliente);
                         break;
                     case "3":
                         BibliotecaModelUtils.RemoveClienteFromList(newClientesState);
@@ -286,7 +296,17 @@ namespace EventManager.CLI.Views
             foreach (Cliente cliente in clientes)
             {
                 cliente.Evento = insertedEvento;
-                context.Entry(cliente).State = EntityState.Modified;
+
+                // Cliente exists?
+                if (context.Clientes.Any(c => c.Id == cliente.Id))
+                {
+                    context.Entry(cliente).State = EntityState.Modified;
+                }
+                else
+                {
+                    // Attach new Cliente
+                    context.Clientes.Attach(cliente);
+                }
             }
 
             foreach (Sala sala in salas)
