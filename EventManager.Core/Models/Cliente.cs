@@ -3,11 +3,13 @@
 
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Diagnostics.CodeAnalysis;
+using Lombok.NET;
 
-namespace EventManager.Core.Database.Models
+namespace EventManager.Core.Models
 {
-    [Table("empleado")]
-    public class Empleado
+    [Table("cliente")]
+    public partial class Cliente
     {
         [Key]
         [Column("id")]
@@ -16,11 +18,14 @@ namespace EventManager.Core.Database.Models
         [Required]
         [Column("nombre")]
         public string Nombre { get; set; }
-        public List<EventoEmpleado> EventoEmpleados { get; set; } = new List<EventoEmpleado>();
 
-        public override string ToString()
-        {
-            return $"Empleado: {Nombre}";
-        }
+        [Required]
+        [Column("telefono")]
+        public string Telefono { get; set; }
+
+        [Column("evento_id")]
+        public int? EventoId { get; set; }
+
+        public Evento? Evento { get; set; }
     }
 }

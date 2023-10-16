@@ -3,20 +3,23 @@
 
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Lombok.NET;
 
-namespace EventManager.Core.Database.Models
+namespace EventManager.Core.Models
 {
     [Table("evento_empleados")]
-    public class EventoEmpleado
+    public partial class EventoEmpleado
     {
-        [Required][Column("empleado_id")] public int EmpleadoId { get; set; }
-        public Empleado Empleado { get; set; }
-        [Required][Column("evento_id")] public int EventoId { get; set; }
-        public Evento Evento { get; set; }
+        [Required]
+        [Column("empleado_id")]
+        public int EmpleadoId { get; set; }
 
-        public override string ToString()
-        {
-            return $"Empleado: {Empleado.Nombre}";
-        }
+        public Empleado Empleado { get; set; }
+
+        [Required]
+        [Column("evento_id")]
+        public int EventoId { get; set; }
+
+        public Evento Evento { get; set; }
     }
 }

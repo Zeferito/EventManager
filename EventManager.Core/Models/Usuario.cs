@@ -3,22 +3,27 @@
 
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Lombok.NET;
 
-namespace EventManager.Core.Database.Models
+namespace EventManager.Core.Models
 {
     [Table("usuario")]
-    public class Usuario
+    public partial class Usuario
     {
         public enum TipoUsuario
         {
-            JEFE,
-            ENCARGADA,
-            OTROS
+            Jefe,
+            Encargado,
+            Otro
         }
 
         [Key]
         [Column("id")]
         public int Id { get; set; }
+
+        [Required]
+        [Column("tipo")]
+        public TipoUsuario Tipo { get; set; }
 
         [Required]
         [Column("nombre")]
@@ -28,14 +33,6 @@ namespace EventManager.Core.Database.Models
         [Column("password")]
         public string Password { get; set; }
 
-        [Required]
-        [Column("tipo")]
-        public TipoUsuario Tipo { get; set; }
         public List<Evento> Eventos { get; set; } = new List<Evento>();
-
-        public override string ToString()
-        {
-            return $"Usuario: {Nombre}";
-        }
     }
 }

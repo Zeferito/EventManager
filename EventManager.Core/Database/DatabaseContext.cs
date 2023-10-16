@@ -2,7 +2,7 @@
 // See the LICENSE file in the repository root for full license text.
 
 using System.Configuration;
-using EventManager.Core.Database.Models;
+using EventManager.Core.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace EventManager.Core.Database
@@ -20,73 +20,95 @@ namespace EventManager.Core.Database
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder
-                .Entity<Usuario>()
-                .HasMany(usuario => usuario.Eventos)
-                .WithOne(evento => evento.Usuario)
-                .HasForeignKey(evento => evento.UsuarioId);
+            modelBuilder.Entity<Evento>(evento =>
+            {
+                evento
+                    .HasMany(evento => evento.Clientes)
+                    .WithOne(cliente => cliente.Evento)
+                    .HasForeignKey(cliente => cliente.EventoId)
+                    .OnDelete(DeleteBehavior.SetNull);
 
-            modelBuilder.Entity<Usuario>().HasIndex(u => u.Nombre).IsUnique();
+                evento
+                    .HasMany(evento => evento.Salas)
+                    .WithOne(sala => sala.Evento)
+                    .HasForeignKey(sala => sala.EventoId)
+                    .OnDelete(DeleteBehavior.SetNull);
+            });
 
-            modelBuilder
-                .Entity<Evento>()
-                .HasMany(evento => evento.Clientes)
-                .WithOne(cliente => cliente.Evento)
-                .HasForeignKey(cliente => cliente.EventoId)
-                .OnDelete(DeleteBehavior.SetNull);
+            modelBuilder.Entity<Usuario>(usuario =>
+            {
+                usuario
+                    .HasMany(usuario => usuario.Eventos)
+                    .WithOne(evento => evento.Usuario)
+                    .HasForeignKey(evento => evento.UsuarioId);
 
-            modelBuilder
-                .Entity<Evento>()
-                .HasMany(evento => evento.Salas)
-                .WithOne(sala => sala.Evento)
-                .HasForeignKey(sala => sala.EventoId)
-                .OnDelete(DeleteBehavior.SetNull);
+                usuario
+                    .HasIndex(u => u.Nombre)
+                    .IsUnique();
+            });
 
-            modelBuilder.Entity<EventoEmpleado>().HasKey(ee => new { ee.EventoId, ee.EmpleadoId });
+            modelBuilder.Entity<EventoEmpleado>(eventoEmpleado =>
+            {
+                eventoEmpleado
+                    .HasKey(ee => new { ee.EventoId, ee.EmpleadoId });
 
-            modelBuilder
-                .Entity<EventoEmpleado>()
-                .HasOne(ee => ee.Evento)
-                .WithMany(evento => evento.EventoEmpleados)
-                .HasForeignKey(ee => ee.EventoId)
-                .OnDelete(DeleteBehavior.Cascade);
+                eventoEmpleado
+                    .HasOne(ee => ee.Evento)
+                    .WithMany(evento => evento.EventoEmpleados)
+                    .HasForeignKey(ee => ee.EventoId)
+                    .OnDelete(DeleteBehavior.Cascade);
 
-            modelBuilder
-                .Entity<EventoEmpleado>()
-                .HasOne(ee => ee.Empleado)
-                .WithMany(empleado => empleado.EventoEmpleados)
-                .HasForeignKey(ee => ee.EmpleadoId)
-                .OnDelete(DeleteBehavior.Cascade);
+                eventoEmpleado
+                    .HasOne(ee => ee.Empleado)
+                    .WithMany(empleado => empleado.EventoEmpleados)
+                    .HasForeignKey(ee => ee.EmpleadoId)
+                    .OnDelete(DeleteBehavior.Cascade);
+            });
 
-            modelBuilder
-                .Entity<EventoAgregable>()
-                .HasKey(ea => new { ea.EventoId, ea.AgregableId});
+            modelBuilder.Entity<EventoAgregable>(eventoAgregable =>
+            {
+                eventoAgregable
+                    .HasKey(ea => new { ea.EventoId, ea.AgregableId });
 
-            modelBuilder
-                .Entity<EventoAgregable>()
-                .HasOne(ea => ea.Evento)
-                .WithMany(evento => evento.EventoAgregables)
-                .HasForeignKey(ea => ea.EventoId)
-                .OnDelete(DeleteBehavior.Cascade);
+                eventoAgregable
+                    .HasOne(ea => ea.Evento)
+                    .WithMany(evento => evento.EventoAgregables)
+                    .HasForeignKey(ea => ea.EventoId)
+                    .OnDelete(DeleteBehavior.Cascade);
 
-            modelBuilder
-                .Entity<EventoAgregable>()
-                .HasOne(ea => ea.Agregable)
-                .WithMany(agregable => agregable.EventoAgregables)
-                .HasForeignKey(ea => ea.AgregableId)
-                .OnDelete(DeleteBehavior.Cascade);
+                eventoAgregable
+                    .HasOne(ea => ea.Agregable)
+                    .WithMany(agregable => agregable.EventoAgregables)
+                    .HasForeignKey(ea => ea.AgregableId)
+                    .OnDelete(DeleteBehavior.Cascade);
+            });
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (optionsBuilder.IsConfigured)
+            {
                 return;
+            }
 
-            string connectionString = ConfigurationManager.ConnectionStrings[
-                "DatabaseContext"
-            ].ConnectionString;
+            string connectionString = ConfigurationManager.ConnectionStrings["DatabaseContext"].ConnectionString;
 
             optionsBuilder.UseMySQL(connectionString);
+        }
+
+        public static void RemoveAgregableFromEvento(int eventoId, int agregableId)
+        {
+            using DatabaseContext context = new DatabaseContext();
+
+            EventoAgregable? eventoAgregable = context.EventoAgregables
+                .FirstOrDefault(ab => ab.EventoId == eventoId && ab.AgregableId == agregableId);
+
+            if (eventoAgregable == null)
+            {
+                return;
+            }
+
+            context.EventoAgregables.Remove(eventoAgregable);
         }
     }
 }

@@ -4,20 +4,25 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace EventManager.Core.Database.Models
+namespace EventManager.Core.Models
 {
     [Table("evento_agregable")]
-    public class EventoAgregable
+    public partial class EventoAgregable
     {
-        [Required][Column("agregable_id")] public int AgregableId { get; set; }
-        public Agregable Agregable { get; set; }
-        [Required][Column("evento_id")] public int EventoId { get; set; }
-        public Evento Evento { get; set; }
-        [Required][Column("cantidad")] public int Cantidad { get; set; }
+        [Required]
+        [Column("cantidad")]
+        public int Cantidad { get; set; }
 
-        public override string ToString()
-        {
-            return $"Agregable: {Agregable.Nombre} : Cantidad: {Cantidad}";
-        }
+        [Required]
+        [Column("agregable_id")]
+        public int AgregableId { get; set; }
+
+        public Agregable Agregable { get; set; }
+
+        [Required]
+        [Column("evento_id")]
+        public int EventoId { get; set; }
+
+        public Evento Evento { get; set; }
     }
 }

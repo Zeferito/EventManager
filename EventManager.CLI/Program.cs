@@ -3,9 +3,8 @@
 
 using EventManager.CLI.Views;
 using EventManager.Core.Database;
-using EventManager.Core.Database.Models;
-using EventManager.Core.Database.Services;
-using Org.BouncyCastle.Tls;
+using EventManager.Core.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace EventManager.CLI
 {
@@ -13,11 +12,6 @@ namespace EventManager.CLI
     {
         public static void Main(string[] args)
         {
-            if (OperatingSystem.IsWindows()) { }
-
-            // Back up the cwd
-            string cwd = Environment.CurrentDirectory;
-
             foreach (string arg in args)
             {
                 string[] split = arg.Split('=');
@@ -27,53 +21,38 @@ namespace EventManager.CLI
 
                 switch (key)
                 {
-                    case "--hello":
-                        Console.WriteLine("Hi!");
+                    case "--setup":
+                        Setup();
                         break;
                 }
             }
 
-            //SetUp();
-            RunMenu();
-            Console.WriteLine("Hello, World!");
-        }
-
-        private static void RunMenu()
-        {
-            EventoView eventoView = new EventoView();
-
             while (true)
             {
-                Console.WriteLine("Please select an option:");
+                Console.WriteLine("\nEvento Menu —");
                 Console.WriteLine("1. Agregar Evento");
                 Console.WriteLine("2. Consultar Evento");
                 Console.WriteLine("3. Actualizar Evento");
                 Console.WriteLine("4. Eliminar Evento");
-                Console.WriteLine("5. Confirmar Evento");
-                Console.WriteLine("6. Cancelar el Evento");
+                Console.WriteLine("5. Salir");
 
-                string input = Console.ReadLine();
+                string? input = Console.ReadLine();
 
                 switch (input)
                 {
                     case "1":
-                        eventoView.AgregarEvento();
+                        EventoAgregarView.ShowMenuAgregarEvento();
                         break;
                     case "2":
-                        Evento evento = eventoView.ConsultarEvento();
-                        if (evento != null)
-                        {
-                            Console.WriteLine(evento.ToString());
-                        }
+                        EventoConsultarView.ShowMenuConsultarEvento();
                         break;
                     case "3":
+                        EventoActualizarView.ShowMenuActualizarEvento();
                         break;
                     case "4":
-                        eventoView.EliminarEvento();
+                        EventoEliminarView.ShowMenuEliminarEvento();
                         break;
                     case "5":
-                        break;
-                    case "6":
                         return;
                     default:
                         Console.WriteLine("Invalid option selected");
@@ -82,113 +61,93 @@ namespace EventManager.CLI
             }
         }
 
-        private static void SetUp()
+        public static Usuario? GetUser()
         {
-            CrearUsuario();
-            CrearCliente();
-            CrearEmpleado();
-            CrearSalas();
-            CrearAgregables();
+            using DatabaseContext context = new DatabaseContext();
+
+            const int id = 1;
+
+            return context.Usuarios.Find(id);
         }
 
-        private static void CrearSalas()
+        private static void Setup()
         {
-            using (DatabaseContext context = new DatabaseContext())
-            {
-                SalaService salaService = new SalaService(context);
-                salaService
-                    .CreateSalaAsync(new Sala { Nombre = "Infantil", Tipo = Sala.TipoSala.SALON })
-                    .Wait();
-                salaService
-                    .CreateSalaAsync(new Sala { Nombre = "Infernal", Tipo = Sala.TipoSala.SALON })
-                    .Wait();
-                salaService
-                    .CreateSalaAsync(new Sala { Nombre = "Lectura", Tipo = Sala.TipoSala.SALON })
-                    .Wait();
-            }
-        }
+            using DatabaseContext context = new DatabaseContext();
 
-        private static void CrearAgregables()
-        {
-            using (DatabaseContext context = new DatabaseContext())
+            if (context.Usuarios.ToList().Count <= 0)
             {
-                AgregableService agregableService = new AgregableService(context);
-                agregableService
-                    .CreateAgregableAsync(
-                        new Agregable
-                        {
-                            Nombre = "Bocina",
-                            Tipo = Agregable.TipoAgregable.EQUIPO,
-                            Total = 4
-                        }
-                    )
-                    .Wait();
-                agregableService
-                    .CreateAgregableAsync(
-                        new Agregable
-                        {
-                            Nombre = "Proyector",
-                            Tipo = Agregable.TipoAgregable.EQUIPO,
-                            Total = 1
-                        }
-                    )
-                    .Wait();
-                agregableService
-                    .CreateAgregableAsync(
-                        new Agregable
-                        {
-                            Nombre = "Plastilina",
-                            Tipo = Agregable.TipoAgregable.EQUIPO,
-                            Total = 10
-                        }
-                    )
-                    .Wait();
+                Usuario usuario = new Usuario
+                {
+                    Nombre = "admin",
+                    Password = "password",
+                    Tipo = Usuario.TipoUsuario.Encargado
+                };
+                context.Usuarios.Add(usuario);
             }
-        }
 
-        private static void CrearEmpleado()
-        {
-            //Crear Usuario
-            using (DatabaseContext context = new DatabaseContext())
+            if (context.Clientes.ToList().Count <= 0)
             {
-                EmpleadoService empleadoService = new EmpleadoService(context);
-                empleadoService.CreateEmpleadoAsync(new Empleado { Nombre = "Francisco" }).Wait();
-                empleadoService.CreateEmpleadoAsync(new Empleado { Nombre = "Benson" }).Wait();
-                empleadoService.CreateEmpleadoAsync(new Empleado { Nombre = "Mordecai" }).Wait();
+                Cliente cliente = new Cliente
+                {
+                    Nombre = "Ivan Tapia",
+                    Telefono = "1234567890"
+                };
+                context.Clientes.Add(cliente);
             }
-        }
 
-        private static void CrearUsuario()
-        {
-            //Crear Usuario
-            using (DatabaseContext context = new DatabaseContext())
+            if (context.Empleados.ToList().Count <= 0)
             {
-                UsuarioService usuarioService = new UsuarioService(context);
-                usuarioService
-                    .CreateUsuarioAsync(
-                        new Usuario
-                        {
-                            Nombre = "admin",
-                            Password = "password",
-                            Tipo = Usuario.TipoUsuario.ENCARGADA
-                        }
-                    )
-                    .Wait();
+                Empleado empleado1 = new Empleado { Nombre = "Francisco" };
+                Empleado empleado2 = new Empleado { Nombre = "Benson" };
+                Empleado empleado3 = new Empleado { Nombre = "Mordecai" };
+                context.Empleados.AddRange(empleado1, empleado2, empleado3);
             }
-        }
 
-        private static void CrearCliente()
-        {
-            //Crear Cliente
-            using (DatabaseContext context = new DatabaseContext())
+            if (context.Salas.ToList().Count <= 0)
             {
-                ClienteService clienteService = new ClienteService(context);
-                clienteService
-                    .CreateClienteAsync(
-                        new Cliente { Nombre = "Ivan Tapia", Telefono = "1234567890" }
-                    )
-                    .Wait();
+                Sala sala1 = new Sala { Nombre = "Infantil", Tipo = Sala.TipoSala.Salon };
+                Sala sala2 = new Sala { Nombre = "Infantil", Tipo = Sala.TipoSala.Salon };
+                Sala sala3 = new Sala { Nombre = "Infantil", Tipo = Sala.TipoSala.Salon };
+                context.Salas.AddRange(sala1, sala2, sala3);
             }
+
+            if (context.Agregables.ToList().Count <= 0)
+            {
+                Agregable agregable1 =
+                    new Agregable
+                    {
+                        Nombre = "Bocina",
+                        Tipo = Agregable.TipoAgregable.Equipo,
+                        Total = 4
+                    };
+                Agregable agregable2 =
+                    new Agregable
+                    {
+                        Nombre = "Proyector",
+                        Tipo = Agregable.TipoAgregable.Equipo,
+                        Total = 1
+                    };
+                Agregable agregable3 =
+                    new Agregable
+                    {
+                        Nombre = "Plastilina",
+                        Tipo = Agregable.TipoAgregable.Equipo,
+                        Total = 10
+                    };
+                context.Agregables.AddRange(agregable1, agregable2, agregable3);
+            }
+
+            try
+            {
+                context.SaveChanges();
+            }
+            catch (DbUpdateException dub)
+            {
+                Console.WriteLine("Could not save changes: " + dub.Message);
+                return;
+            }
+
+            Console.WriteLine("Finished setup.");
         }
     }
 }
