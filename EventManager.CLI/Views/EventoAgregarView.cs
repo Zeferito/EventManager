@@ -286,13 +286,13 @@ namespace EventManager.CLI.Views
             foreach (Cliente cliente in clientes)
             {
                 cliente.Evento = insertedEvento;
-                context.Clientes.Attach(cliente);
+                context.Entry(cliente).State = EntityState.Modified;
             }
 
             foreach (Sala sala in salas)
             {
                 sala.Evento = insertedEvento;
-                context.Salas.Attach(sala);
+                context.Entry(sala).State = EntityState.Modified;
             }
 
             foreach (Empleado empleado in empleados)
