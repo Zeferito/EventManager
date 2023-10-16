@@ -9,10 +9,16 @@ namespace EventManager.Core.Database.Models
     [Table("sala")]
     public class Sala
     {
+        public enum TipoSala
+        {
+            SALON,
+            AUDITORIO,
+        }
+        
         [Key][Column("id")] public int Id { get; set; }
         [Required][Column("nombre")] public string Nombre { get; set; }
-        [Required][Column("tipo")] public string TipoSalon { get; set; }
-        [Required][Column("evento_id")] public int EventoId { get; set; }
-        public Evento Evento { get; set; }
+        [Required][Column("tipo")] public TipoSala Tipo { get; set; }
+        [Column("evento_id")] public int? EventoId { get; set; }
+        public Evento? Evento { get; set; }
     }
 }

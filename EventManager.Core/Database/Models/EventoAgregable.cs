@@ -13,5 +13,6 @@ namespace EventManager.Core.Database.Models
         public Agregable Agregable { get; set; }
         [Required][Column("evento_id")] public int EventoId { get; set; }
         public Evento Evento { get; set; }
+        [Required][Column("cantidad")] public int Cantidad { get; set; }
     }
 }

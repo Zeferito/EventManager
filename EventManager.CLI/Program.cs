@@ -1,12 +1,10 @@
 ﻿// Copyright (c) Miguel Angel De La Rosa Martínez, Alec Demian Santana Celaya, Jaime Valdez Tanori, Martin Ricardo Yocupicio Ramos. Licensed under the MIT Licence.
 // See the LICENSE file in the repository root for full license text.
 
+using EventManager.CLI.Views;
 using EventManager.Core.Database;
 using EventManager.Core.Database.Models;
 using EventManager.Core.Database.Services;
-using Microsoft.Extensions.Logging;
-using Org.BouncyCastle.Tls;
-using Org.BouncyCastle.Utilities;
 
 namespace EventManager.CLI
 {
@@ -34,44 +32,44 @@ namespace EventManager.CLI
                 }
             }
 
-            Console.WriteLine("Hello, World!");
+            //SetUp();
             RunMenu();
+            Console.WriteLine("Hello, World!");
         }
 
         private static void RunMenu()
         {
-            // Back up the cwd
-            string cwd = Environment.CurrentDirectory;
-
-            SetUp();
+            EventoView eventoView = new EventoView();
 
             while (true)
             {
                 Console.WriteLine("Please select an option:");
                 Console.WriteLine("1. Agregar Evento");
-                Console.WriteLine("2. Agregar agregables de Evento");
+                Console.WriteLine("2. Consultar Evento");
                 Console.WriteLine("3. Actualizar Evento");
                 Console.WriteLine("4. Eliminar Evento");
-                Console.WriteLine("5. Exit");
+                Console.WriteLine("5. Agregar sala de Evento");
+                Console.WriteLine("6. Confirmar Evento");
+                Console.WriteLine("7. Cancelar el Evento");
 
                 string input = Console.ReadLine();
 
                 switch (input)
                 {
                     case "1":
-                        AgregarEvento();
+                        eventoView.AgregarEvento();
                         break;
                     case "2":
-                        AgregarAgregableAEvento();
                         break;
                     case "3":
-                        Console.WriteLine("You selected Option 3");
                         break;
                     case "4":
-                        Console.WriteLine("You selected Option 4");
                         break;
                     case "5":
-                        Console.WriteLine("Goodbye!");
+                        break;
+                    case "6":
+                        return;
+                    case "7":
                         return;
                     default:
                         Console.WriteLine("Invalid option selected");
@@ -81,6 +79,12 @@ namespace EventManager.CLI
         }
 
         private static void SetUp()
+        {
+            CrearUsuario();
+            CrearCliente();
+        }
+
+        private static void CrearUsuario()
         {
             //Crear Usuario
             using (DatabaseContext context = new DatabaseContext())
@@ -99,82 +103,17 @@ namespace EventManager.CLI
             }
         }
 
-        private static void AgregarEvento()
+        private static void CrearCliente()
         {
-            //Establecer fecha del evento
-            DateTime fecha;
-            while (true)
-            {
-                Console.WriteLine("Ingrese la fecha del evento");
-                if (DateTime.TryParse(Console.ReadLine(), out fecha))
-                {
-                    break;
-                }
-                Console.WriteLine("Fecha invalida");
-            }
-
-            //Crear evento
+            //Crear Cliente
             using (DatabaseContext context = new DatabaseContext())
             {
-                EventoService eventoService = new EventoService(context);
-                eventoService.CreateEventoAsync(new Evento { Fecha = fecha, UsuarioId = 1 }).Wait();
-            }
-        }
-
-        private static void AgregarAgregableAEvento()
-        {
-            //Crear agregable
-            using (DatabaseContext context = new DatabaseContext())
-            {
-                EventoService eventoService = new EventoService(context);
-                //Establecer id del evento
-                int eventoId;
-                while (true)
-                {
-                    Console.WriteLine("Ingrese id del evento");
-                    if (int.TryParse(Console.ReadLine(), out eventoId))
-                    {
-                        if (!eventoService.EventoExistsAsync(eventoId).Result)
-                        {
-                            Console.WriteLine("Evento no existe");
-                            continue;
-                        }
-                        break;
-                    }
-                    Console.WriteLine("id invalido");
-                }
-
-                AgregableService agregableService = new AgregableService(context);
-
-                Console.WriteLine("Ingrese nombre del agregable");
-                string nombre = Console.ReadLine();
-
-                Agregable.TipoAgregable tipo;
-                while (true)
-                {
-                    Console.WriteLine(
-                        "Ingrese el tipo del agregable (0: MATERIAL, 1: EQUIPO, 2: MOBILIARIO)"
-                    );
-
-                    if (Enum.TryParse(Console.ReadLine(), out tipo))
-                    {
-                        break;
-                    }
-                    Console.WriteLine("Tipo invalido");
-                }
-                int cantidad;
-                while(true){
-                    Console.WriteLine("Ingrese la cantidad del agregable");
-                    if(int.TryParse(Console.ReadLine(), out cantidad)){
-                        break;
-                    }
-                    Console.WriteLine("Cantidad invalida");
-                }
-                Agregable agregable = agregableService
-                    .CreateAgregableAsync(new Agregable { Nombre = nombre, Tipo = tipo, Cantidad = cantidad})
-                    .Result;
-
-                agregableService.AgregableAddEventoAsync(agregable.Id, eventoId).Wait();
+                ClienteService clienteService = new ClienteService(context);
+                clienteService
+                    .CreateClienteAsync(
+                        new Cliente { Nombre = "Ivan Tapia", Telefono = "1234567890" }
+                    )
+                    .Wait();
             }
         }
     }

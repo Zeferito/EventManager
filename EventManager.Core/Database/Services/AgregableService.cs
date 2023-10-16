@@ -52,7 +52,7 @@ namespace EventManager.Core.Database.Services
             return await _context.Agregables.AnyAsync(a => a.Id == id);
         }
 
-        public async Task<EventoAgregable> AgregableAddEventoAsync(int eventoId, int agregableId)
+        public async Task<EventoAgregable> AgregableAddEventoAsync(int eventoId, int agregableId, int cantidad)
         {
             var evento = _context.Eventos.FindAsync(eventoId).Result;
             var agregable = _context.Agregables.FindAsync(agregableId).Result;
@@ -64,7 +64,8 @@ namespace EventManager.Core.Database.Services
                     var eventoAgregable = new EventoAgregable
                     {
                         Evento = evento,
-                        Agregable = agregable
+                        Agregable = agregable,
+                        Cantidad = cantidad
                     };
 
                     await _context.EventoAgregables.AddAsync(eventoAgregable);

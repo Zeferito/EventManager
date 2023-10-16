@@ -54,5 +54,86 @@ namespace EventManager.Core.Database.Services
         {
             return await _context.Eventos.AnyAsync(e => e.Id == id);
         }
+
+        public async Task<EventoAgregable> EventoAddAgregableAsync(int eventoId, int agregableId, int cantidad)
+        {
+            var evento = _context.Eventos.FindAsync(eventoId).Result;
+            var agregable = _context.Agregables.FindAsync(agregableId).Result;
+
+            if (evento != null && agregable != null)
+            {
+                if (!evento.EventoAgregables.Any(ea => ea.AgregableId == agregableId))
+                {
+                    var eventoAgregable = new EventoAgregable
+                    {
+                        Evento = evento,
+                        Agregable = agregable,
+                        Cantidad = cantidad
+                    };
+
+                    await _context.EventoAgregables.AddAsync(eventoAgregable);
+                    await _context.SaveChangesAsync();
+                    return eventoAgregable;
+                }
+            }
+            return null;
+        }
+
+        public async Task<EventoEmpleado> EventoAddEmpleadoAsync(int eventoId, int empleadoId)
+        {
+            var evento = _context.Eventos.FindAsync(eventoId).Result;
+            var empleado = _context.Empleados.FindAsync(empleadoId).Result;
+
+            if (evento != null && empleado != null)
+            {
+                if (!evento.EventoEmpleados.Any(ee => ee.EmpleadoId == empleadoId))
+                {
+                    var eventoEmpleado = new EventoEmpleado
+                    {
+                        Evento = evento,
+                        Empleado = empleado
+                    };
+
+                    await _context.EventoEmpleados.AddAsync(eventoEmpleado);
+                    await _context.SaveChangesAsync();
+                    return eventoEmpleado;
+                }
+            }
+            return null;
+        }
+
+        public async Task<Evento> EventoAddClienteAsync(int eventoId, int clienteId)
+        {
+            var evento = _context.Eventos.FindAsync(eventoId).Result;
+            var cliente = _context.Clientes.FindAsync(clienteId).Result;
+
+            if (evento != null && cliente != null)
+            {
+                if (!evento.Clientes.Any(c => c.Id == clienteId))
+                {
+                    evento.Clientes.Add(cliente);
+                    await _context.SaveChangesAsync();
+                    return evento;
+                }
+            }
+            return null;
+        }
+
+        public async Task<Evento> EventoAddSalaAsync(int eventoId, int salaId)
+        {
+            var evento = _context.Eventos.FindAsync(eventoId).Result;
+            var sala = _context.Salas.FindAsync(salaId).Result;
+
+            if (evento != null && sala != null)
+            {
+                if (!evento.Salas.Any(s => s.Id == salaId))
+                {
+                    evento.Salas.Add(sala);
+                    await _context.SaveChangesAsync();
+                    return evento;
+                }
+            }
+            return null;
+        }
     }
 }
