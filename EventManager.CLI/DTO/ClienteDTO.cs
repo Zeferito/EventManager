@@ -3,7 +3,7 @@
 
 namespace EventManager.CLI.DTO
 {
-    public partial class SalaDTO
+    public partial class ClienteDTO
     {
         public int Id { get; set; }
         public string Nombre { get; set; }
