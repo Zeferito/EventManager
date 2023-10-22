@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://doh7pitxm7hcj"]
+
+[ext_resource type="PackedScene" uid="uid://dvv7soetujfvi" path="res://Scenes/LogIn/login.tscn" id="1_c347s"]
+
+[node name="ScenaPrincipal" type="Node"]
+
+[node name="Login" parent="." instance=ExtResource("1_c347s")]

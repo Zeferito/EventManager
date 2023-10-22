@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://ca0ule4p160bj"]
+
+[ext_resource type="PackedScene" uid="uid://3v46tspkr7ir" path="res://Scenes/Inicio/Components/left_panel_component.tscn" id="1_748dy"]
+[ext_resource type="PackedScene" uid="uid://dasuicc42w0xu" path="res://Scenes/Inicio/Components/main_panel_component.tscn" id="2_jwsd7"]
+
+[node name="Inicio" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="LeftPanelComponent" parent="HBoxContainer" instance=ExtResource("1_748dy")]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 1
+
+[node name="MainPanelComponent" parent="HBoxContainer" instance=ExtResource("2_jwsd7")]
+layout_mode = 2

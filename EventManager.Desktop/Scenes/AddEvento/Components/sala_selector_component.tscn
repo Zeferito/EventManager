@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://bfqrp3sy2hj5q"]
+
+[ext_resource type="Script" path="res://Scenes/AddEvento/Components/ButtonSalon.cs" id="1_bgnhj"]
+
+[node name="SalaSelectorComponent" type="HBoxContainer"]
+offset_right = 142.0
+offset_bottom = 31.0
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="ButtonAuditorio" type="Button" parent="."]
+layout_mode = 2
+text = "Auditorio"
+
+[node name="ButtonSalon" type="Button" parent="."]
+layout_mode = 2
+text = "Salón
+"
+script = ExtResource("1_bgnhj")

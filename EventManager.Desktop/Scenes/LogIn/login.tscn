@@ -1,0 +1,35 @@
+[gd_scene load_steps=2 format=3 uid="uid://dvv7soetujfvi"]
+
+[ext_resource type="PackedScene" uid="uid://d3s05lbx4rjlw" path="res://Scenes/LogIn/Components/form_component.tscn" id="1_iy2kf"]
+
+[node name="Login" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0.898039, 0.6, 1)
+
+[node name="FormComponent" parent="." instance=ExtResource("1_iy2kf")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -307.0
+offset_right = 250.0
+offset_bottom = 307.0
+grow_horizontal = 2
+grow_vertical = 2
