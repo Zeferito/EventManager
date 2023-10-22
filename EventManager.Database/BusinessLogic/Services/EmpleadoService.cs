@@ -1,7 +1,6 @@
 ﻿// Copyright (c) Miguel Angel De La Rosa Martínez, Alec Demian Santana Celaya, Jaime Valdez Tanori, Martin Ricardo Yocupicio Ramos. Licensed under the MIT Licence.
 // See the LICENSE file in the repository root for full license text.
 
-using EventManager.Database.DataAccess;
 using EventManager.Database.DataAccess.Repositories;
 using EventManager.Database.Models.Entities;
 
@@ -9,14 +8,11 @@ namespace EventManager.Database.BusinessLogic.Services
 {
     public partial class EmpleadoService
     {
-        private readonly DatabaseContext _context;
-
         private readonly EmpleadoRepository _empleadoRepository;
 
-        public EmpleadoService(DatabaseContext context)
+        public EmpleadoService(EmpleadoRepository empleadoRepository)
         {
-            _context = context;
-            _empleadoRepository = new EmpleadoRepository(context);
+            _empleadoRepository = empleadoRepository;
         }
 
         public async Task<List<Empleado>> GetAllAsync()
