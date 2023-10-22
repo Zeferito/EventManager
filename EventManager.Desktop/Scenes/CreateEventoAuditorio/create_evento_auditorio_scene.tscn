@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dqrkl2b3k43yy"]
+
+[ext_resource type="PackedScene" uid="uid://cgf6jbguq8k36" path="res://Scenes/CreateEventoAuditorio/create_evento_auditorio.tscn" id="1_uw3dc"]
+
+[node name="CreateEventoAuditorioScene" type="Node"]
+
+[node name="CreateEventoAuditorio" parent="." instance=ExtResource("1_uw3dc")]

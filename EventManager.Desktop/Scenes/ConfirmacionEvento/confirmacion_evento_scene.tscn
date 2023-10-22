@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://d07dw26o6ywg1"]
+
+[ext_resource type="PackedScene" uid="uid://yjqd5iak0t1u" path="res://Scenes/ConfirmacionEvento/confirmacion_evento.tscn" id="1_agip0"]
+
+[node name="ConfirmacionEventoScene" type="Node"]
+
+[node name="ConfirmacionEvento" parent="." instance=ExtResource("1_agip0")]

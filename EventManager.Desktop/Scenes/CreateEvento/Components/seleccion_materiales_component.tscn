@@ -1,0 +1,77 @@
+[gd_scene load_steps=5 format=3 uid="uid://dmmy1vu622pvh"]
+
+[ext_resource type="Texture2D" uid="uid://bigt8ixwsindh" path="res://Textures/icon.png" id="1_8qv73"]
+[ext_resource type="PackedScene" uid="uid://moxuri4delwb" path="res://Scenes/CreateEvento/Components/agregable_material_item_component.tscn" id="2_bsaxl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s3s2q"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4yj07"]
+bg_color = Color(1, 1, 1, 1)
+
+[node name="SeleccionMaterialesComponent" type="VBoxContainer"]
+custom_minimum_size = Vector2(350, 200)
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Selecciona Material"
+
+[node name="LineEdit" type="LineEdit" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_s3s2q")
+
+[node name="VSeparator" type="VSeparator" parent="HBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Cantidad"
+
+[node name="LineEdit" type="LineEdit" parent="HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_4yj07")
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+alignment = 1
+
+[node name="TextureButton" type="TextureButton" parent="HBoxContainer/VBoxContainer3/HBoxContainer"]
+custom_minimum_size = Vector2(60, 30)
+layout_mode = 2
+texture_normal = ExtResource("1_8qv73")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+
+[node name="AgregableMaterialItemComponent" parent="ScrollContainer/VBoxContainer" instance=ExtResource("2_bsaxl")]
+layout_mode = 2

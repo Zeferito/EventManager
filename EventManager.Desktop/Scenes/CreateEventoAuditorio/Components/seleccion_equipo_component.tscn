@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://drtvc8yhvc2nh"]
+
+[ext_resource type="PackedScene" uid="uid://cis076eymjbvu" path="res://Scenes/CreateEventoAuditorio/Components/equipo_item_component.tscn" id="1_xqkpe"]
+
+[node name="SeleccionEquipo" type="VBoxContainer"]
+custom_minimum_size = Vector2(350, 0)
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Seleccionar Equipo"
+
+[node name="HSeparator" type="HSeparator" parent="."]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+
+[node name="EquipoItemComponent" parent="ScrollContainer/VBoxContainer" instance=ExtResource("1_xqkpe")]
+layout_mode = 2

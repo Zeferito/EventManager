@@ -1,0 +1,140 @@
+[gd_scene load_steps=7 format=3 uid="uid://cgf6jbguq8k36"]
+
+[ext_resource type="PackedScene" uid="uid://c6ov4p8timmbo" path="res://Scenes/CreateEventoAuditorio/Components/ingresar_cliente_component.tscn" id="1_kped3"]
+[ext_resource type="PackedScene" uid="uid://drtvc8yhvc2nh" path="res://Scenes/CreateEventoAuditorio/Components/seleccion_equipo_component.tscn" id="2_d17qj"]
+[ext_resource type="PackedScene" uid="uid://dx5wlicvvx35h" path="res://Scenes/CreateEventoAuditorio/Components/seleccion_mobiliario_component.tscn" id="3_gt8jm"]
+[ext_resource type="PackedScene" uid="uid://blb1j24w26o5" path="res://Scenes/CreateEventoAuditorio/Components/agregar_empleados_component.tscn" id="4_7f3ta"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ges7v"]
+font_size = 25
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tnnv4"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 11
+border_width_top = 5
+
+[node name="CreateEventoAuditorio" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="Control" type="Control" parent="HBoxContainer"]
+custom_minimum_size = Vector2(135, 0)
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="HBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.788235, 0.854902, 0.972549, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1, 0.989637)
+
+[node name="Button" type="Button" parent="HBoxContainer/Control/VBoxContainer"]
+layout_mode = 2
+text = "Regresar"
+
+[node name="Control2" type="Control" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ColorRect" type="ColorRect" parent="HBoxContainer/Control2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0.94902, 0.8, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/Control2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VSeparator" type="VSeparator" parent="HBoxContainer/Control2/HBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Control2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HSeparator" type="HSeparator" parent="HBoxContainer/Control2/HBoxContainer/VBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/Control2/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Ingrese datos de Auditorio"
+label_settings = SubResource("LabelSettings_ges7v")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainer/Control2/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VSeparator2" type="VSeparator" parent="HBoxContainer/Control2/HBoxContainer/VBoxContainer/HBoxContainer2"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="HBoxContainer/Control2/HBoxContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(700, 0)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxFlat_tnnv4")
+
+[node name="VSeparator" type="VSeparator" parent="HBoxContainer/Control2/HBoxContainer/VBoxContainer/HBoxContainer2"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/Control2/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Control2/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+
+[node name="IngresarClienteComponent" parent="HBoxContainer/Control2/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer" instance=ExtResource("1_kped3")]
+layout_mode = 2
+
+[node name="SeleccionEquipo" parent="HBoxContainer/Control2/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer" instance=ExtResource("2_d17qj")]
+layout_mode = 2
+
+[node name="SeleccionMobiliarioComponent" parent="HBoxContainer/Control2/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer" instance=ExtResource("3_gt8jm")]
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer/Control2/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="AgregarEmpleadosComponent" parent="HBoxContainer/Control2/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2" instance=ExtResource("4_7f3ta")]
+layout_mode = 2

@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://dti5nutah5l31"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iv5nc"]
+bg_color = Color(1, 1, 1, 1)
+
+[node name="SeleccionSalasComponent" type="VBoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Seleccionar el salon"
+
+[node name="HSeparator" type="HSeparator" parent="."]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+
+[node name="OptionButton" type="OptionButton" parent="."]
+custom_minimum_size = Vector2(45, 35)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_iv5nc")

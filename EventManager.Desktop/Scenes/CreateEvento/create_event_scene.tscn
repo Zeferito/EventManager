@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://ccppxh2gpsc2h"]
+
+[ext_resource type="PackedScene" uid="uid://sk3ilteppaoj" path="res://Scenes/CreateEvento/create_event.tscn" id="1_gc4f4"]
+
+[node name="CreateEventScene" type="Node"]
+
+[node name="CreateEvent" parent="." instance=ExtResource("1_gc4f4")]

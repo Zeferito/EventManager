@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=3 uid="uid://blb1j24w26o5"]
+
+[ext_resource type="PackedScene" uid="uid://brrrnh4uxas1i" path="res://Scenes/CreateEvento/Components/empleado_item_component.tscn" id="1_sr8xf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k6xxm"]
+bg_color = Color(1, 1, 1, 1)
+
+[node name="AgregarEmpleadosComponent" type="VBoxContainer"]
+custom_minimum_size = Vector2(350, 200)
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CheckBox" type="CheckBox" parent="."]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+text = "Agregar empleados"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Seleccionar empleados"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="OptionButton" type="OptionButton" parent="HBoxContainer"]
+custom_minimum_size = Vector2(180, 30)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_k6xxm")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+custom_minimum_size = Vector2(350, 200)
+layout_mode = 2
+
+[node name="EmpleadoItemComponent" parent="ScrollContainer" instance=ExtResource("1_sr8xf")]
+layout_mode = 2
