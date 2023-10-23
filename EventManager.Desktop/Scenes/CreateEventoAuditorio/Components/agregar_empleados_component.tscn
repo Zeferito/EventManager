@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://blb1j24w26o5"]
 
-[ext_resource type="PackedScene" uid="uid://brrrnh4uxas1i" path="res://Scenes/CreateEvento/Components/empleado_item_component.tscn" id="1_sr8xf"]
+[ext_resource type="PackedScene" uid="uid://brrrnh4uxas1i" path="res://Scenes/CreateEventoSalon/Components/empleado_item_component.tscn" id="1_sr8xf"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k6xxm"]
 bg_color = Color(1, 1, 1, 1)

@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dmmy1vu622pvh"]
 
 [ext_resource type="Texture2D" uid="uid://bigt8ixwsindh" path="res://Textures/icon.png" id="1_8qv73"]
-[ext_resource type="PackedScene" uid="uid://moxuri4delwb" path="res://Scenes/CreateEvento/Components/agregable_material_item_component.tscn" id="2_bsaxl"]
+[ext_resource type="PackedScene" uid="uid://moxuri4delwb" path="res://Scenes/CreateEventoSalon/Components/agregable_material_item_component.tscn" id="2_bsaxl"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s3s2q"]
 bg_color = Color(1, 1, 1, 1)

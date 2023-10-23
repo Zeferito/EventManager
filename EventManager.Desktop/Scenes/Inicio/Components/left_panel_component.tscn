@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://3v46tspkr7ir"]
+[gd_scene load_steps=5 format=3 uid="uid://3v46tspkr7ir"]
 
 [ext_resource type="Texture2D" uid="uid://bjfmg2m4dw6na" path="res://Textures/biblioteca.png" id="1_1o2x0"]
+[ext_resource type="Script" path="res://Scenes/Inicio/Components/Scripts/HandleButtonsInicio.cs" id="1_fpkws"]
 [ext_resource type="PackedScene" uid="uid://bpvcms5hqwerq" path="res://Scenes/Inicio/Components/buttons_selection_component.tscn" id="2_nc3h6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a4pn0"]
@@ -13,6 +14,12 @@ anchors_preset = 0
 offset_right = 200.0
 offset_bottom = 630.0
 size_flags_vertical = 3
+
+[node name="Scripts" type="Node" parent="."]
+
+[node name="HandleButtonsInicio" type="Node" parent="Scripts" node_paths=PackedStringArray("_buttonExit")]
+script = ExtResource("1_fpkws")
+_buttonExit = NodePath("../../VBoxContainer/Button")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1

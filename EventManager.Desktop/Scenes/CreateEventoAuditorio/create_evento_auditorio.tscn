@@ -1,9 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://cgf6jbguq8k36"]
+[gd_scene load_steps=11 format=3 uid="uid://cgf6jbguq8k36"]
 
+[ext_resource type="Script" path="res://Scenes/CreateEventoAuditorio/Components/Scripts/HandleReturnButton.cs" id="1_8ouu3"]
 [ext_resource type="PackedScene" uid="uid://c6ov4p8timmbo" path="res://Scenes/CreateEventoAuditorio/Components/ingresar_cliente_component.tscn" id="1_kped3"]
+[ext_resource type="Script" path="res://Scenes/CreateEventoAuditorio/Components/Scripts/HandleBottomButtons.cs" id="2_cwk6o"]
 [ext_resource type="PackedScene" uid="uid://drtvc8yhvc2nh" path="res://Scenes/CreateEventoAuditorio/Components/seleccion_equipo_component.tscn" id="2_d17qj"]
 [ext_resource type="PackedScene" uid="uid://dx5wlicvvx35h" path="res://Scenes/CreateEventoAuditorio/Components/seleccion_mobiliario_component.tscn" id="3_gt8jm"]
 [ext_resource type="PackedScene" uid="uid://blb1j24w26o5" path="res://Scenes/CreateEventoAuditorio/Components/agregar_empleados_component.tscn" id="4_7f3ta"]
+[ext_resource type="PackedScene" uid="uid://cvfrn74waj8do" path="res://Scenes/CreateEventoAuditorio/Components/asignar_periodo_component.tscn" id="4_losqr"]
+[ext_resource type="PackedScene" uid="uid://e6srrjoh2i47" path="res://Scenes/CreateEventoAuditorio/Components/bottom_buttons_components.tscn" id="8_c3lpk"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ges7v"]
 font_size = 25
@@ -21,6 +25,17 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Scripts" type="Node" parent="."]
+
+[node name="HandleReturnButton" type="Node" parent="Scripts" node_paths=PackedStringArray("_buttonBack")]
+script = ExtResource("1_8ouu3")
+_buttonBack = NodePath("../../HBoxContainer/Control/VBoxContainer/Button")
+
+[node name="HandleBottomButtons" type="Node" parent="Scripts" node_paths=PackedStringArray("_buttonConfirm", "_buttonCancel")]
+script = ExtResource("2_cwk6o")
+_buttonConfirm = NodePath("../../HBoxContainer/Control2/HBoxContainer/VBoxContainer/BottomButtonsComponents/ButtonConfrim")
+_buttonCancel = NodePath("../../HBoxContainer/Control2/HBoxContainer/VBoxContainer/BottomButtonsComponents/ButtonCancel")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
@@ -132,9 +147,20 @@ layout_mode = 2
 [node name="SeleccionMobiliarioComponent" parent="HBoxContainer/Control2/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer" instance=ExtResource("3_gt8jm")]
 layout_mode = 2
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer/Control2/HBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/Control2/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer/Control2/HBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="AgregarEmpleadosComponent" parent="HBoxContainer/Control2/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2" instance=ExtResource("4_7f3ta")]
+[node name="AsignarPeriodoComponent" parent="HBoxContainer/Control2/HBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer/VBoxContainer2" instance=ExtResource("4_losqr")]
 layout_mode = 2
+
+[node name="AgregarEmpleadosComponent" parent="HBoxContainer/Control2/HBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer/VBoxContainer2" instance=ExtResource("4_7f3ta")]
+layout_mode = 2
+
+[node name="BottomButtonsComponents" parent="HBoxContainer/Control2/HBoxContainer/VBoxContainer" instance=ExtResource("8_c3lpk")]
+layout_mode = 2
+
+[editable path="HBoxContainer/Control2/HBoxContainer/VBoxContainer/BottomButtonsComponents"]

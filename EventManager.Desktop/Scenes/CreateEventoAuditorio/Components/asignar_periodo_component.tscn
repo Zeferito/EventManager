@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://cvfrn74waj8do"]
+
+[node name="AsignarPeriodoComponent" type="VBoxContainer"]
+
+[node name="LabelFechas" type="Label" parent="."]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Ingrese Fecha y hora del evento
+"
+
+[node name="LabelSartDate" type="Label" parent="."]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Ingrese Fecha y hora de inicio
+"
+
+[node name="LineEditStartDate" type="LineEdit" parent="."]
+layout_mode = 2
+
+[node name="LabelEndDate" type="Label" parent="."]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Fecha y hora de finalización
+"
+
+[node name="LineEditEndDate" type="LineEdit" parent="."]
+layout_mode = 2

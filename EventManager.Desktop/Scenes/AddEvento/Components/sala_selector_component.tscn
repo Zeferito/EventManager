@@ -1,19 +1,54 @@
 [gd_scene load_steps=2 format=3 uid="uid://bfqrp3sy2hj5q"]
 
-[ext_resource type="Script" path="res://Scenes/AddEvento/Components/ButtonSalon.cs" id="1_bgnhj"]
+[ext_resource type="Script" path="res://Scenes/AddEvento/Components/Scripts/HandleButtons.cs" id="1_483oq"]
 
-[node name="SalaSelectorComponent" type="HBoxContainer"]
-offset_right = 142.0
-offset_bottom = 31.0
+[node name="SalaSelectorComponent" type="VBoxContainer"]
+custom_minimum_size = Vector2(200, 200)
+offset_right = 200.0
+offset_bottom = 200.0
 theme_override_constants/separation = 10
 alignment = 1
 
-[node name="ButtonAuditorio" type="Button" parent="."]
+[node name="Node" type="Node" parent="."]
+
+[node name="HandleButtons" type="Node" parent="Node" node_paths=PackedStringArray("_buttonSalon", "_buttonAuditorio", "_buttonBack")]
+script = ExtResource("1_483oq")
+_buttonSalon = NodePath("../../HBoxContainer/ButtonSalon")
+_buttonAuditorio = NodePath("../../HBoxContainer/ButtonAuditorio")
+_buttonBack = NodePath("../../HBoxContainer2/ButtonAtras")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="ButtonAuditorio" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 text = "Auditorio"
 
-[node name="ButtonSalon" type="Button" parent="."]
+[node name="ButtonSalon" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 text = "Salón
 "
-script = ExtResource("1_bgnhj")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+layout_mode = 2
+alignment = 1
+
+[node name="VSeparator" type="VSeparator" parent="HBoxContainer2"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ButtonAtras" type="Button" parent="HBoxContainer2"]
+custom_minimum_size = Vector2(150, 20)
+layout_mode = 2
+text = "Regresar"
+
+[node name="VSeparator2" type="VSeparator" parent="HBoxContainer2"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 3

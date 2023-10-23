@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://dpjqya5om8gh1"]
+
+[node name="BottomButtonsComponents" type="HBoxContainer"]
+size_flags_vertical = 6
+alignment = 1
+
+[node name="ButtonConfrim" type="Button" parent="."]
+layout_mode = 2
+text = "Confirmar"
+
+[node name="ButtonCancel" type="Button" parent="."]
+layout_mode = 2
+text = "Cancelar"
