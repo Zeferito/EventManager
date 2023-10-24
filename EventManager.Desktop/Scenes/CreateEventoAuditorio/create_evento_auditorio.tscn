@@ -28,14 +28,14 @@ grow_vertical = 2
 
 [node name="Scripts" type="Node" parent="."]
 
-[node name="HandleReturnButton" type="Node" parent="Scripts" node_paths=PackedStringArray("_buttonBack")]
+[node name="HandleReturnButton" type="Node" parent="Scripts"]
 script = ExtResource("1_8ouu3")
-_buttonBack = NodePath("../../HBoxContainer/Control/VBoxContainer/Button")
+_buttonBack = null
 
-[node name="HandleBottomButtons" type="Node" parent="Scripts" node_paths=PackedStringArray("_buttonConfirm", "_buttonCancel")]
+[node name="HandleBottomButtons" type="Node" parent="Scripts"]
 script = ExtResource("2_cwk6o")
-_buttonConfirm = NodePath("../../HBoxContainer/Control2/HBoxContainer/VBoxContainer/BottomButtonsComponents/ButtonConfrim")
-_buttonCancel = NodePath("../../HBoxContainer/Control2/HBoxContainer/VBoxContainer/BottomButtonsComponents/ButtonCancel")
+_buttonConfirm = null
+_buttonCancel = null
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
@@ -153,6 +153,7 @@ layout_mode = 2
 [node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer/Control2/HBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 0
 
 [node name="AsignarPeriodoComponent" parent="HBoxContainer/Control2/HBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer/VBoxContainer2" instance=ExtResource("4_losqr")]
 layout_mode = 2

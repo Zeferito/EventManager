@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dbjtxqn6aoqgt" path="res://Textures/minum.png" id="1_ombux"]
 
 [node name="AgregableMaterialItemComponent" type="HBoxContainer"]
-custom_minimum_size = Vector2(388, 100)
+custom_minimum_size = Vector2(388, 50)
 theme_override_constants/separation = 20
 
 [node name="Label" type="Label" parent="."]
