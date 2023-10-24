@@ -65,7 +65,6 @@ namespace EventManager.Database.DataAccess.Repositories
                 .ToListAsync();
         }
 
-
         public bool EventoOverlaps(Evento newEvento)
         {
             return _context.Eventos
@@ -73,8 +72,8 @@ namespace EventManager.Database.DataAccess.Repositories
                     // Don't let it check itself
                     evento.Id != newEvento.Id &&
                     // Check if period overlaps
-                    evento.FechaInicio < newEvento.FechaTermino &&
-                    evento.FechaTermino > newEvento.FechaInicio &&
+                    (evento.FechaInicio < newEvento.FechaTermino ||
+                     evento.FechaTermino > newEvento.FechaInicio) &&
                     // Check if a Sala is already reserved for another Evento that will occur during the same period
                     evento.Salas.Any(sala =>
                         newEvento.Salas.Any(newEventoSala => newEventoSala.Id == sala.Id)));
