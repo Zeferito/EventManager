@@ -19,7 +19,7 @@ size_flags_vertical = 3
 
 [node name="HandleButtonsInicio" type="Node" parent="Scripts" node_paths=PackedStringArray("_buttonExit")]
 script = ExtResource("1_fpkws")
-_buttonExit = NodePath("../../VBoxContainer/Button")
+_buttonExit = NodePath("../../VBoxContainer/ButtonQuitar")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -58,7 +58,7 @@ custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Button" type="Button" parent="VBoxContainer"]
+[node name="ButtonQuitar" type="Button" parent="VBoxContainer"]
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)

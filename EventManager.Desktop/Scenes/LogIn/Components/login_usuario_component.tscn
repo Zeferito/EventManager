@@ -20,6 +20,6 @@ custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_8x6vw")
 
-[node name="LineEdit" type="LineEdit" parent="."]
+[node name="LineEditUsuario" type="LineEdit" parent="."]
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_kp3eg")

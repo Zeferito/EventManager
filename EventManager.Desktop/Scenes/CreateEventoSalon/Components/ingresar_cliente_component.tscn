@@ -36,7 +36,7 @@ modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(15, 0)
 layout_mode = 2
 
-[node name="Button" type="Button" parent="HBoxContainer"]
+[node name="ButtonBuscarCliente" type="Button" parent="HBoxContainer"]
 custom_minimum_size = Vector2(75, 25)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -48,7 +48,7 @@ modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(15, 0)
 layout_mode = 2
 
-[node name="Button2" type="Button" parent="HBoxContainer"]
+[node name="ButtonRegistrarCliente" type="Button" parent="HBoxContainer"]
 custom_minimum_size = Vector2(75, 25)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -72,7 +72,7 @@ label_settings = SubResource("LabelSettings_ogl6u")
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 
-[node name="TextEdit" type="TextEdit" parent="VBoxContainer/HBoxContainer"]
+[node name="TextEditNombreEvento" type="TextEdit" parent="VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(200, 30)
 layout_mode = 2
 theme_override_colors/background_color = Color(1, 1, 1, 1)
@@ -85,7 +85,7 @@ label_settings = SubResource("LabelSettings_5j18g")
 [node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 
-[node name="TextEdit2" type="TextEdit" parent="VBoxContainer/HBoxContainer2"]
+[node name="TextEditDescripcionEvento" type="TextEdit" parent="VBoxContainer/HBoxContainer2"]
 custom_minimum_size = Vector2(250, 60)
 layout_mode = 2
 theme_override_colors/background_color = Color(1, 1, 1, 1)

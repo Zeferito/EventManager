@@ -17,7 +17,7 @@ modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(0, 15)
 layout_mode = 2
 
-[node name="OptionButton" type="OptionButton" parent="."]
+[node name="OptionButtonSeleccionarSalon" type="OptionButton" parent="."]
 custom_minimum_size = Vector2(45, 35)
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_iv5nc")

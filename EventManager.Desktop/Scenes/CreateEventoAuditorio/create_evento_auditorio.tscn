@@ -30,12 +30,9 @@ grow_vertical = 2
 
 [node name="HandleReturnButton" type="Node" parent="Scripts"]
 script = ExtResource("1_8ouu3")
-_buttonBack = null
 
 [node name="HandleBottomButtons" type="Node" parent="Scripts"]
 script = ExtResource("2_cwk6o")
-_buttonConfirm = null
-_buttonCancel = null
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
@@ -164,4 +161,9 @@ layout_mode = 2
 [node name="BottomButtonsComponents" parent="HBoxContainer/Control2/HBoxContainer/VBoxContainer" instance=ExtResource("8_c3lpk")]
 layout_mode = 2
 
+[editable path="HBoxContainer/Control2/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/IngresarClienteComponent"]
+[editable path="HBoxContainer/Control2/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/SeleccionEquipo"]
+[editable path="HBoxContainer/Control2/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/SeleccionMobiliarioComponent"]
+[editable path="HBoxContainer/Control2/HBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer/VBoxContainer2/AsignarPeriodoComponent"]
+[editable path="HBoxContainer/Control2/HBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer/VBoxContainer2/AgregarEmpleadosComponent"]
 [editable path="HBoxContainer/Control2/HBoxContainer/VBoxContainer/BottomButtonsComponents"]

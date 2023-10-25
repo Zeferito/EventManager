@@ -24,7 +24,7 @@ layout_mode = 2
 text = "Nombre del evento: "
 label_settings = SubResource("LabelSettings_61u7o")
 
-[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer"]
+[node name="LabelNombreEvento" type="Label" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
 label_settings = SubResource("LabelSettings_61u7o")
 
@@ -36,6 +36,6 @@ layout_mode = 2
 text = "Descripcion del evento: "
 label_settings = SubResource("LabelSettings_61u7o")
 
-[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer2"]
+[node name="LabelDescripcionEvento" type="Label" parent="VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 label_settings = SubResource("LabelSettings_wedpy")

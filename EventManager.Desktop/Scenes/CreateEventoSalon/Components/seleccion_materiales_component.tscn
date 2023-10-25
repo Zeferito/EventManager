@@ -26,7 +26,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Selecciona Material"
 
-[node name="LineEdit" type="LineEdit" parent="HBoxContainer/VBoxContainer"]
+[node name="LineEditSeleccionarMaterial" type="LineEdit" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_s3s2q")
 
@@ -44,7 +44,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Cantidad"
 
-[node name="LineEdit" type="LineEdit" parent="HBoxContainer/VBoxContainer2"]
+[node name="LineEditCantidadMaterial" type="LineEdit" parent="HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_4yj07")
 
