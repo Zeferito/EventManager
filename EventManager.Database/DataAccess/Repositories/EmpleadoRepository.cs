@@ -20,6 +20,11 @@ namespace EventManager.Database.DataAccess.Repositories
             return await _context.Empleados.ToListAsync();
         }
 
+        public List<Empleado> GetAll()
+        {
+            return _context.Empleados.ToList();
+        }
+
         public async Task<Empleado?> GetByIdAsync(int id)
         {
             return await _context.Empleados.FindAsync(id);
@@ -55,9 +60,7 @@ namespace EventManager.Database.DataAccess.Repositories
 
         public async Task<List<Empleado>> GetEmpleadosWithEventosAsync()
         {
-            return await _context.Empleados
-                .Include(e => e.Eventos)
-                .ToListAsync();
+            return await _context.Empleados.Include(e => e.Eventos).ToListAsync();
         }
     }
 }

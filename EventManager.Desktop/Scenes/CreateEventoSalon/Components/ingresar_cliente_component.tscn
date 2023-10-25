@@ -22,18 +22,14 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Ingresar Cliente"
 
-[node name="NombreCliente" type="Label" parent="."]
+[node name="ListaClientes" type="ScrollContainer" parent="."]
+custom_minimum_size = Vector2(250, 100)
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "nombre
-"
+
+[node name="ContenedorCliente" type="VBoxContainer" parent="ListaClientes"]
+layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-layout_mode = 2
-
-[node name="VSeparator2" type="VSeparator" parent="HBoxContainer"]
-modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(15, 0)
 layout_mode = 2
 
 [node name="ButtonBuscarCliente" type="Button" parent="HBoxContainer"]
@@ -72,10 +68,12 @@ label_settings = SubResource("LabelSettings_ogl6u")
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 
-[node name="TextEditNombreEvento" type="TextEdit" parent="VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(200, 30)
+[node name="TextEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(250, 30)
 layout_mode = 2
-theme_override_colors/background_color = Color(1, 1, 1, 1)
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
 
 [node name="Label2" type="Label" parent="VBoxContainer"]
 layout_mode = 2
@@ -85,7 +83,10 @@ label_settings = SubResource("LabelSettings_5j18g")
 [node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 
-[node name="TextEditDescripcionEvento" type="TextEdit" parent="VBoxContainer/HBoxContainer2"]
+[node name="TextEdit2" type="TextEdit" parent="VBoxContainer/HBoxContainer2"]
 custom_minimum_size = Vector2(250, 60)
 layout_mode = 2
+size_flags_horizontal = 3
 theme_override_colors/background_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_selected_color = Color(0, 0, 0, 1)

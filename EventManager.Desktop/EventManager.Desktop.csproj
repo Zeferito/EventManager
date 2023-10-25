@@ -7,4 +7,8 @@
   <ItemGroup Label="Project References">
     <ProjectReference Include="..\EventManager.Database\EventManager.Database.csproj"/>
   </ItemGroup>
+
+  <ItemGroup Label="Package References">
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="7.0.0"/>
+  </ItemGroup>
 </Project>

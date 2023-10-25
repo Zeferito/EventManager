@@ -10,17 +10,6 @@ custom_minimum_size = Vector2(350, 200)
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="CheckBoxAgregarEmpleados" type="CheckBox" parent="."]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-text = "Agregar empleados"
-
 [node name="Label" type="Label" parent="."]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -28,14 +17,24 @@ text = "Seleccionar empleados"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
+theme_override_constants/separation = 5
 
-[node name="OptionButtonSeleccionarEmpleados" type="OptionButton" parent="HBoxContainer"]
-custom_minimum_size = Vector2(180, 30)
+[node name="OptionButton" type="OptionButton" parent="HBoxContainer"]
+custom_minimum_size = Vector2(250, 30)
 layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_k6xxm")
 
+[node name="Button" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Agregar"
+
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
-custom_minimum_size = Vector2(350, 200)
+custom_minimum_size = Vector2(250, 200)
 layout_mode = 2
 
 [node name="EmpleadoItemComponent" parent="ScrollContainer" instance=ExtResource("1_acwod")]

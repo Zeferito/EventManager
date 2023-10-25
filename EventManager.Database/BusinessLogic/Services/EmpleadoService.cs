@@ -20,6 +20,11 @@ namespace EventManager.Database.BusinessLogic.Services
             return await _empleadoRepository.GetAllAsync();
         }
 
+        public List<Empleado> GetAll()
+        {
+            return _empleadoRepository.GetAll();
+        }
+
         public async Task<Empleado?> GetByIdAsync(int id)
         {
             return await _empleadoRepository.GetByIdAsync(id);

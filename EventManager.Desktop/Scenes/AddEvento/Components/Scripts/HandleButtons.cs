@@ -23,7 +23,7 @@ public partial class HandleButtons : Node
 
 		_buttonAuditorio.Pressed += () =>
 		{
-			//GetTree().ChangeSceneToFile("res://Scenes/CreateEventoAuditorio/create_evento_auditorio_scene.tscn");
+			GetTree().ChangeSceneToFile("res://Scenes/CreateEventoAuditorio/create_evento_auditorio_scene.tscn");
 		};
 
 		_buttonBack.Pressed += () =>

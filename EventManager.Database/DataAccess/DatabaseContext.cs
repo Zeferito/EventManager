@@ -17,6 +17,15 @@ namespace EventManager.Database.DataAccess
         public DbSet<Agregable> Agregables { get; set; }
         public DbSet<EventoAgregable> EventoAgregables { get; set; }
 
+        private readonly string _connectionString;
+
+        public DatabaseContext() { }
+
+        public DatabaseContext(string connectionString)
+        {
+            _connectionString = connectionString;
+        }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Evento>(evento =>
@@ -68,9 +77,20 @@ namespace EventManager.Database.DataAccess
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            if (optionsBuilder.IsConfigured) return;
+            if (optionsBuilder.IsConfigured)
+            {
+                return;
+            }
 
-            string connectionString = ConfigurationManager.ConnectionStrings["DatabaseContext"].ConnectionString;
+            if (_connectionString != null)
+            {
+                optionsBuilder.UseMySQL(_connectionString);
+                return;
+            }
+
+            string connectionString = ConfigurationManager.ConnectionStrings[
+                "DatabaseContext"
+            ].ConnectionString;
 
             optionsBuilder.UseMySQL(connectionString);
         }
