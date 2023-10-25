@@ -1,7 +1,8 @@
-[gd_scene load_steps=18 format=3 uid="uid://yjqd5iak0t1u"]
+[gd_scene load_steps=19 format=3 uid="uid://yjqd5iak0t1u"]
 
 [ext_resource type="Script" path="res://Scenes/ConfirmacionEvento/Components/Scripts/HandleRegistrationButtons.cs" id="1_ll4kc"]
 [ext_resource type="PackedScene" uid="uid://fgsdgul3icoo" path="res://Scenes/ConfirmacionEvento/Components/material_item_component.tscn" id="1_yjnsn"]
+[ext_resource type="PackedScene" uid="uid://bp0tio07wte3b" path="res://Scenes/ConfirmacionEvento/Components/cliente_descripcion_component.tscn" id="2_45hes"]
 [ext_resource type="PackedScene" uid="uid://b8ul6uwp52a5f" path="res://Scenes/ConfirmacionEvento/Components/equipo_item_component.tscn" id="2_x4s85"]
 [ext_resource type="PackedScene" uid="uid://dku8bw61vu08m" path="res://Scenes/ConfirmacionEvento/Components/mobiliario_item_component.tscn" id="3_5egmw"]
 [ext_resource type="PackedScene" uid="uid://bob77ck87t0lw" path="res://Scenes/ConfirmacionEvento/Components/empleados_item_component.tscn" id="4_bfs2l"]
@@ -62,10 +63,10 @@ grow_vertical = 2
 
 [node name="Scripts" type="Node" parent="."]
 
-[node name="HandleRegistrationButtons" type="Node" parent="Scripts" node_paths=PackedStringArray("_buttonRegister", "_buttonCancel")]
+[node name="HandleRegistrationButtons" type="Node" parent="Scripts"]
 script = ExtResource("1_ll4kc")
-_buttonRegister = NodePath("../../VBoxContainer/HBoxContainer4/ButtonRegister")
-_buttonCancel = NodePath("../../VBoxContainer/HBoxContainer4/ButtonCancel")
+_buttonRegister = null
+_buttonCancel = null
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -146,6 +147,9 @@ layout_mode = 2
 text = "nombre
 "
 label_settings = SubResource("LabelSettings_g8jcu")
+
+[node name="ClienteDescripcionComponent" parent="VBoxContainer/HBoxContainer/VBoxContainer" instance=ExtResource("2_45hes")]
+layout_mode = 2
 
 [node name="HBoxContainer5" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
