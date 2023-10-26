@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://d03454s3vm22j"]
+[gd_scene load_steps=5 format=3 uid="uid://d03454s3vm22j"]
 
+[ext_resource type="Script" path="res://Scenes/CreateEventoSalon/Components/Scripts/AgregarButton.cs" id="1_2vlo0"]
 [ext_resource type="PackedScene" uid="uid://brrrnh4uxas1i" path="res://Scenes/CreateEventoSalon/Components/empleado_item_component.tscn" id="1_acwod"]
+[ext_resource type="Script" path="res://Scenes/CreateEventoSalon/Components/Scripts/ListaEmpleadosContainer.cs" id="2_enne6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k6xxm"]
 bg_color = Color(1, 1, 1, 1)
@@ -19,7 +21,7 @@ text = "Seleccionar empleados"
 layout_mode = 2
 theme_override_constants/separation = 5
 
-[node name="OptionButton" type="OptionButton" parent="HBoxContainer"]
+[node name="OptionButtonEmpleados" type="OptionButton" parent="HBoxContainer"]
 custom_minimum_size = Vector2(250, 30)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -28,14 +30,20 @@ theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_k6xxm")
 
-[node name="Button" type="Button" parent="HBoxContainer"]
+[node name="Button" type="Button" parent="HBoxContainer" node_paths=PackedStringArray("_listaEmpleadosContainer")]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 text = "Agregar"
+script = ExtResource("1_2vlo0")
+_listaEmpleadosContainer = NodePath("../../ScrollContainer/ListaEmpleadosContainer")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 custom_minimum_size = Vector2(250, 200)
 layout_mode = 2
 
-[node name="EmpleadoItemComponent" parent="ScrollContainer" instance=ExtResource("1_acwod")]
+[node name="ListaEmpleadosContainer" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+script = ExtResource("2_enne6")
+
+[node name="EmpleadoItemComponent" parent="ScrollContainer/ListaEmpleadosContainer" instance=ExtResource("1_acwod")]
 layout_mode = 2

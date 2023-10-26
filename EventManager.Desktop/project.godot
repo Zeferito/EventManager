@@ -15,6 +15,10 @@ run/main_scene="res://Scenes/Inicio/scena_pantalla_inicio.tscn"
 config/features=PackedStringArray("4.1", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+DatabaseConnection="*res://Scenes/Autoload/database_connection.tscn"
+
 [display]
 
 window/size/viewport_width=1280

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://jao420ukgm00"]
+
+[ext_resource type="Script" path="res://Scenes/Autoload/Scripts/DatabaseConnection.cs" id="1_ex6qc"]
+
+[node name="DatabaseConnection" type="Node"]
+script = ExtResource("1_ex6qc")

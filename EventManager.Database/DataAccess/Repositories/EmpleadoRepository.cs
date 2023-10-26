@@ -30,6 +30,11 @@ namespace EventManager.Database.DataAccess.Repositories
             return await _context.Empleados.FindAsync(id);
         }
 
+        public Empleado? GetById(int id)
+        {
+            return _context.Empleados.Find(id);
+        }
+
         public async Task<Empleado> CreateAsync(Empleado empleado)
         {
             _context.Empleados.Add(empleado);

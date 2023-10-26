@@ -13,25 +13,25 @@ namespace EventManager.Desktop.Scenes.CreateEventoSalon.Components.Scripts
         [Export]
         private OptionButton _optionButtonEmpleados;
 
-        [Export]
-        private string _connectionString;
-
         // Called when the node enters the scene tree for the first time.
         public override void _Ready()
         {
+            DatabaseConnection databaseConnection = GetNode<DatabaseConnection>("/root/DatabaseConnection");
+
             List<Empleado> empleados = new List<Empleado>();
 
-            using (DatabaseContext context = new DatabaseContext(_connectionString))
+            using (DatabaseContext context = new DatabaseContext(databaseConnection.ConnectionString))
             {
                 EmpleadoRepository empleadoRepository = new EmpleadoRepository(context);
                 EmpleadoService empleadoService = new EmpleadoService(empleadoRepository);
                 empleados = empleadoService.GetAll();
             }
 
-            foreach (Empleado empleado in empleados)
+            for (int i = 0; i < empleados.Count; i++)
             {
-                GD.Print(empleado.Nombre);
-                _optionButtonEmpleados.AddItem(empleado.Nombre);
+                GD.Print(empleados[i].Nombre);
+                _optionButtonEmpleados.AddItem(empleados[i].Nombre, i);
+                _optionButtonEmpleados.SetItemMetadata(i, empleados[i].Id);
             }
         }
 

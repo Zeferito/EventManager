@@ -48,8 +48,7 @@ _buttonConfirm = NodePath("../../HBoxContainer/Control2/HBoxContainer/VBoxContai
 
 [node name="FillOptionsEmpleados" type="Node" parent="Scripts" node_paths=PackedStringArray("_optionButtonEmpleados")]
 script = ExtResource("4_d6e0j")
-_optionButtonEmpleados = NodePath("../../HBoxContainer/Control2/HBoxContainer/VBoxContainer/HBoxContainer/HBoxContainerRight/VBoxContainer2/AgregarEmpleadosComponent/HBoxContainer/OptionButton")
-_connectionString = "Server=localhost;Port=3306;Database=libraryTest;Uid=root;Pwd=password;"
+_optionButtonEmpleados = NodePath("../../HBoxContainer/Control2/HBoxContainer/VBoxContainer/HBoxContainer/HBoxContainerRight/VBoxContainer2/AgregarEmpleadosComponent/HBoxContainer/OptionButtonEmpleados")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
@@ -168,6 +167,9 @@ layout_mode = 2
 
 [node name="AgregarEmpleadosComponent" parent="HBoxContainer/Control2/HBoxContainer/VBoxContainer/HBoxContainer/HBoxContainerRight/VBoxContainer2" instance=ExtResource("4_uvyev")]
 layout_mode = 2
+
+[node name="Button" parent="HBoxContainer/Control2/HBoxContainer/VBoxContainer/HBoxContainer/HBoxContainerRight/VBoxContainer2/AgregarEmpleadosComponent/HBoxContainer" index="1" node_paths=PackedStringArray("_optionButtonEmpleados")]
+_optionButtonEmpleados = NodePath("../OptionButtonEmpleados")
 
 [node name="SeleccionSalasComponent" parent="HBoxContainer/Control2/HBoxContainer/VBoxContainer/HBoxContainer/HBoxContainerRight/VBoxContainer2" instance=ExtResource("3_0knti")]
 layout_mode = 2
