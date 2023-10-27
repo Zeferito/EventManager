@@ -1,17 +1,19 @@
-[gd_scene load_steps=2 format=3 uid="uid://moxuri4delwb"]
+[gd_scene load_steps=3 format=3 uid="uid://moxuri4delwb"]
 
+[ext_resource type="Script" path="res://Scenes/CreateEventoSalon/Components/Scripts/AgregableMaterialItemComponent.cs" id="1_e6u2o"]
 [ext_resource type="Texture2D" uid="uid://dbjtxqn6aoqgt" path="res://Textures/minum.png" id="1_ombux"]
 
 [node name="AgregableMaterialItemComponent" type="HBoxContainer"]
 custom_minimum_size = Vector2(388, 50)
 theme_override_constants/separation = 20
+script = ExtResource("1_e6u2o")
 
-[node name="Label" type="Label" parent="."]
+[node name="LabelMaterial" type="Label" parent="."]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Material"
 
-[node name="Label2" type="Label" parent="."]
+[node name="LabelCantidad" type="Label" parent="."]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "cantidad"
@@ -24,7 +26,7 @@ modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="TextureButton" type="TextureButton" parent="VBoxContainer"]
+[node name="TextureButtonEliminar" type="TextureButton" parent="VBoxContainer"]
 custom_minimum_size = Vector2(25, 25)
 layout_mode = 2
 texture_normal = ExtResource("1_ombux")

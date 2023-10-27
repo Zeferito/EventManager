@@ -20,9 +20,19 @@ namespace EventManager.Database.BusinessLogic.Services
             return await _agregableRepository.GetAllAsync();
         }
 
+         public List<Agregable> GetAll()
+        {
+            return _agregableRepository.GetAll();
+        }
+
         public async Task<Agregable?> GetByIdAsync(int id)
         {
             return await _agregableRepository.GetByIdAsync(id);
+        }
+
+        public Agregable? GetById(int id)
+        {
+            return _agregableRepository.GetById(id);
         }
 
         public async Task<Agregable?> CreateAsync(Agregable agregable)

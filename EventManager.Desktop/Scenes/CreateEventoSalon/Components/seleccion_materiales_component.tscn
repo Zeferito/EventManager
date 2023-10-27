@@ -1,10 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dmmy1vu622pvh"]
+[gd_scene load_steps=6 format=3 uid="uid://dmmy1vu622pvh"]
 
 [ext_resource type="Texture2D" uid="uid://bigt8ixwsindh" path="res://Textures/icon.png" id="1_8qv73"]
 [ext_resource type="PackedScene" uid="uid://moxuri4delwb" path="res://Scenes/CreateEventoSalon/Components/agregable_material_item_component.tscn" id="2_bsaxl"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s3s2q"]
-bg_color = Color(1, 1, 1, 1)
+[ext_resource type="Script" path="res://Scenes/CreateEventoSalon/Components/Scripts/ButtonAgregarMaterial.cs" id="2_cvndq"]
+[ext_resource type="Script" path="res://Scenes/CreateEventoSalon/Components/Scripts/ListaMaterialesContainer.cs" id="2_dbm0n"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4yj07"]
 bg_color = Color(1, 1, 1, 1)
@@ -26,9 +25,8 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Selecciona Material"
 
-[node name="LineEditSeleccionarMaterial" type="LineEdit" parent="HBoxContainer/VBoxContainer"]
+[node name="OptionButtonSeleccionarMaterial" type="OptionButton" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_s3s2q")
 
 [node name="VSeparator" type="VSeparator" parent="HBoxContainer"]
 modulate = Color(1, 1, 1, 0)
@@ -59,19 +57,24 @@ layout_mode = 2
 layout_mode = 2
 alignment = 1
 
-[node name="TextureButton" type="TextureButton" parent="HBoxContainer/VBoxContainer3/HBoxContainer"]
+[node name="ButtonAgregarMaterial" type="TextureButton" parent="HBoxContainer/VBoxContainer3/HBoxContainer" node_paths=PackedStringArray("_listaMaterialesContainer", "_optionButtonSeleccionarMaterial", "_lineEditCantidadMaterial")]
 custom_minimum_size = Vector2(60, 30)
 layout_mode = 2
 texture_normal = ExtResource("1_8qv73")
 ignore_texture_size = true
 stretch_mode = 0
+script = ExtResource("2_cvndq")
+_listaMaterialesContainer = NodePath("../../../../ScrollContainer/ListaMaterialesContainer")
+_optionButtonSeleccionarMaterial = NodePath("../../../VBoxContainer/OptionButtonSeleccionarMaterial")
+_lineEditCantidadMaterial = NodePath("../../../VBoxContainer2/LineEditCantidadMaterial")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+[node name="ListaMaterialesContainer" type="VBoxContainer" parent="ScrollContainer"]
 layout_mode = 2
+script = ExtResource("2_dbm0n")
 
-[node name="AgregableMaterialItemComponent" parent="ScrollContainer/VBoxContainer" instance=ExtResource("2_bsaxl")]
+[node name="AgregableMaterialItemComponent" parent="ScrollContainer/ListaMaterialesContainer" instance=ExtResource("2_bsaxl")]
 layout_mode = 2

@@ -20,9 +20,19 @@ namespace EventManager.Database.DataAccess.Repositories
             return await _context.Agregables.ToListAsync();
         }
 
+        public  List<Agregable> GetAll()
+        {
+            return _context.Agregables.ToList();
+        }
+
         public async Task<Agregable?> GetByIdAsync(int id)
         {
             return await _context.Agregables.FindAsync(id);
+        }
+
+        public Agregable? GetById(int id)
+        {
+            return _context.Agregables.Find(id);
         }
 
         public async Task<Agregable> CreateAsync(Agregable agregable)
