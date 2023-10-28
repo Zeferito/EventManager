@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://sk3ilteppaoj"]
+[gd_scene load_steps=16 format=3 uid="uid://sk3ilteppaoj"]
 
 [ext_resource type="PackedScene" uid="uid://cvukrhoewyp50" path="res://Scenes/CreateEventoSalon/Components/ingresar_cliente_component.tscn" id="1_5e4lm"]
 [ext_resource type="Script" path="res://Scenes/CreateEventoSalon/Components/Scripts/HandleReturnButton.cs" id="1_nryyy"]
@@ -10,6 +10,8 @@
 [ext_resource type="Script" path="res://Scenes/CreateEventoSalon/Components/Scripts/FillOptionsEmpleados.cs" id="4_d6e0j"]
 [ext_resource type="PackedScene" uid="uid://d03454s3vm22j" path="res://Scenes/CreateEventoSalon/Components/agregar_empleados_component.tscn" id="4_uvyev"]
 [ext_resource type="Script" path="res://Scenes/CreateEventoSalon/Components/Scripts/FillOptionsMaterial.cs" id="5_gb23b"]
+[ext_resource type="Script" path="res://Scenes/CreateEventoSalon/Components/Scripts/FlillOptionsCliente.cs" id="6_b8eol"]
+[ext_resource type="PackedScene" uid="uid://bh2vj43al811i" path="res://Scenes/CreateEventoSalon/Components/nombre_descripcion_evento.tscn" id="7_nmuri"]
 [ext_resource type="PackedScene" uid="uid://dpjqya5om8gh1" path="res://Scenes/CreateEventoSalon/Components/bottom_buttons_components.tscn" id="8_dy8vn"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_taato"]
@@ -39,10 +41,8 @@ _buttonBack = NodePath("../../HBoxContainer/Control/VBoxContainer/Button")
 script = ExtResource("2_4tx3v")
 _buttonCancel = NodePath("../../HBoxContainer/Control2/HBoxContainer/VBoxContainer/BottomButtonsComponents/ButtonCancel")
 
-[node name="ProcessUserInput" type="Node" parent="Scripts" node_paths=PackedStringArray("_lineEditTitleEvent", "_textEditDescriptionEvent", "_lineEditStartDateEvent", "_lineEditEndDateEvent", "_buttonConfirm")]
+[node name="ProcessUserInput" type="Node" parent="Scripts" node_paths=PackedStringArray("_lineEditStartDateEvent", "_lineEditEndDateEvent", "_buttonConfirm")]
 script = ExtResource("3_ya54m")
-_lineEditTitleEvent = NodePath("../../HBoxContainer/Control2/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/IngresarClienteComponent/VBoxContainer/HBoxContainer/TextEdit")
-_textEditDescriptionEvent = NodePath("../../HBoxContainer/Control2/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/IngresarClienteComponent/VBoxContainer/HBoxContainer2/TextEdit2")
 _lineEditStartDateEvent = NodePath("../../HBoxContainer/Control2/HBoxContainer/VBoxContainer/HBoxContainer/HBoxContainerRight/VBoxContainer2/AsignarPeriodoComponent/LineEditStartDate")
 _lineEditEndDateEvent = NodePath("../../HBoxContainer/Control2/HBoxContainer/VBoxContainer/HBoxContainer/HBoxContainerRight/VBoxContainer2/AsignarPeriodoComponent/LineEditEndDate")
 _buttonConfirm = NodePath("../../HBoxContainer/Control2/HBoxContainer/VBoxContainer/BottomButtonsComponents/ButtonConfrim")
@@ -54,6 +54,10 @@ _optionButtonEmpleados = NodePath("../../HBoxContainer/Control2/HBoxContainer/VB
 [node name="FillOptionsMaterial" type="Node" parent="Scripts" node_paths=PackedStringArray("_optionButtonSeleccionarMaterial")]
 script = ExtResource("5_gb23b")
 _optionButtonSeleccionarMaterial = NodePath("../../HBoxContainer/Control2/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/SeleccionMaterialesComponent/HBoxContainer/VBoxContainer/OptionButtonSeleccionarMaterial")
+
+[node name="FlillOptionsCliente" type="Node" parent="Scripts" node_paths=PackedStringArray("_optionButtonBuscarCliente")]
+script = ExtResource("6_b8eol")
+_optionButtonBuscarCliente = NodePath("../../HBoxContainer/Control2/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/IngresarClienteComponent/VBoxContainer/HBoxContainer/OptionButtonBuscarCliente")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
@@ -152,6 +156,9 @@ theme_override_constants/separation = 40
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 theme_override_constants/separation = 25
+
+[node name="NombreDescripcionEvento" parent="HBoxContainer/Control2/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer" instance=ExtResource("7_nmuri")]
+layout_mode = 2
 
 [node name="IngresarClienteComponent" parent="HBoxContainer/Control2/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer" instance=ExtResource("1_5e4lm")]
 layout_mode = 2

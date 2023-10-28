@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=3 uid="uid://bh2vj43al811i"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ogl6u"]
+font_size = 14
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_5j18g"]
+font_size = 14
+font_color = Color(0, 0, 0, 1)
+
+[node name="NombreDescripcionEvento" type="VBoxContainer"]
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "Nombre del evento"
+label_settings = SubResource("LabelSettings_ogl6u")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="TextEdit" type="LineEdit" parent="HBoxContainer"]
+custom_minimum_size = Vector2(250, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 2
+text = "Descripcion del evento"
+label_settings = SubResource("LabelSettings_5j18g")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="TextEdit2" type="TextEdit" parent="HBoxContainer2"]
+custom_minimum_size = Vector2(250, 60)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/background_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_selected_color = Color(0, 0, 0, 1)

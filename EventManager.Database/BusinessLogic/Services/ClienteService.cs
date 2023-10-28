@@ -19,15 +19,28 @@ namespace EventManager.Database.BusinessLogic.Services
         {
             return await _clienteRepository.GetAllAsync();
         }
+        public List<Cliente> GetAll()
+        {
+            return _clienteRepository.GetAll();
+        }
 
         public async Task<Cliente?> GetByIdAsync(int id)
         {
             return await _clienteRepository.GetByIdAsync(id);
         }
+        public Cliente? GetById(int id)
+        {
+            return _clienteRepository.GetById(id);
+        }
 
         public async Task<Cliente?> CreateAsync(Cliente cliente)
         {
             return await _clienteRepository.CreateAsync(cliente);
+        }
+
+        public Cliente? Create(Cliente cliente)
+        {
+            return _clienteRepository.Create(cliente);
         }
 
         public async Task<Cliente?> UpdateAsync(Cliente cliente)

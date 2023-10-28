@@ -23,11 +23,11 @@ public partial class ButtonAgregarMaterial : TextureButton
 
 		Pressed += () =>
 		{
-			PackedScene _agregableItemComponent
+			PackedScene agregableItemComponent
 				= ResourceLoader.Load<PackedScene>("res://Scenes/CreateEventoSalon/Components/agregable_material_item_component.tscn");
 
 			AgregableMaterialItemComponent agregableMaterialItemComponent
-				= (AgregableMaterialItemComponent)_agregableItemComponent.Instantiate();
+				= (AgregableMaterialItemComponent)agregableItemComponent.Instantiate();
 
 			_listaMaterialesContainer.AddChild(agregableMaterialItemComponent);
 

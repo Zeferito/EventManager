@@ -9,14 +9,15 @@ public partial class AgregarButton : Button
 {
 	[Export]
 	private VBoxContainer _listaEmpleadosContainer;
+
 	[Export]
 	private OptionButton _optionButtonEmpleados;
-	
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		DatabaseConnection databaseConnection = GetNode<DatabaseConnection>("/root/DatabaseConnection");
-		
+
 		Pressed += () =>
 		{
 			PackedScene _empleadoItemComponentScene

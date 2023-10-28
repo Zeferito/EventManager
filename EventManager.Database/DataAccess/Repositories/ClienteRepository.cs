@@ -19,16 +19,31 @@ namespace EventManager.Database.DataAccess.Repositories
         {
             return await _context.Clientes.ToListAsync();
         }
+        public List<Cliente> GetAll()
+        {
+            return _context.Clientes.ToList();
+        }
 
         public async Task<Cliente?> GetByIdAsync(int id)
         {
             return await _context.Clientes.FindAsync(id);
+        }
+        public Cliente? GetById(int id)
+        {
+            return _context.Clientes.Find(id);
         }
 
         public async Task<Cliente> CreateAsync(Cliente cliente)
         {
             _context.Clientes.Add(cliente);
             await _context.SaveChangesAsync();
+            return cliente;
+        }
+
+        public Cliente? Create(Cliente cliente)
+        {
+            _context.Clientes.Add(cliente);
+            _context.SaveChanges();
             return cliente;
         }
 
