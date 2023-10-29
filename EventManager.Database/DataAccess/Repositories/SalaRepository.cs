@@ -20,9 +20,19 @@ namespace EventManager.Database.DataAccess.Repositories
             return await _context.Salas.ToListAsync();
         }
 
+        public List<Sala> GetAll()
+        {
+            return _context.Salas.ToList();
+        }
+
         public async Task<Sala?> GetByIdAsync(int id)
         {
             return await _context.Salas.FindAsync(id);
+        }
+
+        public Sala? GetById(int id)
+        {
+            return _context.Salas.Find(id);
         }
 
         public async Task<Sala> CreateAsync(Sala sala)
@@ -55,9 +65,7 @@ namespace EventManager.Database.DataAccess.Repositories
 
         public async Task<List<Sala>> GetSalasWithEventosAsync()
         {
-            return await _context.Salas
-                .Include(s => s.Eventos)
-                .ToListAsync();
+            return await _context.Salas.Include(s => s.Eventos).ToListAsync();
         }
     }
 }

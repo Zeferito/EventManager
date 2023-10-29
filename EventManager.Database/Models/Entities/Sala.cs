@@ -3,6 +3,7 @@
 
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 using EventManager.Database.Models.Enums;
 
 namespace EventManager.Database.Models.Entities

@@ -42,9 +42,9 @@ public partial class ButtonRegistrarCliente : Button
 
 			ClienteItemContainer clienteItemContainer = (ClienteItemContainer)_clienteItemContainerScene.Instantiate();
 
-			clienteItemContainer.Cliente = cliente;
-
 			_listaClientesContainer.AddChild(clienteItemContainer);
+
+			clienteItemContainer.Cliente = cliente;
 		};
 	}
 }

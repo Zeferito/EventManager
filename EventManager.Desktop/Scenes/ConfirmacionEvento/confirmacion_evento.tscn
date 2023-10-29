@@ -1,29 +1,20 @@
 [gd_scene load_steps=19 format=3 uid="uid://yjqd5iak0t1u"]
 
+[ext_resource type="Script" path="res://Scenes/ConfirmacionEvento/Components/Scripts/ConfirmacionEvento.cs" id="1_d8nc8"]
 [ext_resource type="Script" path="res://Scenes/ConfirmacionEvento/Components/Scripts/HandleRegistrationButtons.cs" id="1_ll4kc"]
 [ext_resource type="PackedScene" uid="uid://fgsdgul3icoo" path="res://Scenes/ConfirmacionEvento/Components/material_item_component.tscn" id="1_yjnsn"]
-[ext_resource type="PackedScene" uid="uid://bp0tio07wte3b" path="res://Scenes/ConfirmacionEvento/Components/cliente_descripcion_component.tscn" id="2_45hes"]
+[ext_resource type="PackedScene" uid="uid://bp0tio07wte3b" path="res://Scenes/ConfirmacionEvento/Components/evento_descripcion_component.tscn" id="2_45hes"]
 [ext_resource type="PackedScene" uid="uid://b8ul6uwp52a5f" path="res://Scenes/ConfirmacionEvento/Components/equipo_item_component.tscn" id="2_x4s85"]
 [ext_resource type="PackedScene" uid="uid://dku8bw61vu08m" path="res://Scenes/ConfirmacionEvento/Components/mobiliario_item_component.tscn" id="3_5egmw"]
+[ext_resource type="PackedScene" uid="uid://bfm44n2tmqyxv" path="res://Scenes/ConfirmacionEvento/Components/cliente_item_component.tscn" id="3_e6s3x"]
 [ext_resource type="PackedScene" uid="uid://bob77ck87t0lw" path="res://Scenes/ConfirmacionEvento/Components/empleados_item_component.tscn" id="4_bfs2l"]
+[ext_resource type="PackedScene" uid="uid://cxkk47xdgaf38" path="res://Scenes/ConfirmacionEvento/Components/sala_item_component.tscn" id="4_chsho"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_jw3my"]
 font_size = 30
 font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_y3esc"]
-font_size = 30
-font_color = Color(0, 0, 0, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_g8jcu"]
-font_size = 30
-font_color = Color(0, 0, 0, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_6xum2"]
-font_size = 30
-font_color = Color(0, 0, 0, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_fu3pj"]
 font_size = 30
 font_color = Color(0, 0, 0, 1)
 
@@ -53,18 +44,28 @@ bg_color = Color(1, 0.85098, 0.4, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_huvry"]
 bg_color = Color(1, 0.85098, 0.4, 1)
 
-[node name="ConfirmacionEvento" type="Control"]
+[node name="ConfirmacionEvento" type="Control" node_paths=PackedStringArray("_eventoDescripcionComponent", "_labelFechaInicio", "_labelFechaTermino", "_listaClientesContainer", "_listaEmpleadosContainer", "_listaSalasContainer", "_listaAgregablesContainer")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_d8nc8")
+_eventoDescripcionComponent = NodePath("VBoxContainer/HBoxContainer/VBoxContainer/EventoDescripcionComponent")
+_labelFechaInicio = NodePath("VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer2/LabelFechasStartEvento")
+_labelFechaTermino = NodePath("VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer2/LabelFechaEndEvento")
+_listaClientesContainer = NodePath("VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/ScrollContainer/ListaClientesContainer")
+_listaEmpleadosContainer = NodePath("VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer/ScrollContainer/ListaEmpleadosContainer")
+_listaSalasContainer = NodePath("VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainerSalas/ScrollContainer/ListaSalasContainer")
+_listaAgregablesContainer = NodePath("VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2/ScrollContainer/ListaAgregablesContainer")
 
 [node name="Scripts" type="Node" parent="."]
 
-[node name="HandleRegistrationButtons" type="Node" parent="Scripts"]
+[node name="HandleRegistrationButtons" type="Node" parent="Scripts" node_paths=PackedStringArray("_buttonRegister", "_buttonCancel")]
 script = ExtResource("1_ll4kc")
+_buttonRegister = NodePath("../../VBoxContainer/HBoxContainer4/ButtonRegister")
+_buttonCancel = NodePath("../../VBoxContainer/HBoxContainer4/ButtonCancel")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -137,30 +138,33 @@ label_settings = SubResource("LabelSettings_y3esc")
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/ScrollContainer"]
+[node name="ListaClientesContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/ScrollContainer"]
 layout_mode = 2
 
-[node name="Nombre" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-text = "nombre
-"
-label_settings = SubResource("LabelSettings_g8jcu")
-
-[node name="ClienteDescripcionComponent" parent="VBoxContainer/HBoxContainer/VBoxContainer" instance=ExtResource("2_45hes")]
+[node name="ClienteItemComponent" parent="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/ScrollContainer/ListaClientesContainer" instance=ExtResource("3_e6s3x")]
 layout_mode = 2
 
-[node name="HBoxContainer5" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="EventoDescripcionComponent" parent="VBoxContainer/HBoxContainer/VBoxContainer" instance=ExtResource("2_45hes")]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer5"]
+[node name="HBoxContainerSalas" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainerSalas"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Lugar: "
-label_settings = SubResource("LabelSettings_6xum2")
+text = "Sala: "
+label_settings = SubResource("LabelSettings_rwhv6")
 
-[node name="LabelLugarSalaEvento" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer5"]
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainerSalas"]
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
-label_settings = SubResource("LabelSettings_fu3pj")
+
+[node name="ListaSalasContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainerSalas/ScrollContainer"]
+layout_mode = 2
+
+[node name="SalaItemComponent" parent="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainerSalas/ScrollContainer/ListaSalasContainer" instance=ExtResource("4_chsho")]
+layout_mode = 2
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
@@ -168,20 +172,21 @@ layout_mode = 2
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Material: "
+text = "Agregable: "
 label_settings = SubResource("LabelSettings_rwhv6")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2/ScrollContainer"]
+[node name="ListaAgregablesContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2/ScrollContainer"]
 layout_mode = 2
 
-[node name="MaterialItemComponent" parent="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2/ScrollContainer/VBoxContainer" instance=ExtResource("1_yjnsn")]
+[node name="MaterialItemComponent" parent="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2/ScrollContainer/ListaAgregablesContainer" instance=ExtResource("1_yjnsn")]
 layout_mode = 2
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer3"]
@@ -201,6 +206,7 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="HBoxContainer4" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer4"]
@@ -238,8 +244,15 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Fechas:"
 label_settings = SubResource("LabelSettings_5taku")
 
-[node name="LabelFechasEvento" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer2"]
+[node name="LabelFechasStartEvento" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer2"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Start"
+
+[node name="LabelFechaEndEvento" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "End"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
@@ -254,10 +267,10 @@ label_settings = SubResource("LabelSettings_hsfle")
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer/ScrollContainer"]
+[node name="ListaEmpleadosContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer/ScrollContainer"]
 layout_mode = 2
 
-[node name="EmpleadosItemComponent" parent="VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("4_bfs2l")]
+[node name="EmpleadosItemComponent" parent="VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer/ScrollContainer/ListaEmpleadosContainer" instance=ExtResource("4_bfs2l")]
 layout_mode = 2
 
 [node name="VSeparator2" type="VSeparator" parent="VBoxContainer/HBoxContainer"]
@@ -337,3 +350,5 @@ text = "Registrar"
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 size_flags_horizontal = 3
+
+[editable path="VBoxContainer/HBoxContainer/VBoxContainer/EventoDescripcionComponent"]

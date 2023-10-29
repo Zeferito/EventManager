@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dfrcpp1wc8bh2"]
+
+[ext_resource type="Script" path="res://Scenes/Autoload/Scripts/Global.cs" id="1_10v3t"]
+
+[node name="Global" type="Node"]
+script = ExtResource("1_10v3t")

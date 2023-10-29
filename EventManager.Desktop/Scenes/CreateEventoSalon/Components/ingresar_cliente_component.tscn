@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://cvukrhoewyp50"]
+[gd_scene load_steps=8 format=3 uid="uid://cvukrhoewyp50"]
 
 [ext_resource type="Script" path="res://Scenes/CreateEventoSalon/Components/Scripts/ListaClientesContainer.cs" id="1_fwvpn"]
 [ext_resource type="PackedScene" uid="uid://gfdgauakk47w" path="res://Scenes/CreateEventoSalon/Components/cliente_item_container.tscn" id="1_sy7c4"]
+[ext_resource type="Script" path="res://Scenes/CreateEventoSalon/Components/Scripts/OptionButtonBuscarCliente.cs" id="3_d7ebx"]
 [ext_resource type="Script" path="res://Scenes/CreateEventoSalon/Components/Scripts/ButtonAgregarCliente.cs" id="3_ifjro"]
 [ext_resource type="Script" path="res://Scenes/CreateEventoSalon/Components/Scripts/ButtonRegistrarCliente.cs" id="4_tdahr"]
 
@@ -39,6 +40,7 @@ layout_mode = 2
 [node name="OptionButtonBuscarCliente" type="OptionButton" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+script = ExtResource("3_d7ebx")
 
 [node name="ButtonAgregarCliente" type="Button" parent="VBoxContainer/HBoxContainer" node_paths=PackedStringArray("_listaClientesContainer", "_optionButtonBuscarCliente")]
 custom_minimum_size = Vector2(75, 25)

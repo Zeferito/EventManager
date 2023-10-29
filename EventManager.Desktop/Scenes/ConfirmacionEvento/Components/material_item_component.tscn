@@ -1,16 +1,19 @@
-[gd_scene format=3 uid="uid://fgsdgul3icoo"]
+[gd_scene load_steps=2 format=3 uid="uid://fgsdgul3icoo"]
+
+[ext_resource type="Script" path="res://Scenes/ConfirmacionEvento/Components/Scripts/MaterialItemComponent.cs" id="1_4sa87"]
 
 [node name="MaterialItemComponent" type="HBoxContainer"]
 offset_right = 40.0
 offset_bottom = 40.0
 theme_override_constants/separation = 20
+script = ExtResource("1_4sa87")
 
-[node name="Label" type="Label" parent="."]
+[node name="LabelMaterial" type="Label" parent="."]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Material"
 
-[node name="Label2" type="Label" parent="."]
+[node name="LabelCantidad" type="Label" parent="."]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "cantidad"

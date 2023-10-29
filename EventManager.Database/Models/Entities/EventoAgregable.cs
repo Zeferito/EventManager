@@ -3,6 +3,7 @@
 
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace EventManager.Database.Models.Entities
 {
@@ -17,12 +18,14 @@ namespace EventManager.Database.Models.Entities
         [Column("agregable_id")]
         public int AgregableId { get; set; }
 
-        public Agregable Agregable { get; set; }
+        [JsonIgnore]
+        public Agregable? Agregable { get; set; }
 
         [Required]
         [Column("evento_id")]
         public int EventoId { get; set; }
 
-        public Evento Evento { get; set; }
+        [JsonIgnore]
+        public Evento? Evento { get; set; }
     }
 }

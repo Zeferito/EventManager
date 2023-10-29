@@ -1,16 +1,14 @@
-[gd_scene format=3 uid="uid://bob77ck87t0lw"]
+[gd_scene load_steps=2 format=3 uid="uid://bob77ck87t0lw"]
+
+[ext_resource type="Script" path="res://Scenes/ConfirmacionEvento/Components/Scripts/EmpleadosItemComponent.cs" id="1_qipgy"]
 
 [node name="EmpleadosItemComponent" type="HBoxContainer"]
 offset_right = 40.0
 offset_bottom = 40.0
 theme_override_constants/separation = 20
+script = ExtResource("1_qipgy")
 
-[node name="Label" type="Label" parent="."]
+[node name="LabelEmpleado" type="Label" parent="."]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Empleados"
-
-[node name="Label2" type="Label" parent="."]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "cantidad"

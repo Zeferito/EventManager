@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bfm44n2tmqyxv"]
+
+[ext_resource type="Script" path="res://Scenes/ConfirmacionEvento/Components/Scripts/ClienteItemComponent.cs" id="1_8i7ay"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_g8jcu"]
+font_size = 30
+font_color = Color(0, 0, 0, 1)
+
+[node name="ClienteItemComponent" type="HBoxContainer"]
+script = ExtResource("1_8i7ay")
+
+[node name="LabelClienteNombre" type="Label" parent="."]
+layout_mode = 2
+text = "nombre
+"
+label_settings = SubResource("LabelSettings_g8jcu")

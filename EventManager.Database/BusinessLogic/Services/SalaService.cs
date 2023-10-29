@@ -20,9 +20,19 @@ namespace EventManager.Database.BusinessLogic.Services
             return await _salaRepository.GetAllAsync();
         }
 
+        public List<Sala> GetAll()
+        {
+            return _salaRepository.GetAll();
+        }
+
         public async Task<Sala?> GetByIdAsync(int id)
         {
             return await _salaRepository.GetByIdAsync(id);
+        }
+
+        public Sala? GetById(int id)
+        {
+            return _salaRepository.GetById(id);
         }
 
         public async Task<Sala?> CreateAsync(Sala sala)

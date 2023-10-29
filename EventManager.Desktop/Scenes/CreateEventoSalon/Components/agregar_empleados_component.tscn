@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://d03454s3vm22j"]
+[gd_scene load_steps=6 format=3 uid="uid://d03454s3vm22j"]
 
 [ext_resource type="Script" path="res://Scenes/CreateEventoSalon/Components/Scripts/AgregarButton.cs" id="1_2vlo0"]
+[ext_resource type="Script" path="res://Scenes/CreateEventoSalon/Components/Scripts/OptionButtonEmpleados.cs" id="1_4jdtn"]
 [ext_resource type="PackedScene" uid="uid://brrrnh4uxas1i" path="res://Scenes/CreateEventoSalon/Components/empleado_item_component.tscn" id="1_acwod"]
 [ext_resource type="Script" path="res://Scenes/CreateEventoSalon/Components/Scripts/ListaEmpleadosContainer.cs" id="2_enne6"]
 
@@ -29,6 +30,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_k6xxm")
+script = ExtResource("1_4jdtn")
 
 [node name="Button" type="Button" parent="HBoxContainer" node_paths=PackedStringArray("_listaEmpleadosContainer")]
 custom_minimum_size = Vector2(100, 0)

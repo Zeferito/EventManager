@@ -1,4 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://bp0tio07wte3b"]
+[gd_scene load_steps=4 format=3 uid="uid://bp0tio07wte3b"]
+
+[ext_resource type="Script" path="res://Scenes/ConfirmacionEvento/Components/Scripts/EventoDescripcionComponent.cs" id="1_svj6b"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_61u7o"]
 font_size = 30
@@ -8,9 +10,12 @@ font_color = Color(0, 0, 0, 1)
 font_size = 30
 font_color = Color(0, 0, 0, 1)
 
-[node name="ClienteDescripcionComponent" type="VBoxContainer"]
+[node name="EventoDescripcionComponent" type="VBoxContainer" node_paths=PackedStringArray("_labelNombreEvento", "_labelDescripcionEvento")]
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("1_svj6b")
+_labelNombreEvento = NodePath("VBoxContainer/HBoxContainer/LabelNombreEvento")
+_labelDescripcionEvento = NodePath("VBoxContainer/HBoxContainer2/LabelDescripcionEvento")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
@@ -26,6 +31,7 @@ label_settings = SubResource("LabelSettings_61u7o")
 
 [node name="LabelNombreEvento" type="Label" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
+text = " Nombre"
 label_settings = SubResource("LabelSettings_61u7o")
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
@@ -38,4 +44,5 @@ label_settings = SubResource("LabelSettings_61u7o")
 
 [node name="LabelDescripcionEvento" type="Label" parent="VBoxContainer/HBoxContainer2"]
 layout_mode = 2
+text = "Descripcion"
 label_settings = SubResource("LabelSettings_wedpy")

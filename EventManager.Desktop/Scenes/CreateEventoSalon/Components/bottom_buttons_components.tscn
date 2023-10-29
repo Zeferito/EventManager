@@ -1,13 +1,18 @@
-[gd_scene format=3 uid="uid://dpjqya5om8gh1"]
+[gd_scene load_steps=3 format=3 uid="uid://dpjqya5om8gh1"]
 
-[node name="BottomButtonsComponents" type="HBoxContainer"]
+[ext_resource type="Script" path="res://Scenes/CreateEventoSalon/Components/Scripts/ButtonConfirm.cs" id="1_3v6hr"]
+[ext_resource type="Script" path="res://Scenes/CreateEventoSalon/Components/Scripts/ButtonCancel.cs" id="1_r1cip"]
+
+[node name="BottomButtonsComponents" type="VBoxContainer"]
 size_flags_vertical = 6
 alignment = 1
 
-[node name="ButtonConfrim" type="Button" parent="."]
+[node name="ButtonConfirm" type="Button" parent="."]
 layout_mode = 2
 text = "Confirmar"
+script = ExtResource("1_3v6hr")
 
 [node name="ButtonCancel" type="Button" parent="."]
 layout_mode = 2
 text = "Cancelar"
+script = ExtResource("1_r1cip")

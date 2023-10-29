@@ -1,16 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://sk3ilteppaoj"]
+[gd_scene load_steps=11 format=3 uid="uid://sk3ilteppaoj"]
 
 [ext_resource type="PackedScene" uid="uid://cvukrhoewyp50" path="res://Scenes/CreateEventoSalon/Components/ingresar_cliente_component.tscn" id="1_5e4lm"]
-[ext_resource type="Script" path="res://Scenes/CreateEventoSalon/Components/Scripts/HandleReturnButton.cs" id="1_nryyy"]
-[ext_resource type="Script" path="res://Scenes/CreateEventoSalon/Components/Scripts/HandleBottomButtons.cs" id="2_4tx3v"]
+[ext_resource type="Script" path="res://Scenes/CreateEventoSalon/Components/Scripts/ButtonReturn.cs" id="2_4x0q3"]
 [ext_resource type="PackedScene" uid="uid://dmmy1vu622pvh" path="res://Scenes/CreateEventoSalon/Components/seleccion_materiales_component.tscn" id="2_f3tqq"]
 [ext_resource type="PackedScene" uid="uid://dti5nutah5l31" path="res://Scenes/CreateEventoSalon/Components/seleccion_salas_component.tscn" id="3_0knti"]
-[ext_resource type="Script" path="res://Scenes/CreateEventoSalon/Components/Scripts/ProcessUserInput.cs" id="3_ya54m"]
 [ext_resource type="PackedScene" uid="uid://c8hi6nae1o0xn" path="res://Scenes/CreateEventoSalon/Components/asignar_periodo_component.tscn" id="4_2xr1r"]
-[ext_resource type="Script" path="res://Scenes/CreateEventoSalon/Components/Scripts/FillOptionsEmpleados.cs" id="4_d6e0j"]
 [ext_resource type="PackedScene" uid="uid://d03454s3vm22j" path="res://Scenes/CreateEventoSalon/Components/agregar_empleados_component.tscn" id="4_uvyev"]
-[ext_resource type="Script" path="res://Scenes/CreateEventoSalon/Components/Scripts/FillOptionsMaterial.cs" id="5_gb23b"]
-[ext_resource type="Script" path="res://Scenes/CreateEventoSalon/Components/Scripts/FlillOptionsCliente.cs" id="6_b8eol"]
 [ext_resource type="PackedScene" uid="uid://bh2vj43al811i" path="res://Scenes/CreateEventoSalon/Components/nombre_descripcion_evento.tscn" id="7_nmuri"]
 [ext_resource type="PackedScene" uid="uid://dpjqya5om8gh1" path="res://Scenes/CreateEventoSalon/Components/bottom_buttons_components.tscn" id="8_dy8vn"]
 
@@ -30,34 +25,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="Scripts" type="Node" parent="."]
-
-[node name="HandleReturnButton" type="Node" parent="Scripts" node_paths=PackedStringArray("_buttonBack")]
-script = ExtResource("1_nryyy")
-_buttonBack = NodePath("../../HBoxContainer/Control/VBoxContainer/Button")
-
-[node name="HandleBottomButtons" type="Node" parent="Scripts" node_paths=PackedStringArray("_buttonCancel")]
-script = ExtResource("2_4tx3v")
-_buttonCancel = NodePath("../../HBoxContainer/Control2/HBoxContainer/VBoxContainer/BottomButtonsComponents/ButtonCancel")
-
-[node name="ProcessUserInput" type="Node" parent="Scripts" node_paths=PackedStringArray("_lineEditStartDateEvent", "_lineEditEndDateEvent", "_buttonConfirm")]
-script = ExtResource("3_ya54m")
-_lineEditStartDateEvent = NodePath("../../HBoxContainer/Control2/HBoxContainer/VBoxContainer/HBoxContainer/HBoxContainerRight/VBoxContainer2/AsignarPeriodoComponent/LineEditStartDate")
-_lineEditEndDateEvent = NodePath("../../HBoxContainer/Control2/HBoxContainer/VBoxContainer/HBoxContainer/HBoxContainerRight/VBoxContainer2/AsignarPeriodoComponent/LineEditEndDate")
-_buttonConfirm = NodePath("../../HBoxContainer/Control2/HBoxContainer/VBoxContainer/BottomButtonsComponents/ButtonConfrim")
-
-[node name="FillOptionsEmpleados" type="Node" parent="Scripts" node_paths=PackedStringArray("_optionButtonEmpleados")]
-script = ExtResource("4_d6e0j")
-_optionButtonEmpleados = NodePath("../../HBoxContainer/Control2/HBoxContainer/VBoxContainer/HBoxContainer/HBoxContainerRight/VBoxContainer2/AgregarEmpleadosComponent/HBoxContainer/OptionButtonEmpleados")
-
-[node name="FillOptionsMaterial" type="Node" parent="Scripts" node_paths=PackedStringArray("_optionButtonSeleccionarMaterial")]
-script = ExtResource("5_gb23b")
-_optionButtonSeleccionarMaterial = NodePath("../../HBoxContainer/Control2/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/SeleccionMaterialesComponent/HBoxContainer/VBoxContainer/OptionButtonSeleccionarMaterial")
-
-[node name="FlillOptionsCliente" type="Node" parent="Scripts" node_paths=PackedStringArray("_optionButtonBuscarCliente")]
-script = ExtResource("6_b8eol")
-_optionButtonBuscarCliente = NodePath("../../HBoxContainer/Control2/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/IngresarClienteComponent/VBoxContainer/HBoxContainer/OptionButtonBuscarCliente")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
@@ -88,10 +55,26 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 20
 
-[node name="Button" type="Button" parent="HBoxContainer/Control/VBoxContainer"]
+[node name="ButtonReturn" type="Button" parent="HBoxContainer/Control/VBoxContainer"]
 layout_mode = 2
 text = "Regresar"
+script = ExtResource("2_4x0q3")
+
+[node name="BottomButtonsComponents" parent="HBoxContainer/Control/VBoxContainer" instance=ExtResource("8_dy8vn")]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="ButtonConfirm" parent="HBoxContainer/Control/VBoxContainer/BottomButtonsComponents" index="0" node_paths=PackedStringArray("_lineEditTitleEvent", "_textEditDescriptionEvent", "_lineEditStartDateEvent", "_lineEditEndDateEvent", "_clientesListaContainer", "_salasListaContainer", "_empleadosListaContainer", "_agregablesListaContainer")]
+_lineEditTitleEvent = NodePath("../../../../Control2/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/NombreDescripcionEvento/HBoxContainer/TextEdit")
+_textEditDescriptionEvent = NodePath("../../../../Control2/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/NombreDescripcionEvento/HBoxContainer2/TextEdit2")
+_lineEditStartDateEvent = NodePath("../../../../Control2/HBoxContainer/VBoxContainer/HBoxContainer/HBoxContainerRight/VBoxContainer2/AsignarPeriodoComponent/LineEditStartDate")
+_lineEditEndDateEvent = NodePath("../../../../Control2/HBoxContainer/VBoxContainer/HBoxContainer/HBoxContainerRight/VBoxContainer2/AsignarPeriodoComponent/LineEditEndDate")
+_clientesListaContainer = NodePath("../../../../Control2/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/IngresarClienteComponent/ScrollContainer/ListaClientesContainer")
+_salasListaContainer = NodePath("../../../../Control2/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2/SeleccionSalasComponent/ListaSalaContainer/ListaSalaContainer")
+_empleadosListaContainer = NodePath("../../../../Control2/HBoxContainer/VBoxContainer/HBoxContainer/HBoxContainerRight/VBoxContainer2/AgregarEmpleadosComponent/ScrollContainer/ListaEmpleadosContainer")
+_agregablesListaContainer = NodePath("../../../../Control2/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/SeleccionMaterialesComponent/ScrollContainer/ListaMaterialesContainer")
 
 [node name="Control2" type="Control" parent="HBoxContainer"]
 layout_mode = 2
@@ -150,10 +133,10 @@ size_flags_horizontal = 3
 [node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/Control2/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/separation = 40
+theme_override_constants/separation = 20
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Control2/HBoxContainer/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(400, 0)
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 theme_override_constants/separation = 25
 
@@ -167,7 +150,7 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="HBoxContainerRight" type="HBoxContainer" parent="HBoxContainer/Control2/HBoxContainer/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(400, 0)
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer/Control2/HBoxContainer/VBoxContainer/HBoxContainer/HBoxContainerRight"]
@@ -183,15 +166,17 @@ layout_mode = 2
 [node name="Button" parent="HBoxContainer/Control2/HBoxContainer/VBoxContainer/HBoxContainer/HBoxContainerRight/VBoxContainer2/AgregarEmpleadosComponent/HBoxContainer" index="1" node_paths=PackedStringArray("_optionButtonEmpleados")]
 _optionButtonEmpleados = NodePath("../OptionButtonEmpleados")
 
-[node name="SeleccionSalasComponent" parent="HBoxContainer/Control2/HBoxContainer/VBoxContainer/HBoxContainer/HBoxContainerRight/VBoxContainer2" instance=ExtResource("3_0knti")]
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer/Control2/HBoxContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 
-[node name="BottomButtonsComponents" parent="HBoxContainer/Control2/HBoxContainer/VBoxContainer" instance=ExtResource("8_dy8vn")]
+[node name="SeleccionSalasComponent" parent="HBoxContainer/Control2/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2" instance=ExtResource("3_0knti")]
 layout_mode = 2
 
+[editable path="HBoxContainer/Control/VBoxContainer/BottomButtonsComponents"]
+[editable path="HBoxContainer/Control2/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/NombreDescripcionEvento"]
 [editable path="HBoxContainer/Control2/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/IngresarClienteComponent"]
 [editable path="HBoxContainer/Control2/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/SeleccionMaterialesComponent"]
 [editable path="HBoxContainer/Control2/HBoxContainer/VBoxContainer/HBoxContainer/HBoxContainerRight/VBoxContainer2/AsignarPeriodoComponent"]
 [editable path="HBoxContainer/Control2/HBoxContainer/VBoxContainer/HBoxContainer/HBoxContainerRight/VBoxContainer2/AgregarEmpleadosComponent"]
-[editable path="HBoxContainer/Control2/HBoxContainer/VBoxContainer/HBoxContainer/HBoxContainerRight/VBoxContainer2/SeleccionSalasComponent"]
-[editable path="HBoxContainer/Control2/HBoxContainer/VBoxContainer/BottomButtonsComponents"]
+[editable path="HBoxContainer/Control2/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2/SeleccionSalasComponent"]
