@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 DatabaseConnection="*res://Scenes/Autoload/database_connection.tscn"
 Global="*res://Scenes/Autoload/global.tscn"
+UserManager="*res://Scenes/Autoload/user_manager.tscn"
 
 [display]
 

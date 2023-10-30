@@ -102,13 +102,16 @@ public partial class ButtonConfirm : Button
             {
                 EventoAgregable eventoAgregable = new EventoAgregable
                 {
-                    Evento = evento,
                     Agregable = node.Agregable,
                     CantidadReservada = node.Cantidad
                 };
 
                 evento.EventoAgregables.Add(eventoAgregable);
             }
+
+            UserManager userManager = GetNode<UserManager>("/root/UserManager");
+
+            evento.UsuarioId = userManager.Usuario.Id;
 
             string jsonString = JsonSerializer.Serialize(evento);
 

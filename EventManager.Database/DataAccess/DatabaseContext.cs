@@ -39,12 +39,79 @@ namespace EventManager.Database.DataAccess
                 evento
                     .HasMany(evento => evento.Empleados)
                     .WithMany(empleado => empleado.Eventos)
-                    .UsingEntity("evento_empleado");
+                    .UsingEntity(
+                        "evento_empleado",
+                        l =>
+                            l.HasOne(typeof(Empleado))
+                                .WithMany()
+                                .HasForeignKey("empleado_id")
+                                .HasPrincipalKey(nameof(Empleado.Id)),
+                        r =>
+                            r.HasOne(typeof(Evento))
+                                .WithMany()
+                                .HasForeignKey("evento_id")
+                                .HasPrincipalKey(nameof(Evento.Id)),
+                        j => j.HasKey("evento_id", "empleado_id")
+                    );
 
                 evento
                     .HasMany(evento => evento.Salas)
                     .WithMany(sala => sala.Eventos)
-                    .UsingEntity("evento_sala");
+                    .UsingEntity(
+                        "evento_sala",
+                        l =>
+                            l.HasOne(typeof(Sala))
+                                .WithMany()
+                                .HasForeignKey("sala_id")
+                                .HasPrincipalKey(nameof(Sala.Id)),
+                        r =>
+                            r.HasOne(typeof(Evento))
+                                .WithMany()
+                                .HasForeignKey("evento_id")
+                                .HasPrincipalKey(nameof(Evento.Id)),
+                        j => j.HasKey("evento_id", "sala_id")
+                    );
+            });
+
+            modelBuilder.Entity<Empleado>(empleado =>
+            {
+                empleado
+                    .HasMany(empleado => empleado.Eventos)
+                    .WithMany(evento => evento.Empleados)
+                    .UsingEntity(
+                        "evento_empleado",
+                        l =>
+                            l.HasOne(typeof(Empleado))
+                                .WithMany()
+                                .HasForeignKey("empleado_id")
+                                .HasPrincipalKey(nameof(Empleado.Id)),
+                        r =>
+                            r.HasOne(typeof(Evento))
+                                .WithMany()
+                                .HasForeignKey("evento_id")
+                                .HasPrincipalKey(nameof(Evento.Id)),
+                        j => j.HasKey("evento_id", "empleado_id")
+                    );
+            });
+
+            modelBuilder.Entity<Sala>(sala =>
+            {
+                sala.HasMany(sala => sala.Eventos)
+                    .WithMany(evento => evento.Salas)
+                    .UsingEntity(
+                        "evento_sala",
+                        l =>
+                            l.HasOne(typeof(Sala))
+                                .WithMany()
+                                .HasForeignKey("sala_id")
+                                .HasPrincipalKey(nameof(Sala.Id)),
+                        r =>
+                            r.HasOne(typeof(Evento))
+                                .WithMany()
+                                .HasForeignKey("evento_id")
+                                .HasPrincipalKey(nameof(Evento.Id)),
+                        j => j.HasKey("evento_id", "sala_id")
+                    );
             });
 
             modelBuilder.Entity<Usuario>(usuario =>

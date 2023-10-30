@@ -2,131 +2,128 @@ using EventManager.Database.Models.Entities;
 using Godot;
 using System;
 
-public partial class ConfirmacionEvento : Control
+namespace EventManager.Desktop.Scenes.ConfirmacionEvento.Components.Scripts
 {
-	[Export]
-	private EventoDescripcionComponent _eventoDescripcionComponent;
+    public partial class ConfirmacionEvento : Control
+    {
+        [Export]
+        private EventoDescripcionComponent _eventoDescripcionComponent;
 
-	[Export]
-	private Label _labelFechaInicio;
+        [Export]
+        private Label _labelFechaInicio;
 
-	[Export]
-	private Label _labelFechaTermino;
+        [Export]
+        private Label _labelFechaTermino;
 
-	[Export]
-	private VBoxContainer _listaClientesContainer;
+        [Export]
+        private VBoxContainer _listaClientesContainer;
 
-	[Export]
-	private VBoxContainer _listaEmpleadosContainer;
+        [Export]
+        private VBoxContainer _listaEmpleadosContainer;
 
-	[Export]
-	private VBoxContainer _listaSalasContainer;
+        [Export]
+        private VBoxContainer _listaSalasContainer;
 
-	[Export]
-	private VBoxContainer _listaAgregablesContainer;
+        [Export]
+        private VBoxContainer _listaAgregablesContainer;
 
-	private Evento _evento;
+        // Called when the node enters the scene tree for the first time.
+        public override void _Ready()
+        {
+            ClearAllContainers();
+            LoadStoredGlobalEventoData();
+        }
 
-	public Evento Evento
-	{
-		get => _evento;
-		set => SetEvento(value);
-	}
+        private void ClearAllContainers()
+        {
+            foreach (Node node in _listaClientesContainer.GetChildren())
+            {
+                _listaClientesContainer.RemoveChild(node);
+                node.QueueFree();
+            }
 
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
-	{
+            foreach (Node node in _listaEmpleadosContainer.GetChildren())
+            {
+                _listaEmpleadosContainer.RemoveChild(node);
+                node.QueueFree();
+            }
 
-		foreach (Node node in _listaClientesContainer.GetChildren())
-		{
-			_listaClientesContainer.RemoveChild(node);
-			node.QueueFree();
-		}
+            foreach (Node node in _listaSalasContainer.GetChildren())
+            {
+                _listaSalasContainer.RemoveChild(node);
+                node.QueueFree();
+            }
 
-		foreach (Node node in _listaEmpleadosContainer.GetChildren())
-		{
-			_listaEmpleadosContainer.RemoveChild(node);
-			node.QueueFree();
-		}
+            foreach (Node node in _listaAgregablesContainer.GetChildren())
+            {
+                _listaAgregablesContainer.RemoveChild(node);
+                node.QueueFree();
+            }
+        }
 
-		foreach (Node node in _listaSalasContainer.GetChildren())
-		{
-			_listaSalasContainer.RemoveChild(node);
-			node.QueueFree();
-		}
+        private void LoadStoredGlobalEventoData()
+        {
+            Global global = GetNode<Global>("/root/Global");
 
-		foreach (Node node in _listaAgregablesContainer.GetChildren())
-		{
-			_listaAgregablesContainer.RemoveChild(node);
-			node.QueueFree();
-		}
+            _eventoDescripcionComponent.Evento = global.EventoToSend;
+            _labelFechaInicio.Text = global.EventoToSend.FechaInicio.ToString();
+            _labelFechaTermino.Text = global.EventoToSend.FechaTermino.ToString();
 
-		Global global = GetNode<Global>("/root/Global");
-		Evento = global.EventoToSend;
-		global.EventoToSend = null;
-	}
+            foreach (Sala sala in global.EventoToSend.Salas)
+            {
+                PackedScene _salaItemComponentScene = ResourceLoader.Load<PackedScene>(
+                    "res://Scenes/ConfirmacionEvento/Components/sala_item_component.tscn"
+                );
 
-	private void SetEvento(Evento value)
-	{
-		_evento = value;
-		_eventoDescripcionComponent.Evento = value;
-		_labelFechaInicio.Text = value.FechaInicio.ToString();
-		_labelFechaTermino.Text = value.FechaTermino.ToString();
+                SalaItemComponent itemSalaComponent = (SalaItemComponent)
+                    _salaItemComponentScene.Instantiate();
 
-		foreach (Sala sala in value.Salas)
-		{
-			PackedScene _salaItemComponentScene = ResourceLoader.Load<PackedScene>(
-				"res://Scenes/ConfirmacionEvento/Components/sala_item_component.tscn"
-			);
+                _listaSalasContainer.AddChild(itemSalaComponent);
 
-			SalaItemComponent itemSalaComponent = (SalaItemComponent)
-				_salaItemComponentScene.Instantiate();
+                itemSalaComponent.Sala = sala;
+            }
 
-			_listaSalasContainer.AddChild(itemSalaComponent);
+            foreach (Empleado empleado in global.EventoToSend.Empleados)
+            {
+                PackedScene _empleadoItemComponentScene = ResourceLoader.Load<PackedScene>(
+                    "res://Scenes/ConfirmacionEvento/Components/empleados_item_component.tscn"
+                );
 
-			itemSalaComponent.Sala = sala;
-		}
+                EmpleadosItemComponent itemEmpleadosComponent = (EmpleadosItemComponent)
+                    _empleadoItemComponentScene.Instantiate();
 
-		foreach (Empleado empleado in value.Empleados)
-		{
-			PackedScene _empleadoItemComponentScene = ResourceLoader.Load<PackedScene>(
-				"res://Scenes/ConfirmacionEvento/Components/empleados_item_component.tscn"
-			);
+                _listaEmpleadosContainer.AddChild(itemEmpleadosComponent);
 
-			EmpleadosItemComponent itemEmpleadosComponent = (EmpleadosItemComponent)
-				_empleadoItemComponentScene.Instantiate();
+                itemEmpleadosComponent.Empleado = empleado;
+            }
 
-			_listaEmpleadosContainer.AddChild(itemEmpleadosComponent);
+            foreach (EventoAgregable eventoAgregable in global.EventoToSend.EventoAgregables)
+            {
+                PackedScene _materialItemComponentScene = ResourceLoader.Load<PackedScene>(
+                    "res://Scenes/ConfirmacionEvento/Components/material_item_component.tscn"
+                );
 
-			itemEmpleadosComponent.Empleado = empleado;
-		}
+                MaterialItemComponent itemMaterialComponent = (MaterialItemComponent)
+                    _materialItemComponentScene.Instantiate();
 
-		foreach (EventoAgregable eventoAgregable in value.EventoAgregables)
-		{
-			PackedScene _materialItemComponentScene = ResourceLoader.Load<PackedScene>(
-				"res://Scenes/ConfirmacionEvento/Components/material_item_component.tscn"
-			);
+                _listaAgregablesContainer.AddChild(itemMaterialComponent);
 
-			MaterialItemComponent itemMaterialComponent = (MaterialItemComponent)
-				_materialItemComponentScene.Instantiate();
+                itemMaterialComponent.EventoAgregable = eventoAgregable;
+            }
 
-			_listaAgregablesContainer.AddChild(itemMaterialComponent);
+            foreach (Cliente cliente in global.EventoToSend.Clientes)
+            {
+                PackedScene _clienteItemComponentScene = ResourceLoader.Load<PackedScene>(
+                    "res://Scenes/ConfirmacionEvento/Components/cliente_item_component.tscn"
+                );
 
-			itemMaterialComponent.EventoAgregable = eventoAgregable;
-		}
+                ClienteItemComponent itemClienteComponent = (ClienteItemComponent)
+                    _clienteItemComponentScene.Instantiate();
 
-		foreach (Cliente cliente in value.Clientes)
-		{
-			PackedScene _clienteItemComponentScene = ResourceLoader.Load<PackedScene>(
-				"res://Scenes/ConfirmacionEvento/Components/cliente_item_component.tscn"
-			);
+                _listaClientesContainer.AddChild(itemClienteComponent);
 
-			ClienteItemComponent itemClienteComponent = (ClienteItemComponent)
-				_clienteItemComponentScene.Instantiate();
-
-			_listaClientesContainer.AddChild(itemClienteComponent);
-
-			itemClienteComponent.Cliente = cliente;
-		}
-	}
+                itemClienteComponent.Cliente = cliente;
+            }
+        }
+    }
 }

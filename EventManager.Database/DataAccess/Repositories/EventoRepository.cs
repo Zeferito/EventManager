@@ -28,7 +28,88 @@ namespace EventManager.Database.DataAccess.Repositories
         public async Task<Evento> CreateAsync(Evento evento)
         {
             _context.Eventos.Add(evento);
+
             await _context.SaveChangesAsync();
+
+            foreach (Cliente cliente in evento.Clientes)
+            {
+                cliente.Evento = evento;
+
+                // Cliente exists?
+                if (_context.Clientes.Any(c => c.Id == cliente.Id))
+                {
+                    _context.Entry(cliente).State = EntityState.Modified;
+                }
+                else
+                {
+                    // Attach new Cliente
+                    _context.Clientes.Attach(cliente);
+                }
+            }
+
+            foreach (Sala sala in evento.Salas)
+            {
+                sala.Eventos.Add(evento);
+                _context.Salas.Attach(sala);
+            }
+
+            foreach (Empleado empleado in evento.Empleados)
+            {
+                empleado.Eventos.Add(evento);
+                _context.Empleados.Attach(empleado);
+            }
+
+            foreach (EventoAgregable eventoAgregable in evento.EventoAgregables)
+            {
+                eventoAgregable.Evento = evento;
+                _context.EventoAgregables.Attach(eventoAgregable);
+            }
+
+            await _context.SaveChangesAsync();
+            return evento;
+        }
+
+        public Evento Create(Evento evento)
+        {
+            _context.Eventos.Attach(evento);
+
+            _context.SaveChanges();
+
+            foreach (Cliente cliente in evento.Clientes)
+            {
+                cliente.Evento = evento;
+
+                // Cliente exists?
+                if (_context.Clientes.Any(c => c.Id == cliente.Id))
+                {
+                    _context.Entry(cliente).State = EntityState.Modified;
+                }
+                else
+                {
+                    // Attach new Cliente
+                    _context.Clientes.Attach(cliente);
+                }
+            }
+
+            foreach (Sala sala in evento.Salas)
+            {
+                sala.Eventos.Add(evento);
+                _context.Salas.Attach(sala);
+            }
+
+            foreach (Empleado empleado in evento.Empleados)
+            {
+                empleado.Eventos.Add(evento);
+                _context.Empleados.Attach(empleado);
+            }
+
+            foreach (EventoAgregable eventoAgregable in evento.EventoAgregables)
+            {
+                eventoAgregable.Evento = evento;
+                _context.EventoAgregables.Attach(eventoAgregable);
+            }
+
+            _context.SaveChanges();
             return evento;
         }
 
@@ -67,16 +148,22 @@ namespace EventManager.Database.DataAccess.Repositories
 
         public bool EventoOverlaps(Evento newEvento)
         {
-            return _context.Eventos
-                .Any(evento =>
+            return _context.Eventos.Any(
+                evento =>
                     // Don't let it check itself
-                    evento.Id != newEvento.Id &&
+                    evento.Id != newEvento.Id
+                    &&
                     // Check if period overlaps
-                    (evento.FechaInicio < newEvento.FechaTermino ||
-                     evento.FechaTermino > newEvento.FechaInicio) &&
+                    (
+                        evento.FechaInicio < newEvento.FechaTermino
+                        || evento.FechaTermino > newEvento.FechaInicio
+                    )
                     // Check if a Sala is already reserved for another Evento that will occur during the same period
-                    evento.Salas.Any(sala =>
-                        newEvento.Salas.Any(newEventoSala => newEventoSala.Id == sala.Id)));
+                    &&
+                    evento.Salas.Any(
+                        sala => newEvento.Salas.Any(newEventoSala => newEventoSala.Id == sala.Id)
+                    )
+            );
         }
 
         public bool ReservedAgregablesExceedTotal(Evento newEvento)
@@ -85,33 +172,38 @@ namespace EventManager.Database.DataAccess.Repositories
             // This check should ONLY apply to Eventos that overlap with the new Evento, since otherwise all
             // Agregables should be available either way
             List<int> overlappingEventoIds = _context.Eventos
-                .Where(e =>
-                    e.Id != newEvento.Id &&
-                    e.FechaInicio < newEvento.FechaTermino &&
-                    e.FechaTermino > newEvento.FechaInicio)
+                .Where(
+                    e =>
+                        e.Id != newEvento.Id
+                        && e.FechaInicio < newEvento.FechaTermino
+                        && e.FechaTermino > newEvento.FechaInicio
+                )
                 .Select(e => e.Id)
                 .ToList();
 
-            var totalReservedAgregables =
-                _context.EventoAgregables
-                    .Where(ea => overlappingEventoIds.Contains(ea.EventoId))
-                    .GroupBy(ea => ea.AgregableId)
-                    .Select(group => new
-                    {
-                        AgregableId = group.Key,
-                        ReservedTotal = group.Sum(ea => ea.CantidadReservada)
-                    })
-                    .ToList();
+            var totalReservedAgregables = _context.EventoAgregables
+                .Where(ea => overlappingEventoIds.Contains(ea.EventoId))
+                .GroupBy(ea => ea.AgregableId)
+                .Select(
+                    group =>
+                        new
+                        {
+                            AgregableId = group.Key,
+                            ReservedTotal = group.Sum(ea => ea.CantidadReservada)
+                        }
+                )
+                .ToList();
 
             foreach (EventoAgregable eventoAgregable in newEvento.EventoAgregables)
             {
-                var matchingReserved =
-                    totalReservedAgregables.FirstOrDefault(e =>
-                        e.AgregableId == eventoAgregable.AgregableId);
+                var matchingReserved = totalReservedAgregables.FirstOrDefault(
+                    e => e.AgregableId == eventoAgregable.AgregableId
+                );
 
                 if (matchingReserved != null)
                 {
-                    int reservedSum = eventoAgregable.CantidadReservada + matchingReserved.ReservedTotal;
+                    int reservedSum =
+                        eventoAgregable.CantidadReservada + matchingReserved.ReservedTotal;
 
                     if (reservedSum > eventoAgregable.Agregable.Total)
                     {
