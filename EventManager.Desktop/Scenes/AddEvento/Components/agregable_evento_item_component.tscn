@@ -1,0 +1,32 @@
+[gd_scene load_steps=2 format=3 uid="uid://dq64cbns81g23"]
+
+[ext_resource type="Script" path="res://Scenes/AddEvento/Components/Scripts/AgregableEventoItemComponent.cs" id="1_mwv1u"]
+
+[node name="AgregableEventoItemComponent" type="HBoxContainer"]
+theme_override_constants/separation = 35
+script = ExtResource("1_mwv1u")
+
+[node name="LabelNombreEvento" type="Label" parent="."]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Nombre"
+
+[node name="LabelDescripcionEvento" type="Label" parent="."]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Descripcion"
+
+[node name="LabelFechaInicio" type="Label" parent="."]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "FechaInicio"
+
+[node name="LabelFechaTermino" type="Label" parent="."]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "FechaTermino"
+
+[node name="LabelUsuario" type="Label" parent="."]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Usuario"

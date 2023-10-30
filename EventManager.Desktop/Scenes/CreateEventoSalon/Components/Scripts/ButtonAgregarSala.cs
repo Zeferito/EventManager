@@ -22,6 +22,16 @@ public partial class ButtonAgregarSala : Button
 
         Pressed += () =>
         {
+            int id = (int)_optionButtonSala.GetSelectedMetadata();
+
+            foreach (ItemSalaComponent node in _listaSalasContainer.GetChildren())
+            {
+                if (node.Sala.Id == id)
+                {
+                    return;
+                }
+            }
+
             PackedScene _salaItemComponentScene = ResourceLoader.Load<PackedScene>(
                 "res://Scenes/CreateEventoSalon/Components/item_sala.tscn"
             );
@@ -29,8 +39,6 @@ public partial class ButtonAgregarSala : Button
             ItemSalaComponent itemSalaComponent = (ItemSalaComponent)_salaItemComponentScene.Instantiate();
 
             _listaSalasContainer.AddChild(itemSalaComponent);
-
-            int id = (int)_optionButtonSala.GetSelectedMetadata();
 
             Sala sala;
 

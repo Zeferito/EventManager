@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://becpnsw77kanr"]
+[gd_scene load_steps=4 format=3 uid="uid://becpnsw77kanr"]
 
 [ext_resource type="PackedScene" uid="uid://bfqrp3sy2hj5q" path="res://Scenes/AddEvento/Components/sala_selector_component.tscn" id="1_620mm"]
+[ext_resource type="Script" path="res://Scenes/AddEvento/Components/Scripts/ListaEventos.cs" id="1_b5qh6"]
+[ext_resource type="PackedScene" uid="uid://dq64cbns81g23" path="res://Scenes/AddEvento/Components/agregable_evento_item_component.tscn" id="1_nbs2k"]
 
 [node name="AddEventoGUI" type="Control"]
 layout_mode = 3
@@ -26,17 +28,27 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+alignment = 1
 
-[node name="SalaSelectorComponent" parent="." instance=ExtResource("1_620mm")]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -71.0
-offset_top = -220.0
-offset_right = 71.0
-offset_bottom = -189.0
-grow_horizontal = 2
-grow_vertical = 0
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(800, 200)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="ListaEventos" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+script = ExtResource("1_b5qh6")
+
+[node name="AgregableEventoItemComponent" parent="VBoxContainer/HBoxContainer/ScrollContainer/ListaEventos" instance=ExtResource("1_nbs2k")]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="SalaSelectorComponent" parent="VBoxContainer" instance=ExtResource("1_620mm")]
+layout_mode = 2
+size_flags_vertical = 8

@@ -20,6 +20,11 @@ namespace EventManager.Database.DataAccess.Repositories
             return await _context.Eventos.ToListAsync();
         }
 
+        public List<Evento> GetAll()
+        {
+            return _context.Eventos.ToList();
+        }
+
         public async Task<Evento?> GetByIdAsync(int id)
         {
             return await _context.Eventos.FindAsync(id);
@@ -146,24 +151,36 @@ namespace EventManager.Database.DataAccess.Repositories
                 .ToListAsync();
         }
 
+        public List<Evento> GetEventosWithRelatedData()
+        {
+            return _context.Eventos
+                .Include(e => e.Usuario)
+                .Include(e => e.Clientes)
+                .Include(e => e.Salas)
+                .Include(e => e.Empleados)
+                .Include(e => e.EventoAgregables)
+                .ThenInclude(ea => ea.Agregable)
+                .ToList();
+        }
+
         public bool EventoOverlaps(Evento newEvento)
         {
-            return _context.Eventos.Any(
-                evento =>
-                    // Don't let it check itself
-                    evento.Id != newEvento.Id
-                    &&
-                    // Check if period overlaps
-                    (
-                        evento.FechaInicio < newEvento.FechaTermino
-                        || evento.FechaTermino > newEvento.FechaInicio
-                    )
-                    // Check if a Sala is already reserved for another Evento that will occur during the same period
-                    &&
-                    evento.Salas.Any(
-                        sala => newEvento.Salas.Any(newEventoSala => newEventoSala.Id == sala.Id)
-                    )
-            );
+            foreach (Evento evento in _context.Eventos.AsNoTracking().Include(evento => evento.Salas).ToList())
+            {
+                if (newEvento.FechaInicio <= evento.FechaTermino &&
+                    newEvento.FechaTermino >= evento.FechaInicio)
+                {
+                    foreach (Sala sala in evento.Salas)
+                    {
+                        if (newEvento.Salas.Contains(sala))
+                        {
+                            return true;
+                        }
+                    }
+                }
+            }
+
+            return false;
         }
 
         public bool ReservedAgregablesExceedTotal(Evento newEvento)

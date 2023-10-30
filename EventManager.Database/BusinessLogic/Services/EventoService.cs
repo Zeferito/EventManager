@@ -19,6 +19,10 @@ namespace EventManager.Database.BusinessLogic.Services
         {
             return await _eventoRepository.GetAllAsync();
         }
+        public List<Evento> GetAll()
+        {
+            return _eventoRepository.GetAll();
+        }
 
         public async Task<Evento?> GetByIdAsync(int id)
         {
@@ -27,11 +31,11 @@ namespace EventManager.Database.BusinessLogic.Services
 
         public async Task<Evento?> CreateAsync(Evento evento)
         {
-            if (EventoOverlaps(evento))
-            {
-                Console.WriteLine("Cannot create Evento because it overlaps with an existing Evento.");
-                return null;
-            }
+            // if (EventoOverlaps(evento))
+            // {
+            //     Console.WriteLine("Cannot create Evento because it overlaps with an existing Evento.");
+            //     return null;
+            // }
 
             if (ReservedAgregablesExceedTotal(evento))
             {
@@ -44,17 +48,17 @@ namespace EventManager.Database.BusinessLogic.Services
 
         public Evento? Create(Evento evento)
         {
-            // if (EventoOverlaps(evento))
-            // {
-            //     Console.WriteLine("Cannot create Evento because it overlaps with an existing Evento.");
-            //     return null;
-            // }
+            if (EventoOverlaps(evento))
+            {
+                Console.WriteLine("Cannot create Evento because it overlaps with an existing Evento.");
+                return null;
+            }
 
-            // if (ReservedAgregablesExceedTotal(evento))
-            // {
-            //     Console.WriteLine("Cannot create Evento because reserved Agregables exceed the total available.");
-            //     return null;
-            // }
+            if (ReservedAgregablesExceedTotal(evento))
+            {
+                Console.WriteLine("Cannot create Evento because reserved Agregables exceed the total available.");
+                return null;
+            }
 
             return _eventoRepository.Create(evento);
         }
@@ -84,6 +88,11 @@ namespace EventManager.Database.BusinessLogic.Services
         public async Task<List<Evento>> GetEventosWithRelatedDataAsync()
         {
             return await _eventoRepository.GetEventosWithRelatedDataAsync();
+        }
+
+        public List<Evento> GetEventosWithRelatedData()
+        {
+            return _eventoRepository.GetEventosWithRelatedData();
         }
 
         private bool EventoOverlaps(Evento newEvento)

@@ -20,14 +20,22 @@ public partial class AgregarButton : Button
 
 		Pressed += () =>
 		{
+			int id = (int)_optionButtonEmpleados.GetSelectedMetadata();
+
+			foreach (EmpleadoItemComponent node in _listaEmpleadosContainer.GetChildren())
+			{
+				if (node.Empleado.Id == id)
+				{
+					return;
+				}
+			}
+
 			PackedScene _empleadoItemComponentScene
 				= ResourceLoader.Load<PackedScene>("res://Scenes/CreateEventoSalon/Components/empleado_item_component.tscn");
 
 			EmpleadoItemComponent empleadoItemComponent = (EmpleadoItemComponent)_empleadoItemComponentScene.Instantiate();
 
 			_listaEmpleadosContainer.AddChild(empleadoItemComponent);
-
-			int id = (int)_optionButtonEmpleados.GetSelectedMetadata();
 
 			Empleado empleado;
 

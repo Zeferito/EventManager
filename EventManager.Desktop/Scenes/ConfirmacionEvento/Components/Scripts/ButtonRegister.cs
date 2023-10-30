@@ -9,9 +9,6 @@ namespace EventManager.Desktop.Scenes.ConfirmacionEvento.Components.Scripts
 {
     public partial class ButtonRegister : Button
     {
-        [Export]
-        private ConfirmacionEvento _confirmacionEvento;
-
         // Called when the node enters the scene tree for the first time.
         public override void _Ready()
         {
@@ -39,6 +36,8 @@ namespace EventManager.Desktop.Scenes.ConfirmacionEvento.Components.Scripts
 
             GD.Print("El evento se ha registrado: \n" + global.EventoToSend.ToString());
             eventoService.Create(global.EventoToSend);
+
+            global.EventoToSend = null;
         }
     }
 }

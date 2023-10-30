@@ -20,14 +20,22 @@ public partial class ButtonAgregarCliente : Button
 
 		Pressed += () =>
 		{
+			int id = (int)_optionButtonBuscarCliente.GetSelectedMetadata();
+
+			foreach (ClienteItemContainer node in _listaClientesContainer.GetChildren())
+			{
+				if (node.Cliente.Id == id)
+				{
+					return;
+				}
+			}
+
 			PackedScene _clienteItemContainerScene
 				= ResourceLoader.Load<PackedScene>("res://Scenes/CreateEventoSalon/Components/cliente_item_container.tscn");
 
 			ClienteItemContainer clienteItemContainer = (ClienteItemContainer)_clienteItemContainerScene.Instantiate();
 
 			_listaClientesContainer.AddChild(clienteItemContainer);
-
-			int id = (int)_optionButtonBuscarCliente.GetSelectedMetadata();
 
 			Cliente cliente;
 
