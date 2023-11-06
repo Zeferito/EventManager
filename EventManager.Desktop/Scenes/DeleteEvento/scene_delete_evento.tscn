@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://ddgcu5rbmugjd"]
+
+[ext_resource type="PackedScene" uid="uid://c4gn5gbb4cu3" path="res://Scenes/DeleteEvento/delete_evento.tscn" id="1_6xye2"]
+
+[node name="SceneDeleteEvento" type="Node"]
+
+[node name="DeleteEvento" parent="." instance=ExtResource("1_6xye2")]

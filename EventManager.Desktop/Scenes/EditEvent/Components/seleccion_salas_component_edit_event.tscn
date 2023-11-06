@@ -1,0 +1,57 @@
+[gd_scene load_steps=6 format=3 uid="uid://ir11c2bqcg83"]
+
+[ext_resource type="Script" path="res://Scenes/CreateEventoSalon/Components/Scripts/OptionButtonSeleccionarSalon.cs" id="1_1eqxh"]
+[ext_resource type="Script" path="res://Scenes/CreateEventoSalon/Components/Scripts/ButtonAgregarSala.cs" id="2_icv64"]
+[ext_resource type="Script" path="res://Scenes/CreateEventoSalon/Components/Scripts/ItemsSalaContainer.cs" id="3_jjs67"]
+[ext_resource type="PackedScene" uid="uid://d0j3t50m6m7g4" path="res://Scenes/CreateEventoSalon/Components/item_sala.tscn" id="4_sexp2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iv5nc"]
+bg_color = Color(1, 1, 1, 1)
+
+[node name="SeleccionSalasComponentEditEvent" type="VBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Seleccionar salones"
+
+[node name="HSeparator" type="HSeparator" parent="."]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="OptionButtonSeleccionarSalon" type="OptionButton" parent="HBoxContainer"]
+custom_minimum_size = Vector2(150, 35)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_iv5nc")
+script = ExtResource("1_1eqxh")
+
+[node name="ButtonAgregarSala" type="Button" parent="HBoxContainer" node_paths=PackedStringArray("_listaSalasContainer", "_optionButtonSala")]
+layout_mode = 2
+text = "Agregar"
+script = ExtResource("2_icv64")
+_listaSalasContainer = NodePath("../../ListaSalaContainer/ListaSalaContainer")
+_optionButtonSala = NodePath("../OptionButtonSeleccionarSalon")
+
+[node name="ListaSalaContainer" type="ScrollContainer" parent="."]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ListaSalaContainer" type="VBoxContainer" parent="ListaSalaContainer"]
+layout_mode = 2
+script = ExtResource("3_jjs67")
+
+[node name="ItemSala" parent="ListaSalaContainer/ListaSalaContainer" instance=ExtResource("4_sexp2")]
+layout_mode = 2

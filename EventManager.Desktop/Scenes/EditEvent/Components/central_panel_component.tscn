@@ -1,0 +1,54 @@
+[gd_scene load_steps=4 format=3 uid="uid://cc5emo0ey0uly"]
+
+[ext_resource type="Script" path="res://Scenes/EditEvent/Scripts/CentralPanelComponent.cs" id="1_db7y5"]
+[ext_resource type="PackedScene" uid="uid://dhrthnxv2by6b" path="res://Scenes/EditEvent/Components/datos_editables_container_left.tscn" id="1_s22hw"]
+[ext_resource type="PackedScene" uid="uid://fgejcrt2nfrh" path="res://Scenes/EditEvent/Components/datos_editables_container_right.tscn" id="2_bpa85"]
+
+[node name="CentralPanelComponent" type="Control" node_paths=PackedStringArray("_lineEditNuevoNombreEvento", "_lineEditNuevaDescripcionEvento", "_lineEditFechaInicio", "_lineEditFechaTermino", "_listaClientesContainer", "_listaMaterialesContainer", "_listaEmpleadosContainer", "_listaSalaContainer")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_db7y5")
+_lineEditNuevoNombreEvento = NodePath("HBoxContainer/DatosEditablesContainerLeft/LineEditNuevoNombreEvento")
+_lineEditNuevaDescripcionEvento = NodePath("HBoxContainer/DatosEditablesContainerLeft/LineEditNuevaDescripcionEvento")
+_lineEditFechaInicio = NodePath("HBoxContainer/DatosEditablesContainerRight/LineEditFechaInicio")
+_lineEditFechaTermino = NodePath("HBoxContainer/DatosEditablesContainerRight/LineEditFechaTermino")
+_listaClientesContainer = NodePath("HBoxContainer/DatosEditablesContainerLeft/IngresarClienteComponentEditEvent/ScrollContainer/ListaClientesContainer")
+_listaMaterialesContainer = NodePath("HBoxContainer/DatosEditablesContainerLeft/SeleccionMaterialesComponentEditEvent/ScrollContainer/ListaMaterialesContainer")
+_listaEmpleadosContainer = NodePath("HBoxContainer/DatosEditablesContainerRight/AgregarEmpleadosComponentEditEvent/ScrollContainer/ListaEmpleadosContainer")
+_listaSalaContainer = NodePath("HBoxContainer/DatosEditablesContainerRight/SeleccionSalasComponentEditEvent/ListaSalaContainer/ListaSalaContainer")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0.94902, 0.8, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DatosEditablesContainerLeft" parent="HBoxContainer" instance=ExtResource("1_s22hw")]
+layout_mode = 2
+
+[node name="DatosEditablesContainerRight" parent="HBoxContainer" instance=ExtResource("2_bpa85")]
+layout_mode = 2
+
+[editable path="HBoxContainer/DatosEditablesContainerLeft"]
+[editable path="HBoxContainer/DatosEditablesContainerLeft/IngresarClienteComponentEditEvent"]
+[editable path="HBoxContainer/DatosEditablesContainerLeft/SeleccionMaterialesComponentEditEvent"]
+[editable path="HBoxContainer/DatosEditablesContainerRight"]
+[editable path="HBoxContainer/DatosEditablesContainerRight/AgregarEmpleadosComponentEditEvent"]
+[editable path="HBoxContainer/DatosEditablesContainerRight/SeleccionSalasComponentEditEvent"]

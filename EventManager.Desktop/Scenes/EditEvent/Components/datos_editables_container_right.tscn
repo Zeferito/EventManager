@@ -1,0 +1,51 @@
+[gd_scene load_steps=3 format=3 uid="uid://fgejcrt2nfrh"]
+
+[ext_resource type="PackedScene" uid="uid://b3c5ba15su0d0" path="res://Scenes/EditEvent/Components/agregar_empleados_component_edit_event.tscn" id="1_k2dhe"]
+[ext_resource type="PackedScene" uid="uid://ir11c2bqcg83" path="res://Scenes/EditEvent/Components/seleccion_salas_component_edit_event.tscn" id="2_2yuio"]
+
+[node name="DatosEditablesContainerRight" type="VBoxContainer"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 20
+
+[node name="HSeparator" type="HSeparator" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Fecha y hora de inicio"
+
+[node name="LineEditFechaInicio" type="LineEdit" parent="."]
+custom_minimum_size = Vector2(50, 35)
+layout_mode = 2
+placeholder_text = "Ingrese nueva fecha de inicio"
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Fecha y hora de termino"
+
+[node name="LineEditFechaTermino" type="LineEdit" parent="."]
+custom_minimum_size = Vector2(50, 35)
+layout_mode = 2
+placeholder_text = "Ingrese nueva fecha de termino"
+
+[node name="AgregarEmpleadosComponentEditEvent" parent="." instance=ExtResource("1_k2dhe")]
+layout_mode = 2
+
+[node name="SeleccionSalasComponentEditEvent" parent="." instance=ExtResource("2_2yuio")]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Cancelar" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "Cancelar"
+
+[node name="Actualizar" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "Actualizar"

@@ -1,0 +1,41 @@
+[gd_scene load_steps=3 format=3 uid="uid://dhrthnxv2by6b"]
+
+[ext_resource type="PackedScene" uid="uid://c7n6oaqdae416" path="res://Scenes/EditEvent/Components/seleccion_materiales_component_edit_event.tscn" id="1_0ri1f"]
+[ext_resource type="PackedScene" uid="uid://dwwhmgtrsyqj2" path="res://Scenes/EditEvent/Components/ingresar_cliente_component_edit_event.tscn" id="1_l17oo"]
+
+[node name="DatosEditablesContainerLeft" type="VBoxContainer"]
+offset_right = 400.0
+offset_bottom = 674.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 20
+
+[node name="HSeparator" type="HSeparator" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+
+[node name="LabelNombreEvento" type="Label" parent="."]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Nombre del evento"
+
+[node name="LineEditNuevoNombreEvento" type="LineEdit" parent="."]
+custom_minimum_size = Vector2(50, 35)
+layout_mode = 2
+placeholder_text = "Ingrese nuevo nombre"
+
+[node name="LabelDescripcionEvento" type="Label" parent="."]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Descripcion del evento"
+
+[node name="LineEditNuevaDescripcionEvento" type="LineEdit" parent="."]
+custom_minimum_size = Vector2(50, 35)
+layout_mode = 2
+placeholder_text = "Ingrese nuevo nombre"
+
+[node name="IngresarClienteComponentEditEvent" parent="." instance=ExtResource("1_l17oo")]
+layout_mode = 2
+
+[node name="SeleccionMaterialesComponentEditEvent" parent="." instance=ExtResource("1_0ri1f")]
+layout_mode = 2

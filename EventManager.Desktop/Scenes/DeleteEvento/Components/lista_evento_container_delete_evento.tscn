@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://c2uua61omtnrf"]
+
+[ext_resource type="PackedScene" uid="uid://b7qqb1vc5ghy6" path="res://Scenes/DeleteEvento/Components/agregable_evento_item_component.tscn" id="1_04wv6"]
+
+[node name="ListaEventoContainerDeleteEvento" type="VBoxContainer"]
+offset_right = 755.0
+offset_bottom = 388.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+custom_minimum_size = Vector2(0, 350)
+layout_mode = 2
+
+[node name="AgregableEventoItemComponent" parent="ScrollContainer" instance=ExtResource("1_04wv6")]
+custom_minimum_size = Vector2(755, 0)
+layout_mode = 2
+size_flags_horizontal = 1

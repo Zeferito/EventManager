@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=3 uid="uid://b3c5ba15su0d0"]
+
+[ext_resource type="Script" path="res://Scenes/CreateEventoSalon/Components/Scripts/OptionButtonEmpleados.cs" id="1_4omft"]
+[ext_resource type="Script" path="res://Scenes/CreateEventoSalon/Components/Scripts/AgregarButton.cs" id="2_dp13w"]
+[ext_resource type="Script" path="res://Scenes/CreateEventoSalon/Components/Scripts/ListaEmpleadosContainer.cs" id="3_tyegr"]
+[ext_resource type="PackedScene" uid="uid://brrrnh4uxas1i" path="res://Scenes/CreateEventoSalon/Components/empleado_item_component.tscn" id="4_5aqyn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k6xxm"]
+bg_color = Color(1, 1, 1, 1)
+
+[node name="AgregarEmpleadosComponentEditEvent" type="VBoxContainer"]
+custom_minimum_size = Vector2(350, 200)
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Seleccionar empleados"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="OptionButtonEmpleados" type="OptionButton" parent="HBoxContainer"]
+custom_minimum_size = Vector2(250, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_k6xxm")
+script = ExtResource("1_4omft")
+
+[node name="Button" type="Button" parent="HBoxContainer" node_paths=PackedStringArray("_listaEmpleadosContainer")]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Agregar"
+script = ExtResource("2_dp13w")
+_listaEmpleadosContainer = NodePath("../../ScrollContainer/ListaEmpleadosContainer")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+custom_minimum_size = Vector2(250, 100)
+layout_mode = 2
+
+[node name="ListaEmpleadosContainer" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+script = ExtResource("3_tyegr")
+
+[node name="EmpleadoItemComponent" parent="ScrollContainer/ListaEmpleadosContainer" instance=ExtResource("4_5aqyn")]
+layout_mode = 2

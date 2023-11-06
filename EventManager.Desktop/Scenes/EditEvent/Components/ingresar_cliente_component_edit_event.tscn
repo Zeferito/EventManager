@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=3 uid="uid://dwwhmgtrsyqj2"]
+
+[ext_resource type="Script" path="res://Scenes/CreateEventoSalon/Components/Scripts/OptionButtonBuscarCliente.cs" id="1_leiio"]
+[ext_resource type="Script" path="res://Scenes/CreateEventoSalon/Components/Scripts/ButtonAgregarCliente.cs" id="2_047hf"]
+[ext_resource type="Script" path="res://Scenes/CreateEventoSalon/Components/Scripts/ListaClientesContainer.cs" id="4_3fckn"]
+[ext_resource type="PackedScene" uid="uid://gfdgauakk47w" path="res://Scenes/CreateEventoSalon/Components/cliente_item_container.tscn" id="5_im6y1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jdunk"]
+
+[node name="IngresarClienteComponentEditEvent" type="VBoxContainer"]
+custom_minimum_size = Vector2(400, 100)
+offset_right = 215.0
+offset_bottom = 113.0
+
+[node name="Titulo" type="Label" parent="."]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Ingresar Cliente"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="OptionButtonBuscarCliente" type="OptionButton" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("1_leiio")
+
+[node name="ButtonAgregarCliente" type="Button" parent="VBoxContainer/HBoxContainer" node_paths=PackedStringArray("_listaClientesContainer", "_optionButtonBuscarCliente")]
+custom_minimum_size = Vector2(75, 25)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_jdunk")
+text = "Agregar"
+script = ExtResource("2_047hf")
+_listaClientesContainer = NodePath("../../../ScrollContainer/ListaClientesContainer")
+_optionButtonBuscarCliente = NodePath("../OptionButtonBuscarCliente")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+custom_minimum_size = Vector2(250, 100)
+layout_mode = 2
+
+[node name="ListaClientesContainer" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+script = ExtResource("4_3fckn")
+
+[node name="ClienteItemContainer" parent="ScrollContainer/ListaClientesContainer" instance=ExtResource("5_im6y1")]
+layout_mode = 2
