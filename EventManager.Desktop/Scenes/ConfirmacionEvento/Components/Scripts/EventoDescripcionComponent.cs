@@ -1,33 +1,29 @@
-using EventManager.Database.Models.Entities;
+using EventManager.Desktop.Api.Dto;
 using Godot;
 using System;
 
-namespace EventManager.Desktop.Scenes.ConfirmacionEvento.Components.Scripts
+namespace EventManager.Desktop.Scenes.ConfirmacionEvento.Components.Scripts;
+
+public partial class EventoDescripcionComponent : VBoxContainer
 {
-    public partial class EventoDescripcionComponent : VBoxContainer
+    [Export]
+    private Label _labelNombreEvento;
+
+    [Export]
+    private Label _labelDescripcionEvento;
+
+    private EventDto _eventDto;
+
+    public EventDto EventDto
     {
-        [Export]
-        private Label _labelNombreEvento;
+        get => _eventDto;
+        set => SetEventDto(value);
+    }
 
-        [Export]
-        private Label _labelDescripcionEvento;
-
-        private Evento _evento;
-
-        public Evento Evento
-        {
-            get => _evento;
-            set => SetEvento(value);
-        }
-
-        // Called when the node enters the scene tree for the first time.
-        public override void _Ready() { }
-
-        private void SetEvento(Evento value)
-        {
-            _evento = value;
-            _labelNombreEvento.Text = value.Nombre;
-            _labelDescripcionEvento.Text = value.Descripcion;
-        }
+    private void SetEventDto(EventDto value)
+    {
+        _eventDto = value;
+        _labelNombreEvento.Text = value.Name;
+        _labelDescripcionEvento.Text = value.Description;
     }
 }

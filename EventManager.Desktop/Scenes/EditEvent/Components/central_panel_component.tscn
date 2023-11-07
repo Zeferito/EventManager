@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dhrthnxv2by6b" path="res://Scenes/EditEvent/Components/datos_editables_container_left.tscn" id="1_s22hw"]
 [ext_resource type="PackedScene" uid="uid://fgejcrt2nfrh" path="res://Scenes/EditEvent/Components/datos_editables_container_right.tscn" id="2_bpa85"]
 
-[node name="CentralPanelComponent" type="Control" node_paths=PackedStringArray("_lineEditNuevoNombreEvento", "_lineEditNuevaDescripcionEvento", "_lineEditFechaInicio", "_lineEditFechaTermino", "_listaClientesContainer", "_listaMaterialesContainer", "_listaEmpleadosContainer", "_listaSalaContainer")]
+[node name="CentralPanelComponent" type="Control" node_paths=PackedStringArray("_lineEditNuevoNombreEvento", "_lineEditNuevaDescripcionEvento", "_lineEditFechaInicio", "_lineEditFechaTermino", "_listaClientesContainer", "_listaMaterialesContainer", "_listaEmpleadosContainer", "_listaSalaContainer", "_actualizarButton")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -22,6 +22,7 @@ _listaClientesContainer = NodePath("HBoxContainer/DatosEditablesContainerLeft/In
 _listaMaterialesContainer = NodePath("HBoxContainer/DatosEditablesContainerLeft/SeleccionMaterialesComponentEditEvent/ScrollContainer/ListaMaterialesContainer")
 _listaEmpleadosContainer = NodePath("HBoxContainer/DatosEditablesContainerRight/AgregarEmpleadosComponentEditEvent/ScrollContainer/ListaEmpleadosContainer")
 _listaSalaContainer = NodePath("HBoxContainer/DatosEditablesContainerRight/SeleccionSalasComponentEditEvent/ListaSalaContainer/ListaSalaContainer")
+_actualizarButton = NodePath("HBoxContainer/DatosEditablesContainerRight/HBoxContainer/ActualizarButton")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1

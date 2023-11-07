@@ -1,31 +1,30 @@
-using EventManager.Database.Models.Entities;
+using EventManager.Desktop.Api.Entities;
 using Godot;
 using System;
 
-namespace EventManager.Desktop.Scenes.ConfirmacionEvento.Components.Scripts
+namespace EventManager.Desktop.Scenes.ConfirmacionEvento.Components.Scripts;
+
+public partial class EmpleadosItemComponent : HBoxContainer
 {
-    public partial class EmpleadosItemComponent : HBoxContainer
+    private Label _labelEmpleado;
+
+    private Employee _employee;
+
+    public Employee Employee
     {
-        private Label _labelEmpleado;
+        get => _employee;
+        set => SetEmpleado(value);
+    }
 
-        private Empleado _empleado;
+    // Called when the node enters the scene tree for the first time.
+    public override void _Ready()
+    {
+        _labelEmpleado = GetNode<Label>("LabelEmpleado");
+    }
 
-        public Empleado Empleado
-        {
-            get => _empleado;
-            set => SetEmpleado(value);
-        }
-
-        // Called when the node enters the scene tree for the first time.
-        public override void _Ready()
-        {
-            _labelEmpleado = GetNode<Label>("LabelEmpleado");
-        }
-
-        private void SetEmpleado(Empleado value)
-        {
-            _empleado = value;
-            _labelEmpleado.Text = value.Nombre;
-        }
+    private void SetEmpleado(Employee value)
+    {
+        _employee = value;
+        _labelEmpleado.Text = value.Name;
     }
 }

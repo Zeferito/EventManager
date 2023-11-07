@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://c08tg48dio7lo"]
+
+[ext_resource type="Script" path="res://Scenes/EditEvent/Components/Scripts/ItemSala.cs" id="1_sn4qb"]
+
+[node name="ItemSala" type="HBoxContainer"]
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+script = ExtResource("1_sn4qb")
+
+[node name="LabelSala" type="Label" parent="."]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Sala 1"
+
+[node name="ButtonRemoveSala" type="Button" parent="."]
+layout_mode = 2
+text = "Remover
+"

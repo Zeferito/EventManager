@@ -1,6 +1,7 @@
-using EventManager.Database.Models.Entities;
+using EventManager.Desktop.Api.Entities;
 using Godot;
-using System;
+
+namespace EventManager.Desktop.Scenes.CreateEventoSalon.Components.Scripts;
 
 public partial class AgregableMaterialItemComponent : HBoxContainer
 {
@@ -12,19 +13,12 @@ public partial class AgregableMaterialItemComponent : HBoxContainer
 
 	private TextureButton _textureButtonEliminar;
 
-	private Agregable _agregable;
+	private EventToMaterial _eventToMaterial;
 
-	public Agregable Agregable
+	public EventToMaterial EventToMaterial
 	{
-		get => _agregable;
-		set => SetAgregable(value);
-	}
-	private int _cantidad;
-
-	public int Cantidad
-	{
-		get => _cantidad;
-		set => SetCantidad(value);
+		get => _eventToMaterial;
+		set => SetEventToMaterial(value);
 	}
 
 	// Called when the node enters the scene tree for the first time.
@@ -36,21 +30,16 @@ public partial class AgregableMaterialItemComponent : HBoxContainer
 		_textureButtonEliminar = GetNode<TextureButton>("VBoxContainer/TextureButtonEliminar");
 
 		_textureButtonEliminar.Pressed += () =>
-			{
-				_parentContainer.RemoveChild(this);
-				QueueFree();
-			};
+		{
+			_parentContainer.RemoveChild(this);
+			QueueFree();
+		};
 	}
 
-	private void SetAgregable(Agregable value)
+	private void SetEventToMaterial(EventToMaterial value)
 	{
-		_agregable = value;
-		_labelMaterial.Text = _agregable.Nombre;
-	}
-
-	private void SetCantidad(int value)
-	{
-		_cantidad = value;
-		_labelCantidad.Text = value.ToString();
+		_eventToMaterial = value;
+		_labelMaterial.Text = _eventToMaterial.Material.Name;
+		_labelCantidad.Text = _eventToMaterial.AmountReserved.ToString();
 	}
 }

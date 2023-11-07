@@ -1,6 +1,7 @@
+using EventManager.Desktop.Api.Entities;
 using Godot;
-using System;
-using EventManager.Database.Models.Entities;
+
+namespace EventManager.Desktop.Scenes.CreateEventoSalon.Components.Scripts;
 
 public partial class EmpleadoItemComponent : HBoxContainer
 {
@@ -10,12 +11,12 @@ public partial class EmpleadoItemComponent : HBoxContainer
 
 	private TextureButton _textureButtonEliminar;
 
-	private Empleado _empleado;
+	private Employee _employee;
 
-	public Empleado Empleado
+	public Employee Employee
 	{
-		get => _empleado;
-		set => SetEmpleado(value);
+		get => _employee;
+		set => SetEmployee(value);
 	}
 
 	// Called when the node enters the scene tree for the first time.
@@ -32,9 +33,9 @@ public partial class EmpleadoItemComponent : HBoxContainer
 		};
 	}
 
-	private void SetEmpleado(Empleado value)
+	private void SetEmployee(Employee value)
 	{
-		_empleado = value;
-		_labelNombreEmpleado.Text = _empleado.Nombre;
+		_employee = value;
+		_labelNombreEmpleado.Text = _employee.Name;
 	}
 }

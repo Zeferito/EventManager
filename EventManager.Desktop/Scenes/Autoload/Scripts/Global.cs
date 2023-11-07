@@ -1,8 +1,8 @@
-using EventManager.Database.Models.Entities;
+using EventManager.Desktop.Api.Dto;
 using Godot;
 using System;
 
 public partial class Global : Node
 {
-    public Evento EventoToSend { get; set; }
+    public EventDto EventToSend { get; set; }
 }

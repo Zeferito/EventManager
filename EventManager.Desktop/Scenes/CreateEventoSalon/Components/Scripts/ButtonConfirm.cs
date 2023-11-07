@@ -1,7 +1,11 @@
-using EventManager.Database.Models.Entities;
-using Godot;
 using System;
+using System.Collections.Generic;
 using System.Text.Json;
+using EventManager.Desktop.Api.Dto;
+using Godot;
+using static EventManager.Desktop.Api.Entities.Event;
+
+namespace EventManager.Desktop.Scenes.CreateEventoSalon.Components.Scripts;
 
 public partial class ButtonConfirm : Button
 {
@@ -36,88 +40,52 @@ public partial class ButtonConfirm : Button
 
         Pressed += () =>
         {
-            Evento evento = new Evento();
-
-            if (_lineEditTitleEvent.Text == "")
-            {
-                GD.Print("No se puede crear un evento sin nombre");
-                return;
-            }
-
-            if (_textEditDescriptionEvent.Text == "")
-            {
-                GD.Print("No se puede crear un evento sin descripcion");
-                return;
-            }
-
-            if (_lineEditStartDateEvent.Text == "")
-            {
-                GD.Print("No se puede crear un evento sin fecha de inicio");
-                return;
-            }
-
-            if (_lineEditEndDateEvent.Text == "")
-            {
-                GD.Print("No se puede crear un evento infinito wtf");
-                return;
-            }
-
-            evento.Nombre = _lineEditTitleEvent.Text;
-            evento.Descripcion = _textEditDescriptionEvent.Text;
-
-            DateTime startDateValue;
-            if (!DateTime.TryParse(_lineEditStartDateEvent.Text, out startDateValue))
-            {
-                GD.Print("No se puede crear un evento con una fecha de inicio invalida");
-                return;
-            }
-
-            evento.FechaInicio = startDateValue;
-
-            DateTime endDateValue;
-            if (!DateTime.TryParse(_lineEditEndDateEvent.Text, out endDateValue))
-            {
-                GD.Print("No se puede crear un evento con una fecha de inicio invalida");
-                return;
-            }
-
-            evento.FechaTermino = endDateValue;
+            List<int> clientIds = new();
+            List<int> employeeIds = new();
+            List<int> roomIds = new();
+            List<EventDto.MaterialReserved> materialsReserved = new();
 
             foreach (ClienteItemContainer node in _clientesListaContainer.GetChildren())
             {
-                evento.Clientes.Add(node.Cliente);
+                clientIds.Add(node.Client.Id);
             }
 
             foreach (EmpleadoItemComponent node in _empleadosListaContainer.GetChildren())
             {
-                evento.Empleados.Add(node.Empleado);
+                employeeIds.Add(node.Employee.Id);
             }
 
             foreach (ItemSalaComponent node in _salasListaContainer.GetChildren())
             {
-                evento.Salas.Add(node.Sala);
+                roomIds.Add(node.Room.Id);
             }
 
-            foreach (AgregableMaterialItemComponent node in _agregablesListaContainer.GetChildren())
+            foreach (var node in _agregablesListaContainer.GetChildren())
             {
-                EventoAgregable eventoAgregable = new EventoAgregable
+                var materialReservedItem = (AgregableMaterialItemComponent)node;
+                EventDto.MaterialReserved materialReserved = new EventDto.MaterialReserved
                 {
-                    Agregable = node.Agregable,
-                    CantidadReservada = node.Cantidad
+                    MaterialId = materialReservedItem.EventToMaterial.Material.Id,
+                    Amount = materialReservedItem.EventToMaterial.AmountReserved
                 };
-
-                evento.EventoAgregables.Add(eventoAgregable);
+                materialsReserved.Add(materialReserved);
             }
 
-            UserManager userManager = GetNode<UserManager>("/root/UserManager");
+            EventDto evento = new EventDto
+            {
+                Status = "active",
+                Name = _lineEditTitleEvent.Text,
+                Description = _textEditDescriptionEvent.Text,
+                StartDate = _lineEditStartDateEvent.Text,
+                EndDate = _lineEditEndDateEvent.Text,
+                UserId = 1,
+                ClientIds = clientIds,
+                EmployeeIds = employeeIds,
+                RoomIds = roomIds,
+                MaterialsReserved = materialsReserved
+            };
 
-            evento.UsuarioId = userManager.Usuario.Id;
-
-            string jsonString = JsonSerializer.Serialize(evento);
-
-            GD.Print(jsonString);
-
-            global.EventoToSend = evento;
+            global.EventToSend = evento;
 
             GetTree()
                 .ChangeSceneToFile(

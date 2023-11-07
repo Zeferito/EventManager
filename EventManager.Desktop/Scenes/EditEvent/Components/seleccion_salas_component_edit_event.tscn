@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://ir11c2bqcg83"]
 
-[ext_resource type="Script" path="res://Scenes/CreateEventoSalon/Components/Scripts/OptionButtonSeleccionarSalon.cs" id="1_1eqxh"]
-[ext_resource type="Script" path="res://Scenes/CreateEventoSalon/Components/Scripts/ButtonAgregarSala.cs" id="2_icv64"]
+[ext_resource type="Script" path="res://Scenes/EditEvent/Components/Scripts/OptionButtonSeleccionarSalon.cs" id="1_013s2"]
+[ext_resource type="Script" path="res://Scenes/EditEvent/Components/Scripts/ButtonAgregarSala.cs" id="2_netfc"]
 [ext_resource type="Script" path="res://Scenes/CreateEventoSalon/Components/Scripts/ItemsSalaContainer.cs" id="3_jjs67"]
-[ext_resource type="PackedScene" uid="uid://d0j3t50m6m7g4" path="res://Scenes/CreateEventoSalon/Components/item_sala.tscn" id="4_sexp2"]
+[ext_resource type="PackedScene" uid="uid://c08tg48dio7lo" path="res://Scenes/EditEvent/Components/item_sala.tscn" id="4_v0ef3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iv5nc"]
 bg_color = Color(1, 1, 1, 1)
@@ -35,12 +35,12 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_iv5nc")
-script = ExtResource("1_1eqxh")
+script = ExtResource("1_013s2")
 
 [node name="ButtonAgregarSala" type="Button" parent="HBoxContainer" node_paths=PackedStringArray("_listaSalasContainer", "_optionButtonSala")]
 layout_mode = 2
 text = "Agregar"
-script = ExtResource("2_icv64")
+script = ExtResource("2_netfc")
 _listaSalasContainer = NodePath("../../ListaSalaContainer/ListaSalaContainer")
 _optionButtonSala = NodePath("../OptionButtonSeleccionarSalon")
 
@@ -53,5 +53,5 @@ size_flags_vertical = 3
 layout_mode = 2
 script = ExtResource("3_jjs67")
 
-[node name="ItemSala" parent="ListaSalaContainer/ListaSalaContainer" instance=ExtResource("4_sexp2")]
+[node name="ItemSala" parent="ListaSalaContainer/ListaSalaContainer" instance=ExtResource("4_v0ef3")]
 layout_mode = 2

@@ -1,50 +1,115 @@
-using EventManager.Database.DataAccess;
-using EventManager.Database.DataAccess.Repositories;
-using EventManager.Database.BusinessLogic.Services;
+using System.Text.Json;
+using System.Text.Json.Serialization;
+using EventManager.Desktop.Api.Dto;
+using EventManager.Desktop.Api.Entities;
+using EventManager.Desktop.Scenes.Autoload.Scripts;
 using Godot;
-using System;
-using EventManager.Database.Models.Entities;
+using Godot.Collections;
+
+namespace EventManager.Desktop.Scenes.CreateEventoSalon.Components.Scripts;
 
 public partial class ButtonRegistrarCliente : Button
 {
-	[Export]
-	private LineEdit _lineEditNombre;
+    [Export]
+    private LineEdit _lineEditNombre;
 
-	[Export]
-	private LineEdit _lineEditTelefono;
+    [Export]
+    private LineEdit _lineEditTelefono;
 
-	[Export]
-	private VBoxContainer _listaClientesContainer;
+    [Export]
+    private VBoxContainer _listaClientesContainer;
 
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
-	{
-		DatabaseConnection databaseConnection = GetNode<DatabaseConnection>("/root/DatabaseConnection");
+    // Called when the node enters the scene tree for the first time.
+    public override void _Ready()
+    {
+        Pressed += () =>
+        {
+            ApiConnection apiConnection = GetNode<ApiConnection>("/root/ApiConnection");
 
-		Pressed += () =>
-		{
-			Cliente cliente = new Cliente
-			{
-				Nombre = _lineEditNombre.Text,
-				Telefono = _lineEditTelefono.Text
-			};
+            HttpRequest httpRequest = new HttpRequest();
+            httpRequest.UseThreads = true;
+            AddChild(httpRequest);
+            httpRequest.RequestCompleted += HttpRequestCompleted;
+            httpRequest.RequestCompleted += (result, code, strings, body) =>
+            {
+                RemoveChild(httpRequest);
+                httpRequest.QueueFree();
+            };
 
-			using (DatabaseContext context = new DatabaseContext(databaseConnection.ConnectionString))
-			{
-				ClienteRepository clienteRepository = new ClienteRepository(context);
-				ClienteService clienteService = new ClienteService(clienteRepository);
+            string contentType = "application/json";
+            string authToken = apiConnection.AuthDetails.AuthToken;
+            string[] headers =
+            {
+                $"Content-Type: {contentType}",
+                $"Authorization: Bearer {authToken}"
+            };
 
-				clienteService.Create(cliente);
-			}
+            ClientDto clientDto = new ClientDto
+            {
+                Name = _lineEditNombre.Text,
+                Phone = _lineEditTelefono.Text
+            };
 
-			PackedScene _clienteItemContainerScene
-				= ResourceLoader.Load<PackedScene>("res://Scenes/CreateEventoSalon/Components/cliente_item_container.tscn");
+            string body = JsonSerializer.Serialize(clientDto);
 
-			ClienteItemContainer clienteItemContainer = (ClienteItemContainer)_clienteItemContainerScene.Instantiate();
+            Error error = httpRequest.Request($"{apiConnection.Url}/clients", headers, HttpClient.Method.Post, body);
 
-			_listaClientesContainer.AddChild(clienteItemContainer);
+            if (error != Error.Ok)
+            {
+                GD.PushError("An error occurred in the HTTP request.");
+            }
+        };
+    }
 
-			clienteItemContainer.Cliente = cliente;
-		};
-	}
+    private void HttpRequestCompleted(long result, long responseCode, string[] headers, byte[] body)
+    {
+        Json json = new Json();
+        json.Parse(body.GetStringFromUtf8());
+
+        Array responseArray = json.Data.AsGodotArray();
+        Dictionary responseDictionary = json.Data.AsGodotDictionary();
+
+        switch (responseCode)
+        {
+            case 200:
+                GD.Print(responseArray);
+
+                for (int i = 0; i < responseArray.Count; i++)
+                {
+                    Dictionary dictionaryItem = responseArray[i].AsGodotDictionary();
+
+                    string dictionaryJson = Json.Stringify(dictionaryItem);
+
+                    JsonSerializerOptions options = new JsonSerializerOptions
+                    {
+                        Converters =
+                        {
+                            new JsonStringEnumConverter(JsonNamingPolicy.CamelCase)
+                        },
+                    };
+
+                    Client client = JsonSerializer.Deserialize<Client>(dictionaryJson, options);
+
+                    PackedScene _clienteItemContainerScene = ResourceLoader.Load<PackedScene>(
+                            "res://Scenes/CreateEventoSalon/Components/cliente_item_container.tscn");
+
+                    ClienteItemContainer clienteItemContainer = (ClienteItemContainer)_clienteItemContainerScene.Instantiate();
+
+                    _listaClientesContainer.AddChild(clienteItemContainer);
+
+                    clienteItemContainer.Client = client;
+                }
+
+                break;
+            case 401:
+                GD.Print(responseDictionary);
+                break;
+            case 404:
+                GD.Print(responseDictionary);
+                break;
+            default:
+                GD.Print(responseDictionary);
+                break;
+        }
+    }
 }

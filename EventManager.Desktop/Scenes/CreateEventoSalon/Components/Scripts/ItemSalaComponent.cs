@@ -1,25 +1,27 @@
-using EventManager.Database.Models.Entities;
+using EventManager.Desktop.Api.Entities;
 using Godot;
-using System;
+
+namespace EventManager.Desktop.Scenes.CreateEventoSalon.Components.Scripts;
 
 public partial class ItemSalaComponent : HBoxContainer
 {
-    private VBoxContainer _parentContainer;
+	private VBoxContainer _parentContainer;
 
-    private Label _labelSala;
+	private Label _labelSala;
 
-    private Button _textureButtonEliminar;
+	private Button _textureButtonEliminar;
 
-    private Sala _sala;
+	private Room _room;
 
-    public Sala Sala
-    {
-        get => _sala;
-        set => SetSala(value);
-    }
+	public Room Room
+	{
+		get => _room;
+		set => SetRoom(value);
+	}
 
-    // Called when the node enters the scene tree for the first time.
-    public override void _Ready() { 
+	// Called when the node enters the scene tree for the first time.
+	public override void _Ready()
+	{
 		_parentContainer = GetParent<VBoxContainer>();
 		_labelSala = GetNode<Label>("LabelSala");
 		_textureButtonEliminar = GetNode<Button>("ButtonRemoveSala");
@@ -31,9 +33,9 @@ public partial class ItemSalaComponent : HBoxContainer
 		};
 	}
 
-    private void SetSala(Sala value)
-    {
-        _sala = value;
-        _labelSala.Text = _sala.Nombre;
-    }
+	private void SetRoom(Room value)
+	{
+		_room = value;
+		_labelSala.Text = _room.Name;
+	}
 }

@@ -17,6 +17,7 @@ text = "Ingrese Fecha y hora de inicio
 
 [node name="LineEditStartDate" type="LineEdit" parent="."]
 layout_mode = 2
+placeholder_text = "yyyy-mm-dd HH:mm:ss"
 
 [node name="LabelEndDate" type="Label" parent="."]
 layout_mode = 2
@@ -26,3 +27,4 @@ text = "Fecha y hora de finalización
 
 [node name="LineEditEndDate" type="LineEdit" parent="."]
 layout_mode = 2
+placeholder_text = "yyyy-mm-dd HH:mm:ss"

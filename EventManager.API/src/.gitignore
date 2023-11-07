@@ -1,0 +1,12 @@
+# TypeScript-specific
+*.tsbuildinfo
+*.tsk
+*.tsl
+
+# TypeScript output
+*.js
+*.js.map
+
+# TypeScript source maps
+*.d.ts.map
+*.js.map

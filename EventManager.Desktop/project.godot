@@ -17,9 +17,8 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-DatabaseConnection="*res://Scenes/Autoload/database_connection.tscn"
 Global="*res://Scenes/Autoload/global.tscn"
-UserManager="*res://Scenes/Autoload/user_manager.tscn"
+ApiConnection="*res://Scenes/Autoload/api_connection.tscn"
 
 [display]
 

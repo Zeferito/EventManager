@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://c7n6oaqdae416"]
 
-[ext_resource type="Script" path="res://Scenes/CreateEventoSalon/Components/Scripts/OptionButtonSeleccionarMaterial.cs" id="1_kvsgj"]
+[ext_resource type="Script" path="res://Scenes/EditEvent/Components/Scripts/OptionButtonSeleccionarMaterial.cs" id="1_x28r4"]
 [ext_resource type="Texture2D" uid="uid://bigt8ixwsindh" path="res://Textures/icon.png" id="2_rkso6"]
-[ext_resource type="Script" path="res://Scenes/CreateEventoSalon/Components/Scripts/ButtonAgregarMaterial.cs" id="3_hyjgv"]
+[ext_resource type="Script" path="res://Scenes/EditEvent/Components/Scripts/ButtonAgregarMaterial.cs" id="3_pycnu"]
 [ext_resource type="Script" path="res://Scenes/CreateEventoSalon/Components/Scripts/ListaMaterialesContainer.cs" id="4_ty37b"]
-[ext_resource type="PackedScene" uid="uid://moxuri4delwb" path="res://Scenes/CreateEventoSalon/Components/agregable_material_item_component.tscn" id="5_gjn24"]
+[ext_resource type="PackedScene" uid="uid://xfwpxuinlia3" path="res://Scenes/EditEvent/Components/agregable_material_item_component.tscn" id="5_hj7r5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4yj07"]
 bg_color = Color(1, 1, 1, 1)
@@ -28,7 +28,7 @@ text = "Selecciona Material"
 
 [node name="OptionButtonSeleccionarMaterial" type="OptionButton" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
-script = ExtResource("1_kvsgj")
+script = ExtResource("1_x28r4")
 
 [node name="VSeparator" type="VSeparator" parent="HBoxContainer"]
 modulate = Color(1, 1, 1, 0)
@@ -67,7 +67,7 @@ layout_mode = 2
 texture_normal = ExtResource("2_rkso6")
 ignore_texture_size = true
 stretch_mode = 0
-script = ExtResource("3_hyjgv")
+script = ExtResource("3_pycnu")
 _listaMaterialesContainer = NodePath("../../../../ScrollContainer/ListaMaterialesContainer")
 _optionButtonSeleccionarMaterial = NodePath("../../../VBoxContainer/OptionButtonSeleccionarMaterial")
 _lineEditCantidadMaterial = NodePath("../../../VBoxContainer2/LineEditCantidadMaterial")
@@ -80,5 +80,5 @@ layout_mode = 2
 layout_mode = 2
 script = ExtResource("4_ty37b")
 
-[node name="AgregableMaterialItemComponent" parent="ScrollContainer/ListaMaterialesContainer" instance=ExtResource("5_gjn24")]
+[node name="AgregableMaterialItemComponent" parent="ScrollContainer/ListaMaterialesContainer" instance=ExtResource("5_hj7r5")]
 layout_mode = 2

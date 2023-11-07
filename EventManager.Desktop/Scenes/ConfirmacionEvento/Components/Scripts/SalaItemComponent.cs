@@ -1,4 +1,4 @@
-using EventManager.Database.Models.Entities;
+using EventManager.Desktop.Api.Entities;
 using Godot;
 using System;
 
@@ -8,11 +8,11 @@ namespace EventManager.Desktop.Scenes.ConfirmacionEvento.Components.Scripts
     {
         private Label _labelSala;
 
-        private Sala _sala;
+        private Room _room;
 
-        public Sala Sala
+        public Room Room
         {
-            get => _sala;
+            get => _room;
             set => SetSala(value);
         }
 
@@ -22,10 +22,10 @@ namespace EventManager.Desktop.Scenes.ConfirmacionEvento.Components.Scripts
             _labelSala = GetNode<Label>("LabelSala");
         }
 
-        private void SetSala(Sala value)
+        private void SetSala(Room value)
         {
-            _sala = value;
-            _labelSala.Text = value.Nombre;
+            _room = value;
+            _labelSala.Text = value.Name;
         }
     }
 }

@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://dwwhmgtrsyqj2"]
 
-[ext_resource type="Script" path="res://Scenes/CreateEventoSalon/Components/Scripts/OptionButtonBuscarCliente.cs" id="1_leiio"]
-[ext_resource type="Script" path="res://Scenes/CreateEventoSalon/Components/Scripts/ButtonAgregarCliente.cs" id="2_047hf"]
+[ext_resource type="Script" path="res://Scenes/EditEvent/Components/Scripts/OptionButtonBuscarCliente.cs" id="1_73r2v"]
+[ext_resource type="Script" path="res://Scenes/EditEvent/Components/Scripts/ButtonAgregarCliente.cs" id="2_kusxa"]
 [ext_resource type="Script" path="res://Scenes/CreateEventoSalon/Components/Scripts/ListaClientesContainer.cs" id="4_3fckn"]
-[ext_resource type="PackedScene" uid="uid://gfdgauakk47w" path="res://Scenes/CreateEventoSalon/Components/cliente_item_container.tscn" id="5_im6y1"]
+[ext_resource type="PackedScene" uid="uid://cfkwn1g0b6x4x" path="res://Scenes/EditEvent/Components/cliente_item_container.tscn" id="4_h07e1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jdunk"]
 
@@ -26,7 +26,7 @@ layout_mode = 2
 [node name="OptionButtonBuscarCliente" type="OptionButton" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-script = ExtResource("1_leiio")
+script = ExtResource("1_73r2v")
 
 [node name="ButtonAgregarCliente" type="Button" parent="VBoxContainer/HBoxContainer" node_paths=PackedStringArray("_listaClientesContainer", "_optionButtonBuscarCliente")]
 custom_minimum_size = Vector2(75, 25)
@@ -34,7 +34,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_jdunk")
 text = "Agregar"
-script = ExtResource("2_047hf")
+script = ExtResource("2_kusxa")
 _listaClientesContainer = NodePath("../../../ScrollContainer/ListaClientesContainer")
 _optionButtonBuscarCliente = NodePath("../OptionButtonBuscarCliente")
 
@@ -46,5 +46,5 @@ layout_mode = 2
 layout_mode = 2
 script = ExtResource("4_3fckn")
 
-[node name="ClienteItemContainer" parent="ScrollContainer/ListaClientesContainer" instance=ExtResource("5_im6y1")]
+[node name="ClienteItemContainer" parent="ScrollContainer/ListaClientesContainer" instance=ExtResource("4_h07e1")]
 layout_mode = 2

@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://c50nyktc7c7c6"]
-
-[ext_resource type="Script" path="res://Scenes/Autoload/Scripts/UserManager.cs" id="1_v8d2x"]
-
-[node name="UserManager" type="Node"]
-script = ExtResource("1_v8d2x")

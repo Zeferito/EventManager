@@ -4,6 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://ir11c2bqcg83" path="res://Scenes/EditEvent/Components/seleccion_salas_component_edit_event.tscn" id="2_2yuio"]
 
 [node name="DatosEditablesContainerRight" type="VBoxContainer"]
+offset_top = 169.0
+offset_right = 355.0
+offset_bottom = 634.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 20
@@ -42,10 +45,10 @@ layout_mode = 2
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="Cancelar" type="Button" parent="HBoxContainer"]
+[node name="CancelarButton" type="Button" parent="HBoxContainer"]
 layout_mode = 2
 text = "Cancelar"
 
-[node name="Actualizar" type="Button" parent="HBoxContainer"]
+[node name="ActualizarButton" type="Button" parent="HBoxContainer"]
 layout_mode = 2
 text = "Actualizar"

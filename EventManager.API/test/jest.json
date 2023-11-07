@@ -1,0 +1,22 @@
+{
+    "moduleFileExtensions": ["js", "json", "ts"],
+    "rootDir": ".",
+    "testRegex": ".*\\.spec\\.ts$",
+    "transform": {
+        "^.+\\.(t|j)s$": "ts-jest"
+    },
+    "collectCoverageFrom": ["**/*.(t|j)s"],
+    "coveragePathIgnorePatterns": ["entities"],
+    "coverageDirectory": "../coverage",
+    "testEnvironment": "node",
+    "verbose": true,
+    "coverageThreshold": {
+        "global": {
+            "branches": 100,
+            "functions": 100,
+            "lines": 100,
+            "statements": 100
+        }
+    },
+    "setupFilesAfterEnv": ["../src/spec/Setup.spec.ts"]
+}

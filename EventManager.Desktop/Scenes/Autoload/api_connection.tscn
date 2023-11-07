@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://qvlgo8i8atw5"]
+
+[ext_resource type="Script" path="res://Scenes/Autoload/Scripts/ApiConnection.cs" id="1_14wxt"]
+[ext_resource type="Script" path="res://Scenes/Autoload/Scripts/AuthDetails.cs" id="2_i7fxg"]
+
+[node name="ApiConnection" type="Node"]
+script = ExtResource("1_14wxt")
+Url = "http://localhost:3000/eventmanager/api/v1"
+
+[node name="AuthDetails" type="Node" parent="."]
+script = ExtResource("2_i7fxg")
+AuthToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGlmaWVyIjoiYWRtaW4iLCJpYXQiOjE2OTkyNDAzNTgsImV4cCI6MTY5OTI0Mzk1OH0.K8dG7FVF-b3l1P7pLijZYUlWVJvZlClZ3BlIY2gvd10"

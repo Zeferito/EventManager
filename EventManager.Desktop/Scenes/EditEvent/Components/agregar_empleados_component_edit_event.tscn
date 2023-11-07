@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://b3c5ba15su0d0"]
 
-[ext_resource type="Script" path="res://Scenes/CreateEventoSalon/Components/Scripts/OptionButtonEmpleados.cs" id="1_4omft"]
-[ext_resource type="Script" path="res://Scenes/CreateEventoSalon/Components/Scripts/AgregarButton.cs" id="2_dp13w"]
+[ext_resource type="Script" path="res://Scenes/EditEvent/Components/Scripts/OptionButtonEmpleados.cs" id="1_e8kmg"]
+[ext_resource type="Script" path="res://Scenes/EditEvent/Components/Scripts/ButtonAgregarEmployee.cs" id="2_jk05y"]
 [ext_resource type="Script" path="res://Scenes/CreateEventoSalon/Components/Scripts/ListaEmpleadosContainer.cs" id="3_tyegr"]
-[ext_resource type="PackedScene" uid="uid://brrrnh4uxas1i" path="res://Scenes/CreateEventoSalon/Components/empleado_item_component.tscn" id="4_5aqyn"]
+[ext_resource type="PackedScene" uid="uid://c4eusm3k7kb7a" path="res://Scenes/EditEvent/Components/empleado_item_component.tscn" id="4_4x1pc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k6xxm"]
 bg_color = Color(1, 1, 1, 1)
@@ -30,14 +30,15 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_k6xxm")
-script = ExtResource("1_4omft")
+script = ExtResource("1_e8kmg")
 
-[node name="Button" type="Button" parent="HBoxContainer" node_paths=PackedStringArray("_listaEmpleadosContainer")]
+[node name="ButtonAgregarEmployee" type="Button" parent="HBoxContainer" node_paths=PackedStringArray("_listaEmpleadosContainer", "_optionButtonEmpleados")]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 text = "Agregar"
-script = ExtResource("2_dp13w")
+script = ExtResource("2_jk05y")
 _listaEmpleadosContainer = NodePath("../../ScrollContainer/ListaEmpleadosContainer")
+_optionButtonEmpleados = NodePath("../OptionButtonEmpleados")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 custom_minimum_size = Vector2(250, 100)
@@ -47,5 +48,5 @@ layout_mode = 2
 layout_mode = 2
 script = ExtResource("3_tyegr")
 
-[node name="EmpleadoItemComponent" parent="ScrollContainer/ListaEmpleadosContainer" instance=ExtResource("4_5aqyn")]
+[node name="EmpleadoItemComponent" parent="ScrollContainer/ListaEmpleadosContainer" instance=ExtResource("4_4x1pc")]
 layout_mode = 2

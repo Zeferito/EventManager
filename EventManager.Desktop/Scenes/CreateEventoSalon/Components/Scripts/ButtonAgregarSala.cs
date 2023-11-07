@@ -1,9 +1,11 @@
-using EventManager.Database.BusinessLogic.Services;
-using EventManager.Database.DataAccess;
-using EventManager.Database.DataAccess.Repositories;
-using EventManager.Database.Models.Entities;
+using System.Text.Json;
+using System.Text.Json.Serialization;
+using EventManager.Desktop.Api.Entities;
+using EventManager.Desktop.Scenes.Autoload.Scripts;
 using Godot;
-using System;
+using Godot.Collections;
+
+namespace EventManager.Desktop.Scenes.CreateEventoSalon.Components.Scripts;
 
 public partial class ButtonAgregarSala : Button
 {
@@ -16,9 +18,7 @@ public partial class ButtonAgregarSala : Button
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
-        DatabaseConnection databaseConnection = GetNode<DatabaseConnection>(
-            "/root/DatabaseConnection"
-        );
+        ApiConnection apiConnection = GetNode<ApiConnection>("/root/ApiConnection");
 
         Pressed += () =>
         {
@@ -26,38 +26,83 @@ public partial class ButtonAgregarSala : Button
 
             foreach (ItemSalaComponent node in _listaSalasContainer.GetChildren())
             {
-                if (node.Sala.Id == id)
+                if (node.Room.Id == id)
                 {
                     return;
                 }
             }
 
-            PackedScene _salaItemComponentScene = ResourceLoader.Load<PackedScene>(
-                "res://Scenes/CreateEventoSalon/Components/item_sala.tscn"
-            );
-
-            ItemSalaComponent itemSalaComponent = (ItemSalaComponent)_salaItemComponentScene.Instantiate();
-
-            _listaSalasContainer.AddChild(itemSalaComponent);
-
-            Sala sala;
-
-            using (DatabaseContext context = new DatabaseContext(databaseConnection.ConnectionString))
+            HttpRequest httpRequest = new HttpRequest();
+            httpRequest.UseThreads = true;
+            AddChild(httpRequest);
+            httpRequest.RequestCompleted += HttpRequestCompleted;
+            httpRequest.RequestCompleted += (result, code, strings, body) =>
             {
-                SalaRepository salaRepository = new SalaRepository(context);
-                SalaService salaService = new SalaService(salaRepository);
-                sala = salaService.GetById(id);
-            }
+                RemoveChild(httpRequest);
+                httpRequest.QueueFree();
+            };
 
-            if (sala == null)
+            string contentType = "application/json";
+            string authToken = apiConnection.AuthDetails.AuthToken;
+            string[] headers =
             {
-                return;
-            }
+                $"Content-Type: {contentType}",
+                $"Authorization: Bearer {authToken}"
+            };
 
-            itemSalaComponent.Sala = sala;
+            Error error = httpRequest.Request($"{apiConnection.Url}/rooms/{id}", headers, HttpClient.Method.Get);
+
+            if (error != Error.Ok)
+            {
+                GD.PushError("An error occurred in the HTTP request.");
+            }
         };
     }
 
-    // Called every frame. 'delta' is the elapsed time since the previous frame.
-    public override void _Process(double delta) { }
+    private void HttpRequestCompleted(long result, long responseCode, string[] headers, byte[] body)
+    {
+        Json json = new Json();
+        json.Parse(body.GetStringFromUtf8());
+
+        Array responseArray = json.Data.AsGodotArray();
+        Dictionary responseDictionary = json.Data.AsGodotDictionary();
+
+        switch (responseCode)
+        {
+            case 200:
+                GD.Print(responseDictionary);
+
+                string dictionaryJson = Json.Stringify(responseDictionary);
+
+                JsonSerializerOptions options = new JsonSerializerOptions
+                {
+                    Converters =
+                    {
+                        new JsonStringEnumConverter(JsonNamingPolicy.CamelCase)
+                    },
+                };
+
+                Room room = JsonSerializer.Deserialize<Room>(dictionaryJson, options);
+
+                PackedScene salaItemComponentScene = ResourceLoader.Load<PackedScene>(
+                    "res://Scenes/CreateEventoSalon/Components/item_sala.tscn"
+                );
+
+                ItemSalaComponent itemSalaComponent = (ItemSalaComponent)salaItemComponentScene.Instantiate();
+
+                _listaSalasContainer.AddChild(itemSalaComponent);
+
+                itemSalaComponent.Room = room;
+                break;
+            case 401:
+                GD.Print(responseDictionary);
+                break;
+            case 404:
+                GD.Print(responseDictionary);
+                break;
+            default:
+                GD.Print(responseDictionary);
+                break;
+        }
+    }
 }

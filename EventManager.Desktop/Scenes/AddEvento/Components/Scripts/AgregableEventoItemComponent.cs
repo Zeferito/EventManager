@@ -1,4 +1,4 @@
-using EventManager.Database.Models.Entities;
+using EventManager.Desktop.Api.Entities;
 using Godot;
 
 public partial class AgregableEventoItemComponent : HBoxContainer
@@ -10,12 +10,12 @@ public partial class AgregableEventoItemComponent : HBoxContainer
 	private Label _labelFechaTermino;
 	private Label _labelUsuarioId;
 
-	private Evento _evento;
+	private Event _event;
 
-	public Evento Evento
+	public Event Event
 	{
-		get => _evento;
-		set => SetEvento(value);
+		get => _event;
+		set => SetEvent(value);
 	}
 
 	// Called when the node enters the scene tree for the first time.
@@ -29,13 +29,13 @@ public partial class AgregableEventoItemComponent : HBoxContainer
 		_labelUsuarioId = GetNode<Label>("LabelUsuario");
 	}
 
-	private void SetEvento(Evento value)
+	private void SetEvent(Event value)
 	{
-		_evento = value;
-		_labelNombreEvento.Text = value.Nombre;
-		_labelDescripcionEvento.Text = value.Descripcion;
-		_labelFechaInicio.Text = value.FechaInicio.ToString();
-		_labelFechaTermino.Text = value.FechaTermino.ToString();
-		_labelUsuarioId.Text = value.Usuario.Id.ToString();
+		_event = value;
+		_labelNombreEvento.Text = value.Name;
+		_labelDescripcionEvento.Text = value.Description;
+		_labelFechaInicio.Text = value.StartDate;
+		_labelFechaTermino.Text = value.EndDate;
+		_labelUsuarioId.Text = value.User.Id.ToString();
 	}
 }

@@ -1,4 +1,4 @@
-using EventManager.Database.Models.Entities;
+using EventManager.Desktop.Api.Entities;
 using Godot;
 using System;
 
@@ -10,11 +10,11 @@ namespace EventManager.Desktop.Scenes.ConfirmacionEvento.Components.Scripts
 
         private Label _labelCantidad;
 
-        private EventoAgregable _eventoAgregable;
+        private EventToMaterial _eventToMaterial;
 
-        public EventoAgregable EventoAgregable
+        public EventToMaterial EventToMaterial
         {
-            get => _eventoAgregable;
+            get => _eventToMaterial;
             set => SetEventoAgregable(value);
         }
 
@@ -25,11 +25,11 @@ namespace EventManager.Desktop.Scenes.ConfirmacionEvento.Components.Scripts
             _labelCantidad = GetNode<Label>("LabelCantidad");
         }
 
-        private void SetEventoAgregable(EventoAgregable value)
+        private void SetEventoAgregable(EventToMaterial value)
         {
-            _eventoAgregable = value;
-            _labelMaterial.Text = value.Agregable.Nombre;
-            _labelCantidad.Text = value.CantidadReservada.ToString();
+            _eventToMaterial = value;
+            _labelMaterial.Text = value.Material.Name;
+            _labelCantidad.Text = value.AmountReserved.ToString();
         }
     }
 }

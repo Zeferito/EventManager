@@ -1,6 +1,7 @@
-using EventManager.Database.Models.Entities;
+using EventManager.Desktop.Api.Entities;
 using Godot;
-using System;
+
+namespace EventManager.Desktop.Scenes.CreateEventoSalon.Components.Scripts;
 
 public partial class ClienteItemContainer : HBoxContainer
 {
@@ -12,12 +13,12 @@ public partial class ClienteItemContainer : HBoxContainer
 
 	private TextureButton _textureButtonEliminar;
 
-	private Cliente _cliente;
+	private Client _client;
 
-	public Cliente Cliente
+	public Client Client
 	{
-		get => _cliente;
-		set => SetCliente(value);
+		get => _client;
+		set => SetClient(value);
 	}
 
 	// Called when the node enters the scene tree for the first time.
@@ -35,10 +36,10 @@ public partial class ClienteItemContainer : HBoxContainer
 		};
 	}
 
-	private void SetCliente(Cliente value)
+	private void SetClient(Client value)
 	{
-		_cliente = value;
-		_labelNombre.Text = _cliente.Nombre;
-		_labelTelefono.Text = _cliente.Telefono;
+		_client = value;
+		_labelNombre.Text = _client.Name;
+		_labelTelefono.Text = _client.Phone;
 	}
 }
