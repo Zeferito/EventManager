@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dq64cbns81g23"]
 
-[ext_resource type="Script" path="res://Scenes/AddEvento/Components/Scripts/AgregableEventoItemComponent.cs" id="1_mwv1u"]
+[ext_resource type="Script" path="res://Scenes/AdministrarEvento/Components/Scripts/AgregableEventoItemComponent.cs" id="1_mwv1u"]
 
 [node name="AgregableEventoItemComponent" type="HBoxContainer"]
 theme_override_constants/separation = 35
@@ -30,3 +30,7 @@ text = "FechaTermino"
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Usuario"
+
+[node name="ButtonEditar" type="Button" parent="."]
+layout_mode = 2
+text = "  Editar  "

@@ -75,7 +75,7 @@ public partial class ListaEventos : VBoxContainer
 					Event evt = JsonSerializer.Deserialize<Event>(dictionaryJson, options);
 
 					PackedScene _eventoItemComponent = ResourceLoader.Load<PackedScene>(
-						"res://Scenes/AddEvento/Components/agregable_evento_item_component.tscn"
+						"res://Scenes/AdministrarEvento/Components/agregable_evento_item_component.tscn"
 					);
 					AgregableEventoItemComponent eventoItemComponent = (AgregableEventoItemComponent)
 						_eventoItemComponent.Instantiate();

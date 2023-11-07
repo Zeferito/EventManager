@@ -4,11 +4,18 @@ using Godot;
 public partial class AgregableEventoItemComponent : HBoxContainer
 {
 	private VBoxContainer _parentContainer;
+
 	private Label _labelNombreEvento;
+
 	private Label _labelDescripcionEvento;
+
 	private Label _labelFechaInicio;
+
 	private Label _labelFechaTermino;
+
 	private Label _labelUsuarioId;
+
+	private Button _buttonEditar;
 
 	private Event _event;
 
@@ -27,6 +34,16 @@ public partial class AgregableEventoItemComponent : HBoxContainer
 		_labelFechaInicio = GetNode<Label>("LabelFechaInicio");
 		_labelFechaTermino = GetNode<Label>("LabelFechaTermino");
 		_labelUsuarioId = GetNode<Label>("LabelUsuario");
+		_buttonEditar = GetNode<Button>("ButtonEditar");
+
+		_buttonEditar.Pressed += () =>
+		{
+			Global global = GetNode<Global>("/root/Global");
+			global.EventIdToUpdate = Event.Id;
+
+			GetTree()
+				.ChangeSceneToFile("res://Scenes/EditEvent/scena_editar_evento.tscn");
+		};
 	}
 
 	private void SetEvent(Event value)

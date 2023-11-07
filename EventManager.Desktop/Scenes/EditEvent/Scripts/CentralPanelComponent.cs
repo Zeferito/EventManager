@@ -51,7 +51,8 @@ public partial class CentralPanelComponent : Control
 
     public override void _Ready()
     {
-        TestLoadExampleEvent();
+        Global global = GetNode<Global>("/root/Global");
+        LoadEvent(global.EventIdToUpdate);
 
         _actualizarButton.Pressed += () =>
         {
@@ -90,7 +91,7 @@ public partial class CentralPanelComponent : Control
         };
     }
 
-    private void TestLoadExampleEvent()
+    private void LoadEvent(int id)
     {
         ApiConnection apiConnection = GetNode<ApiConnection>("/root/ApiConnection");
 
@@ -111,8 +112,6 @@ public partial class CentralPanelComponent : Control
             $"Content-Type: {contentType}",
             $"Authorization: Bearer {authToken}"
         };
-
-        int id = 6;
 
         Error error = httpRequest.Request($"{apiConnection.Url}/events/{id}", headers, HttpClient.Method.Get);
 
@@ -299,6 +298,7 @@ public partial class CentralPanelComponent : Control
         switch (responseCode)
         {
             case 200:
+                GetTree().ChangeSceneToFile("res://Scenes/AdministrarEvento/add_evento_scene.tscn");
                 GD.Print(responseDictionary);
                 break;
             case 401:

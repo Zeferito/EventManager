@@ -8,7 +8,7 @@ public partial class ButtonCancel : Button
     {
         Pressed += () =>
         {
-            GetTree().ChangeSceneToFile("res://Scenes/Inicio/scena_pantalla_inicio.tscn");
+            GetTree().ChangeSceneToFile("res://Scenes/AdministrarEvento/add_evento_scene.tscn");
         };
     }
 }

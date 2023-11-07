@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://jswbudralspc"]
 
-[ext_resource type="PackedScene" uid="uid://becpnsw77kanr" path="res://Scenes/AddEvento/add_evento_gui.tscn" id="1_8ni1r"]
+[ext_resource type="PackedScene" uid="uid://becpnsw77kanr" path="res://Scenes/AdministrarEvento/add_evento_gui.tscn" id="1_8ni1r"]
 
 [node name="AddEventoScene" type="Node"]
 

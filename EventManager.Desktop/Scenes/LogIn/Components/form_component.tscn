@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://d3s05lbx4rjlw"]
 
 [ext_resource type="Texture2D" uid="uid://c76ipdqdqytb6" path="res://Textures/gabi.png" id="1_qnnbu"]
-[ext_resource type="PackedScene" uid="uid://b62wsog6piu3w" path="res://Scenes/Components/login_usuario_component.tscn" id="2_mvtj2"]
-[ext_resource type="PackedScene" uid="uid://jm6b1dnt82ci" path="res://Scenes/Components/login_password_component.tscn" id="3_kregf"]
-[ext_resource type="PackedScene" uid="uid://bpp6oy5b4ykgu" path="res://Scenes/Components/buttons_ingres_component.tscn" id="4_p1hmq"]
+[ext_resource type="PackedScene" uid="uid://b62wsog6piu3w" path="res://Scenes/LogIn/Components/login_usuario_component.tscn" id="2_mvtj2"]
+[ext_resource type="PackedScene" uid="uid://jm6b1dnt82ci" path="res://Scenes/LogIn/Components/login_password_component.tscn" id="3_kregf"]
+[ext_resource type="PackedScene" uid="uid://bpp6oy5b4ykgu" path="res://Scenes/LogIn/Components/buttons_ingres_component.tscn" id="4_p1hmq"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ej3li"]
 
@@ -48,3 +48,11 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_8j4gw")
 
 [node name="ButtonsIngresComponent" parent="." instance=ExtResource("4_p1hmq")]
 layout_mode = 2
+
+[node name="Ingresar" parent="ButtonsIngresComponent/HBoxContainer" index="1" node_paths=PackedStringArray("_lineEditUsuario", "_lineEditPassword")]
+_lineEditUsuario = NodePath("../../../Usuario/LineEditUsuario")
+_lineEditPassword = NodePath("../../../Password/LineEditPassword")
+
+[editable path="Usuario"]
+[editable path="Password"]
+[editable path="ButtonsIngresComponent"]

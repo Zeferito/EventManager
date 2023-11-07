@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cc5emo0ey0uly"]
+[gd_scene load_steps=5 format=3 uid="uid://cc5emo0ey0uly"]
 
 [ext_resource type="Script" path="res://Scenes/EditEvent/Scripts/CentralPanelComponent.cs" id="1_db7y5"]
 [ext_resource type="PackedScene" uid="uid://dhrthnxv2by6b" path="res://Scenes/EditEvent/Components/datos_editables_container_left.tscn" id="1_s22hw"]
 [ext_resource type="PackedScene" uid="uid://fgejcrt2nfrh" path="res://Scenes/EditEvent/Components/datos_editables_container_right.tscn" id="2_bpa85"]
+[ext_resource type="Script" path="res://Scenes/EditEvent/Components/Scripts/CancelarButton.cs" id="4_w0us8"]
 
 [node name="CentralPanelComponent" type="Control" node_paths=PackedStringArray("_lineEditNuevoNombreEvento", "_lineEditNuevaDescripcionEvento", "_lineEditFechaInicio", "_lineEditFechaTermino", "_listaClientesContainer", "_listaMaterialesContainer", "_listaEmpleadosContainer", "_listaSalaContainer", "_actualizarButton")]
 layout_mode = 3
@@ -46,6 +47,9 @@ layout_mode = 2
 
 [node name="DatosEditablesContainerRight" parent="HBoxContainer" instance=ExtResource("2_bpa85")]
 layout_mode = 2
+
+[node name="CancelarButton" parent="HBoxContainer/DatosEditablesContainerRight/HBoxContainer" index="0"]
+script = ExtResource("4_w0us8")
 
 [editable path="HBoxContainer/DatosEditablesContainerLeft"]
 [editable path="HBoxContainer/DatosEditablesContainerLeft/IngresarClienteComponentEditEvent"]
