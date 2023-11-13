@@ -58,7 +58,7 @@ export class EventService {
         private readonly materialRepository: Repository<Material>,
         @InjectRepository(EventToMaterial, 'mySqlConnection')
         private readonly eventToMaterialRepository: Repository<EventToMaterial>
-    ) {}
+    ) { }
 
     async getAll(): Promise<Event[]> {
         return await this.eventRepository.find({
@@ -122,8 +122,17 @@ export class EventService {
     }
 
     async update(id: number, eventDto: EventDto): Promise<Event> {
-        const existingEvent = await this.eventRepository.findOneBy({
-            id: id
+        const existingEvent = await this.eventRepository.findOne({
+            relations: {
+                user: true,
+                clients: true,
+                employees: true,
+                rooms: true,
+                eventToMaterial: { material: true }
+            },
+            where: {
+                id: id
+            }
         });
 
         if (!existingEvent) {
@@ -173,6 +182,18 @@ export class EventService {
     }
 
     async softDelete(id: number): Promise<DeleteResult> {
+        const existingEvent = await this.eventRepository.findOneBy({
+            id: id
+        });
+
+        if (!existingEvent) {
+            throw new EntityNotFoundError('Event not found');
+        }
+
+        existingEvent.status = EventStatus.Inactive;
+
+        await this.eventRepository.save(existingEvent);
+
         return await this.eventRepository.softDelete(id);
     }
 
@@ -184,8 +205,11 @@ export class EventService {
 
         if (eventDto.clientIds) {
             for (const clientId of eventDto.clientIds) {
-                const existingClient = await this.clientRepository.findOneBy({
-                    id: clientId
+                const existingClient = await this.clientRepository.findOne({
+                    relations: { events: true },
+                    where: {
+                        id: clientId
+                    }
                 });
 
                 if (!existingClient) {
@@ -194,7 +218,26 @@ export class EventService {
                     );
                 }
 
-                existingClient.event = event;
+                const overlappingEvents = await this.eventRepository.find({
+                    relations: { rooms: true },
+                    where: {
+                        status: Not(EventStatus.Inactive),
+                        startDate: LessThan(eventDto.endDate),
+                        endDate: MoreThan(eventDto.startDate),
+                        clients: { id: clientId }
+                    }
+                });
+
+                if (overlappingEvents.length > 0) {
+                    throw new InvalidEventOverlapError(
+                        'Cannot register Client on Event due to the client already being' +
+                        'assigned to a different Event during the same period',
+                        clientId,
+                        overlappingEvents
+                    );
+                }
+
+                existingClient.events.push(event);
 
                 clients.push(existingClient);
             }
@@ -212,6 +255,25 @@ export class EventService {
                 if (!existingEmployee) {
                     throw new EntityNotFoundError(
                         'Employee not found with Id: ' + employeeId
+                    );
+                }
+
+                const overlappingEvents = await this.eventRepository.find({
+                    relations: { rooms: true },
+                    where: {
+                        status: Not(EventStatus.Inactive),
+                        startDate: LessThan(eventDto.endDate),
+                        endDate: MoreThan(eventDto.startDate),
+                        employees: { id: employeeId }
+                    }
+                });
+
+                if (overlappingEvents.length > 0) {
+                    throw new InvalidEventOverlapError(
+                        'Cannot register employee on Event due to the employee already being' +
+                        'assigned to a different Event during the same period',
+                        employeeId,
+                        overlappingEvents
                     );
                 }
 
@@ -284,7 +346,7 @@ export class EventService {
                 if (!existingMaterial) {
                     throw new EntityNotFoundError(
                         'Material not found with Id: ' +
-                            materialReserved.materialId
+                        materialReserved.materialId
                     );
                 }
 
@@ -354,8 +416,11 @@ export class EventService {
 
         if (eventDto.clientIds) {
             for (const clientId of eventDto.clientIds) {
-                const existingClient = await this.clientRepository.findOneBy({
-                    id: clientId
+                const existingClient = await this.clientRepository.findOne({
+                    relations: { events: true },
+                    where: {
+                        id: clientId
+                    }
                 });
 
                 if (!existingClient) {
@@ -364,7 +429,27 @@ export class EventService {
                     );
                 }
 
-                existingClient.event = event;
+                const overlappingEvents = await this.eventRepository.find({
+                    relations: { rooms: true },
+                    where: {
+                        id: Not(event.id),
+                        status: Not(EventStatus.Inactive),
+                        startDate: LessThan(eventDto.endDate),
+                        endDate: MoreThan(eventDto.startDate),
+                        clients: { id: clientId }
+                    }
+                });
+
+                if (overlappingEvents.length > 0) {
+                    throw new InvalidEventOverlapError(
+                        'Cannot register Client on Event due to the client already being' +
+                        'assigned to a different Event during the same period',
+                        clientId,
+                        overlappingEvents
+                    );
+                }
+
+                existingClient.events.push(event);
 
                 clients.push(existingClient);
             }
@@ -382,6 +467,25 @@ export class EventService {
                 if (!existingEmployee) {
                     throw new EntityNotFoundError(
                         'Employee not found with Id: ' + employeeId
+                    );
+                }
+
+                const overlappingEvents = await this.eventRepository.find({
+                    relations: { rooms: true },
+                    where: {
+                        status: Not(EventStatus.Inactive),
+                        startDate: LessThan(eventDto.endDate),
+                        endDate: MoreThan(eventDto.startDate),
+                        employees: { id: employeeId }
+                    }
+                });
+
+                if (overlappingEvents.length > 0) {
+                    throw new InvalidEventOverlapError(
+                        'Cannot register employee on Event due to the employee already being' +
+                        'assigned to a different Event during the same period',
+                        employeeId,
+                        overlappingEvents
                     );
                 }
 
@@ -455,7 +559,7 @@ export class EventService {
                 if (!existingMaterial) {
                     throw new EntityNotFoundError(
                         'Material not found with Id: ' +
-                            materialReserved.materialId
+                        materialReserved.materialId
                     );
                 }
 
@@ -500,6 +604,35 @@ export class EventService {
                 eventToMaterials.push(eventToMaterial);
             }
         }
+
+        for (const clientToRemove of event.clients) {
+            event.clients = event.clients.filter((client) => {
+                return client.id !== clientToRemove.id;
+            });
+        }
+
+        for (const employeeToRemove of event.employees) {
+            event.employees = event.employees.filter((employee) => {
+                return employee.id !== employeeToRemove.id;
+            });
+        }
+
+        for (const roomToRemove of event.rooms) {
+            event.rooms = event.rooms.filter((room) => {
+                return room.id !== roomToRemove.id;
+            });
+        }
+
+        const eventToMaterials1: EventToMaterial[] =
+            await this.eventToMaterialRepository.find({
+                where: {
+                    eventId: event.id
+                }
+            });
+
+        await this.eventToMaterialRepository.remove(eventToMaterials1);
+
+        await this.eventRepository.save(event);
 
         for (const client of clients) {
             await this.clientRepository.save(client);

@@ -95,9 +95,8 @@ export class Event {
     @JoinColumn()
     user!: Relation<User>;
 
-    @OneToMany(() => Client, (client) => client.event, {
-        onDelete: 'SET NULL'
-    })
+    @ManyToMany(() => Client, (client) => client.events)
+    @JoinTable({ name: 'event_client' })
     clients!: Client[];
 
     @ManyToMany(() => Employee, (employee) => employee.events)

@@ -51,7 +51,7 @@ export class EventDto {
 
     @IsDate()
     @IsDateBefore('endDate')
-    @IsDateDistant('endDate', 86400)
+    @IsDateDistant('endDate', 3600)
     @Type(() => Date)
     startDate!: Date;
 

@@ -43,7 +43,7 @@ export class MySqlConfigService implements TypeOrmOptionsFactory {
             keepConnectionAlive: true,
             autoLoadEntities: true,
             namingStrategy: new SnakeNamingStrategy(),
-            logging: false
+            logging: true
         };
     }
 }

@@ -43,9 +43,13 @@ export class EventToMaterial {
     })
     amountReserved!: number;
 
-    @ManyToOne(() => Event, (event) => event.eventToMaterial)
+    @ManyToOne(() => Event, (event) => event.eventToMaterial, {
+        orphanedRowAction: 'delete'
+    })
     event!: Event;
-
-    @ManyToOne(() => Material, (material) => material.eventToMaterial)
+    
+    @ManyToOne(() => Material, (material) => material.eventToMaterial, {
+        orphanedRowAction: 'delete'
+    })
     material!: Material;
 }

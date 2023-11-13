@@ -25,8 +25,7 @@ import {
     Column,
     CreateDateColumn,
     Entity,
-    JoinColumn,
-    ManyToOne,
+    ManyToMany,
     PrimaryGeneratedColumn,
     Relation,
     UpdateDateColumn,
@@ -59,9 +58,6 @@ export class Client {
     })
     phone!: string;
 
-    @ManyToOne(() => Event, (event) => event.clients, {
-        nullable: true
-    })
-    @JoinColumn()
-    event?: Relation<Event>;
+    @ManyToMany(() => Event, (event) => event.clients)
+    events!: Event[];
 }
