@@ -33,7 +33,7 @@ public partial class OptionButtonEmpleados : OptionButton
             $"Authorization: Bearer {authToken}"
         };
 
-        Error error = httpRequest.Request($"{apiConnection.Url}/materials", headers, HttpClient.Method.Get);
+        Error error = httpRequest.Request($"{apiConnection.Url}/employees", headers, HttpClient.Method.Get);
 
         if (error != Error.Ok)
         {
