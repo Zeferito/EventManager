@@ -6,6 +6,7 @@
 [node name="ListaEventoContainerDeleteEvento" type="VBoxContainer"]
 offset_right = 755.0
 offset_bottom = 388.0
+size_flags_horizontal = 3
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 custom_minimum_size = Vector2(0, 350)

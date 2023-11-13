@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://c4gn5gbb4cu3"]
+[gd_scene load_steps=3 format=3 uid="uid://c4gn5gbb4cu3"]
 
 [ext_resource type="PackedScene" uid="uid://c2uua61omtnrf" path="res://Scenes/DeleteEvento/Components/lista_evento_container_delete_evento.tscn" id="2_ax07m"]
+[ext_resource type="Script" path="res://Scenes/DeleteEvento/Components/Scripts/ButtonConfirmDeleted.cs" id="2_xin35"]
 
 [node name="DeleteEvento" type="Control"]
 layout_mode = 3
@@ -27,5 +28,32 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ListaEventoContainerDeleteEvento" parent="VBoxContainer" instance=ExtResource("2_ax07m")]
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="VSeparator2" type="VSeparator" parent="VBoxContainer/HBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+
+[node name="ListaEventoContainerDeleteEvento" parent="VBoxContainer/HBoxContainer" instance=ExtResource("2_ax07m")]
+layout_mode = 2
+
+[node name="ButtonConfirmDeleted" type="Button" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "Confirmar"
+script = ExtResource("2_xin35")
+
+[node name="VSeparator" type="VSeparator" parent="VBoxContainer/HBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(50, 0)
 layout_mode = 2

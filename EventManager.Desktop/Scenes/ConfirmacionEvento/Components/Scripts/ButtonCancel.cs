@@ -10,7 +10,7 @@ namespace EventManager.Desktop.Scenes.ConfirmacionEvento.Components.Scripts
         {
             Pressed += () =>
             {
-                GetTree().ChangeSceneToFile("res://Scenes/AddEvento/add_evento_scene.tscn");
+                GetTree().ChangeSceneToFile("res://Scenes/AdministrarEvento/add_evento_scene.tscn");
             };
         }
 

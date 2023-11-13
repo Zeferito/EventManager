@@ -62,7 +62,7 @@ public partial class ButtonRegister : Button
 
         switch (responseCode)
         {
-            case 200:
+            case 204:
                 GD.Print(responseDictionary);
                 GetTree().ChangeSceneToFile("res://Scenes/Inicio/scena_pantalla_inicio.tscn");
                 break;
