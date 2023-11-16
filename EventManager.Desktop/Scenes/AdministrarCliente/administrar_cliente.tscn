@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://cil8k56pjo7i6"]
+
+[ext_resource type="PackedScene" uid="uid://bgvca0qh7kpiu" path="res://Scenes/AdministrarCliente/Components/left_panel_component.tscn" id="1_wp38t"]
+[ext_resource type="PackedScene" uid="uid://m4iun53mgigc" path="res://Scenes/AdministrarCliente/Components/right_panel_component.tscn" id="2_gy025"]
+
+[node name="AdministrarCliente" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="LeftPanelComponent" parent="HBoxContainer" instance=ExtResource("1_wp38t")]
+layout_mode = 2
+
+[node name="RightPanelComponent" parent="HBoxContainer" instance=ExtResource("2_gy025")]
+layout_mode = 2

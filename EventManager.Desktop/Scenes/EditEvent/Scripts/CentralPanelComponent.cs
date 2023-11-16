@@ -88,6 +88,9 @@ public partial class CentralPanelComponent : Control
             {
                 GD.PushError("An error occurred in the HTTP request.");
             }
+
+            GetTree()
+				.ChangeSceneToFile("res://Scenes/AdministrarEvento/add_evento_scene.tscn");
         };
     }
 

@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://dloiugj4sxb0e"]
+
+[node name="ClienteItemContainer" type="HBoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="LabelNombre" type="Label" parent="."]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Nombre"
+
+[node name="VSeparator" type="VSeparator" parent="."]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(92, 0)
+layout_mode = 2
+
+[node name="LabelTelefono" type="Label" parent="."]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Telefono"
+
+[node name="VSeparator2" type="VSeparator" parent="."]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(35, 0)
+layout_mode = 2

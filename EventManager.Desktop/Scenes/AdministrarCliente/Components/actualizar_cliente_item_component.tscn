@@ -1,0 +1,64 @@
+[gd_scene load_steps=4 format=3 uid="uid://bqykplqqgb1yh"]
+
+[ext_resource type="Script" path="res://Scenes/CreateEventoSalon/Components/Scripts/OptionButtonBuscarCliente.cs" id="1_mmbwj"]
+[ext_resource type="Script" path="res://Scenes/CreateEventoSalon/Components/Scripts/ButtonAgregarCliente.cs" id="2_uxeks"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q2jam"]
+
+[node name="ActualizarClienteItemComponent" type="VBoxContainer"]
+custom_minimum_size = Vector2(400, 100)
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+text = "Seleccione al cliente para actualizar"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="OptionButtonBuscarCliente" type="OptionButton" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("1_mmbwj")
+
+[node name="ButtonAgregarCliente" type="Button" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(75, 25)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_q2jam")
+text = "Agregar"
+script = ExtResource("2_uxeks")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="LabelNuevoNombre" type="Label" parent="VBoxContainer/VBoxContainer/VBoxContainer"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+text = "Nuevo nombre cliente"
+
+[node name="LineEditNombre" type="LineEdit" parent="VBoxContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="LabelNuevoNumero" type="Label" parent="VBoxContainer/VBoxContainer2/VBoxContainer"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+text = "Nuevo numero cliente"
+
+[node name="LineEditNumero" type="LineEdit" parent="VBoxContainer/VBoxContainer2/VBoxContainer"]
+layout_mode = 2

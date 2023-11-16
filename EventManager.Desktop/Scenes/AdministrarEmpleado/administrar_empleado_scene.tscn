@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://chqqjwmu46usv"]
+
+[ext_resource type="PackedScene" uid="uid://n56q2of8mx87" path="res://Scenes/AdministrarEmpleado/administrar_empleado.tscn" id="1_qpsgb"]
+
+[node name="AdministrarEmpleadoScene" type="Node"]
+
+[node name="AdministrarEmpleado" parent="." instance=ExtResource("1_qpsgb")]

@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://35h735a4a6tw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4ul5t"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_utf2n"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3ygxs"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n4ay7"]
+
+[node name="ButtonRegistrarUsuario" type="VBoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HSeparator3" type="HSeparator" parent="."]
+custom_minimum_size = Vector2(150, 35)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_4ul5t")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+
+[node name="VSeparator" type="VSeparator" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/separator = SubResource("StyleBoxEmpty_utf2n")
+
+[node name="Registrar" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_3ygxs")
+text = "Registrar"
+
+[node name="VSeparator2" type="VSeparator" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/separator = SubResource("StyleBoxEmpty_n4ay7")
+
+[node name="HSeparator4" type="HSeparator" parent="."]
+custom_minimum_size = Vector2(150, 35)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_4ul5t")

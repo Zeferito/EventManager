@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://drbyptjccnxak"]
+
+[ext_resource type="PackedScene" uid="uid://cil8k56pjo7i6" path="res://Scenes/AdministrarCliente/administrar_cliente.tscn" id="1_stisw"]
+
+[node name="AdministrarClienteScene" type="Node"]
+
+[node name="AdministrarCliente" parent="." instance=ExtResource("1_stisw")]

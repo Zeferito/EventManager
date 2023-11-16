@@ -1,0 +1,64 @@
+[gd_scene load_steps=4 format=3 uid="uid://dmbaa7fv50v3p"]
+
+[ext_resource type="Script" path="res://Scenes/CreateEventoSalon/Components/Scripts/ButtonRegistrarCliente.cs" id="1_dvqpt"]
+[ext_resource type="PackedScene" uid="uid://dloiugj4sxb0e" path="res://Scenes/AdministrarCliente/Components/cliente_item_container.tscn" id="2_8e1dv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rrdju"]
+
+[node name="IngresarClienteComponent" type="VBoxContainer"]
+custom_minimum_size = Vector2(400, 100)
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Nombre"
+
+[node name="VSeparator" type="VSeparator" parent="VBoxContainer/VBoxContainer2/HBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(92, 0)
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="VBoxContainer/VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Telefono"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="LineEditNombre" type="LineEdit" parent="VBoxContainer/VBoxContainer2/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LineEditTelefono" type="LineEdit" parent="VBoxContainer/VBoxContainer2/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ButtonRegistrarCliente" type="Button" parent="VBoxContainer/VBoxContainer2/HBoxContainer2"]
+custom_minimum_size = Vector2(75, 25)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_rrdju")
+text = "Registrar"
+script = ExtResource("1_dvqpt")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+custom_minimum_size = Vector2(250, 100)
+layout_mode = 2
+
+[node name="ListaClientesContainer" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+
+[node name="ClienteItemContainer" parent="ScrollContainer/ListaClientesContainer" instance=ExtResource("2_8e1dv")]
+layout_mode = 2

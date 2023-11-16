@@ -1,0 +1,60 @@
+[gd_scene load_steps=3 format=3 uid="uid://m4iun53mgigc"]
+
+[ext_resource type="PackedScene" uid="uid://bqykplqqgb1yh" path="res://Scenes/AdministrarCliente/Components/actualizar_cliente_item_component.tscn" id="1_ilojc"]
+[ext_resource type="PackedScene" uid="uid://bequq277a4n0x" path="res://Scenes/AdministrarCliente/Components/eliminar_cliente_component.tscn" id="2_0dbl7"]
+
+[node name="RightPanelComponent" type="Control"]
+custom_minimum_size = Vector2(640, 720)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 640.0
+offset_bottom = 720.0
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0.94902, 0.8, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HSeparator2" type="HSeparator" parent="VBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="VSeparator" type="VSeparator" parent="VBoxContainer/HBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(35, 0)
+layout_mode = 2
+
+[node name="ActualizarClienteItemComponent" parent="VBoxContainer/HBoxContainer" instance=ExtResource("1_ilojc")]
+layout_mode = 2
+
+[node name="HSeparator3" type="HSeparator" parent="VBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="VSeparator" type="VSeparator" parent="VBoxContainer/HBoxContainer2"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(35, 0)
+layout_mode = 2
+
+[node name="EliminarClienteComponent" parent="VBoxContainer/HBoxContainer2" instance=ExtResource("2_0dbl7")]
+layout_mode = 2

@@ -27,6 +27,20 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_gtb51")
 text = "Administrar Evento"
 script = ExtResource("1_wqdvy")
 
+[node name="AdministrarCliente" type="Button" parent="."]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_1t1ix")
+text = "Administar Clientes"
+
+[node name="AdministrarEmpleado" type="Button" parent="."]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_1t1ix")
+text = "Administar Empleados"
+
 [node name="AdministrarTarifas" type="Button" parent="."]
 custom_minimum_size = Vector2(0, 35)
 layout_mode = 2

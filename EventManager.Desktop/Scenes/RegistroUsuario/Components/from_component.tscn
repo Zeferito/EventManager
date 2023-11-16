@@ -1,0 +1,53 @@
+[gd_scene load_steps=7 format=3 uid="uid://dbjvpdjkmrcc0"]
+
+[ext_resource type="Texture2D" uid="uid://c76ipdqdqytb6" path="res://Textures/gabi.png" id="1_ohdui"]
+[ext_resource type="PackedScene" uid="uid://b62wsog6piu3w" path="res://Scenes/LogIn/Components/login_usuario_component.tscn" id="2_0ed2h"]
+[ext_resource type="PackedScene" uid="uid://jm6b1dnt82ci" path="res://Scenes/LogIn/Components/login_password_component.tscn" id="3_0wair"]
+[ext_resource type="PackedScene" uid="uid://35h735a4a6tw" path="res://Scenes/RegistroUsuario/Components/button_registrar_usuario.tscn" id="4_sbvs6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vas2k"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cbwvp"]
+
+[node name="FromComponent" type="VBoxContainer"]
+custom_minimum_size = Vector2(500, 500)
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_ohdui")
+stretch_mode = 3
+
+[node name="HSeparator" type="HSeparator" parent="."]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_vas2k")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Registrar Usuario"
+horizontal_alignment = 1
+
+[node name="HSeparator2" type="HSeparator" parent="."]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_cbwvp")
+
+[node name="Usuario" parent="." instance=ExtResource("2_0ed2h")]
+layout_mode = 2
+
+[node name="Password" parent="." instance=ExtResource("3_0wair")]
+layout_mode = 2
+
+[node name="HSeparator3" type="HSeparator" parent="."]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_cbwvp")
+
+[node name="ButtonRegistrarUsuario" parent="." instance=ExtResource("4_sbvs6")]
+layout_mode = 2
+
+[editable path="Usuario"]
+[editable path="Password"]

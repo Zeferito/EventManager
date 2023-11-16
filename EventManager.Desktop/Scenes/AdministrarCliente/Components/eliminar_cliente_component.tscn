@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://bequq277a4n0x"]
+
+[ext_resource type="Script" path="res://Scenes/CreateEventoSalon/Components/Scripts/ListaClientesContainer.cs" id="1_cxtur"]
+[ext_resource type="PackedScene" uid="uid://gfdgauakk47w" path="res://Scenes/CreateEventoSalon/Components/cliente_item_container.tscn" id="2_iccdb"]
+
+[node name="EliminarClienteComponent" type="VBoxContainer"]
+custom_minimum_size = Vector2(400, 100)
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="."]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+text = "Eliminar Ciente"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+custom_minimum_size = Vector2(250, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ListaClientesContainer" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+script = ExtResource("1_cxtur")
+
+[node name="ClienteItemContainer" parent="ScrollContainer/ListaClientesContainer" instance=ExtResource("2_iccdb")]
+layout_mode = 2
