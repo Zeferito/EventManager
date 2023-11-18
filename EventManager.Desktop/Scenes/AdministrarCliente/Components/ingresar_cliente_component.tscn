@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dmbaa7fv50v3p"]
+[gd_scene load_steps=5 format=3 uid="uid://dmbaa7fv50v3p"]
 
-[ext_resource type="Script" path="res://Scenes/CreateEventoSalon/Components/Scripts/ButtonRegistrarCliente.cs" id="1_dvqpt"]
+[ext_resource type="Script" path="res://Scenes/AdministrarCliente/Components/Scripts/ButtonRegistrarCliente.cs" id="1_136fn"]
 [ext_resource type="PackedScene" uid="uid://dloiugj4sxb0e" path="res://Scenes/AdministrarCliente/Components/cliente_item_container.tscn" id="2_8e1dv"]
+[ext_resource type="Script" path="res://Scenes/AdministrarCliente/Components/Scripts/ListaConsultarClientesContainer.cs" id="2_nryos"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rrdju"]
 
@@ -45,20 +46,24 @@ size_flags_horizontal = 3
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ButtonRegistrarCliente" type="Button" parent="VBoxContainer/VBoxContainer2/HBoxContainer2"]
+[node name="ButtonRegistrarCliente" type="Button" parent="VBoxContainer/VBoxContainer2/HBoxContainer2" node_paths=PackedStringArray("_lineEditNombre", "_lineEditTelefono")]
 custom_minimum_size = Vector2(75, 25)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_rrdju")
 text = "Registrar"
-script = ExtResource("1_dvqpt")
+script = ExtResource("1_136fn")
+_lineEditNombre = NodePath("../LineEditNombre")
+_lineEditTelefono = NodePath("../LineEditTelefono")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 custom_minimum_size = Vector2(250, 100)
 layout_mode = 2
+size_flags_vertical = 3
 
-[node name="ListaClientesContainer" type="VBoxContainer" parent="ScrollContainer"]
+[node name="ListaConsultarClientesContainer" type="VBoxContainer" parent="ScrollContainer"]
 layout_mode = 2
+script = ExtResource("2_nryos")
 
-[node name="ClienteItemContainer" parent="ScrollContainer/ListaClientesContainer" instance=ExtResource("2_8e1dv")]
+[node name="ClienteItemContainer" parent="ScrollContainer/ListaConsultarClientesContainer" instance=ExtResource("2_8e1dv")]
 layout_mode = 2

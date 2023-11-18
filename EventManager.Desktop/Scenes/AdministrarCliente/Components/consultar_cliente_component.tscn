@@ -5,7 +5,7 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uja2o"]
 
 [node name="ConsultarClienteComponent" type="VBoxContainer"]
-custom_minimum_size = Vector2(400, 100)
+custom_minimum_size = Vector2(0, 100)
 offset_right = 40.0
 offset_bottom = 40.0
 

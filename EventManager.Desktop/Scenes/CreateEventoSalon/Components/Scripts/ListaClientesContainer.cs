@@ -1,6 +1,8 @@
 using Godot;
 using System;
 
+namespace EventManager.Desktop.Scenes.CreateEventoSalon.Components.Scripts;
+
 public partial class ListaClientesContainer : VBoxContainer
 {
     // Called when the node enters the scene tree for the first time.

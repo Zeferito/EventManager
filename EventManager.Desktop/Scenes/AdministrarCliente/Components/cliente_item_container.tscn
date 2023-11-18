@@ -1,8 +1,11 @@
-[gd_scene format=3 uid="uid://dloiugj4sxb0e"]
+[gd_scene load_steps=2 format=3 uid="uid://dloiugj4sxb0e"]
+
+[ext_resource type="Script" path="res://Scenes/AdministrarCliente/Components/Scripts/ClienteItemContainer.cs" id="1_cbovo"]
 
 [node name="ClienteItemContainer" type="HBoxContainer"]
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("1_cbovo")
 
 [node name="LabelNombre" type="Label" parent="."]
 layout_mode = 2

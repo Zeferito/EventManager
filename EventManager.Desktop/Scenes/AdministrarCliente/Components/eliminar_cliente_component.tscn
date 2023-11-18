@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bequq277a4n0x"]
 
-[ext_resource type="Script" path="res://Scenes/CreateEventoSalon/Components/Scripts/ListaClientesContainer.cs" id="1_cxtur"]
-[ext_resource type="PackedScene" uid="uid://gfdgauakk47w" path="res://Scenes/CreateEventoSalon/Components/cliente_item_container.tscn" id="2_iccdb"]
+[ext_resource type="Script" path="res://Scenes/AdministrarCliente/Components/Scripts/ListaClientesContainer.cs" id="1_26yqx"]
+[ext_resource type="PackedScene" uid="uid://dj22rne57o7jn" path="res://Scenes/AdministrarCliente/Components/borrar_cliente_component.tscn" id="2_c18d0"]
 
 [node name="EliminarClienteComponent" type="VBoxContainer"]
 custom_minimum_size = Vector2(400, 100)
@@ -21,7 +21,7 @@ size_flags_horizontal = 3
 
 [node name="ListaClientesContainer" type="VBoxContainer" parent="ScrollContainer"]
 layout_mode = 2
-script = ExtResource("1_cxtur")
+script = ExtResource("1_26yqx")
 
-[node name="ClienteItemContainer" parent="ScrollContainer/ListaClientesContainer" instance=ExtResource("2_iccdb")]
+[node name="BorrarClienteComponent" parent="ScrollContainer/ListaClientesContainer" instance=ExtResource("2_c18d0")]
 layout_mode = 2

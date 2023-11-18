@@ -1,14 +1,15 @@
 using Godot;
 using System;
-namespace EventManager.Desktop.Scenes.CreateEventoSalon.Components.Scripts;
+
+namespace EventManager.Desktop.Scenes.AdministrarCliente.Components.Scripts;
 public partial class ButtonReturn : Button
 {
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		Pressed += () =>
+				Pressed += () =>
 		{
-			GetTree().ChangeSceneToFile("res://Scenes/AddEvento/add_evento_scene.tscn");
+			GetTree().ChangeSceneToFile("res://Scenes/Inicio/scena_pantalla_inicio.tscn");
 		};
 	}
 }
