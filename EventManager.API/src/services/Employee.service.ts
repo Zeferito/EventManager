@@ -24,10 +24,12 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 
-import { Repository } from 'typeorm';
+import { DeleteResult, Repository } from 'typeorm';
 
+import { EmployeeDto } from '../dto/Employee.dto';
 import { Employee } from '../entities/Employee.entity';
 import { EntityNotFoundError } from '../errors/EntityNotFoundError';
+import { OptimisticLockingFailureError } from '../errors/OptimisticLockingFailureError';
 
 @Injectable()
 export class EmployeeService {
@@ -48,5 +50,47 @@ export class EmployeeService {
         }
 
         return employee;
+    }
+
+    async insert(employeeDto: EmployeeDto): Promise<Employee> {
+        const employee = new Employee();
+
+        employee.name = employeeDto.name;
+
+        return await this.employeeRepository.save(employee);
+    }
+
+    async update(id: number, employeeDto: EmployeeDto): Promise<Employee> {
+        const existingEmployee = await this.employeeRepository.findOneBy({
+            id: id
+        });
+
+        if (!existingEmployee) {
+            throw new EntityNotFoundError('Employee not found');
+        }
+
+        if (employeeDto.version == null) {
+            throw new OptimisticLockingFailureError(
+                'Resource versions do not match',
+                existingEmployee.version,
+                -1
+            );
+        }
+
+        if (employeeDto.version !== existingEmployee.version) {
+            throw new OptimisticLockingFailureError(
+                'Resource versions do not match',
+                existingEmployee.version,
+                employeeDto.version
+            );
+        }
+
+        existingEmployee.name = employeeDto.name;
+
+        return await this.employeeRepository.save(existingEmployee);
+    }
+
+    async delete(id: number): Promise<DeleteResult> {
+        return await this.employeeRepository.delete(id);
     }
 }

@@ -21,22 +21,13 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-import {
-    IsNotEmpty,
-    IsNumber,
-    IsOptional,
-    IsPhoneNumber
-} from 'class-validator';
+import { IsNotEmpty, IsNumber, IsOptional } from 'class-validator';
 
-export class ClientDto {
+export class EmployeeDto {
     @IsOptional()
     @IsNumber()
     version?: number;
 
     @IsNotEmpty()
     name!: string;
-
-    @IsOptional()
-    @IsPhoneNumber()
-    phone?: string;
 }

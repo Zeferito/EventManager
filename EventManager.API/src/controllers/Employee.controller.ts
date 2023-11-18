@@ -21,9 +21,20 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-import { Controller, Get, HttpCode, HttpStatus, Param } from '@nestjs/common';
+import {
+    Body,
+    Controller,
+    Delete,
+    Get,
+    HttpCode,
+    HttpStatus,
+    Param,
+    Post,
+    Put
+} from '@nestjs/common';
 
 import { Roles } from '../decorators/Roles.decorator';
+import { EmployeeDto } from '../dto/Employee.dto';
 import { Role } from '../enums/Role.enum';
 import { MethodArgumentNotValidError } from '../errors/MethodArgumentNotValidError';
 import { EmployeeService } from '../services/Employee.service';
@@ -51,5 +62,43 @@ export class EmployeeController {
         }
 
         return await this.employeeService.getById(Number(id));
+    }
+
+    @Post()
+    @HttpCode(HttpStatus.CREATED)
+    @Roles(Role.Admin)
+    async insert(@Body() employeeDto: EmployeeDto) {
+        return await this.employeeService.insert(employeeDto);
+    }
+
+    @Put(':id')
+    @HttpCode(HttpStatus.OK)
+    @Roles(Role.Admin)
+    async update(
+        @Param('id')
+        id: string,
+        @Body() employeeDto: EmployeeDto
+    ) {
+        if (isNaN(Number(id))) {
+            throw new MethodArgumentNotValidError('Invalid ID');
+        }
+
+        return await this.employeeService.update(Number(id), employeeDto);
+    }
+
+    @Delete(':id')
+    @HttpCode(HttpStatus.NO_CONTENT)
+    @Roles(Role.Admin)
+    async delete(
+        @Param('id')
+        id: string
+    ) {
+        if (isNaN(Number(id))) {
+            throw new MethodArgumentNotValidError('Invalid ID');
+        }
+
+        await this.employeeService.delete(Number(id));
+
+        return;
     }
 }

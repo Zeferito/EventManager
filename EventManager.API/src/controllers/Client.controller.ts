@@ -24,11 +24,13 @@
 import {
     Body,
     Controller,
+    Delete,
     Get,
     HttpCode,
     HttpStatus,
     Param,
-    Post
+    Post,
+    Put
 } from '@nestjs/common';
 
 import { Roles } from '../decorators/Roles.decorator';
@@ -67,5 +69,36 @@ export class ClientController {
     @Roles(Role.Admin)
     async insert(@Body() clientDto: ClientDto) {
         return await this.clientService.insert(clientDto);
+    }
+
+    @Put(':id')
+    @HttpCode(HttpStatus.OK)
+    @Roles(Role.Admin)
+    async update(
+        @Param('id')
+        id: string,
+        @Body() clientDto: ClientDto
+    ) {
+        if (isNaN(Number(id))) {
+            throw new MethodArgumentNotValidError('Invalid ID');
+        }
+
+        return await this.clientService.update(Number(id), clientDto);
+    }
+
+    @Delete(':id')
+    @HttpCode(HttpStatus.NO_CONTENT)
+    @Roles(Role.Admin)
+    async delete(
+        @Param('id')
+        id: string
+    ) {
+        if (isNaN(Number(id))) {
+            throw new MethodArgumentNotValidError('Invalid ID');
+        }
+
+        await this.clientService.delete(Number(id));
+
+        return;
     }
 }

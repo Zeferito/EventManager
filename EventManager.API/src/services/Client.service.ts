@@ -24,11 +24,14 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 
-import { Repository } from 'typeorm';
+import { DeleteResult, Repository } from 'typeorm';
 
 import { ClientDto } from '../dto/Client.dto';
+import { EmployeeDto } from '../dto/Employee.dto';
 import { Client } from '../entities/Client.entity';
+import { Employee } from '../entities/Employee.entity';
 import { EntityNotFoundError } from '../errors/EntityNotFoundError';
+import { OptimisticLockingFailureError } from '../errors/OptimisticLockingFailureError';
 
 @Injectable()
 export class ClientService {
@@ -61,5 +64,43 @@ export class ClientService {
         }
 
         return await this.clientRepository.save(client);
+    }
+
+    async update(id: number, clientDto: ClientDto): Promise<Employee> {
+        const existingClient = await this.clientRepository.findOneBy({
+            id: id
+        });
+
+        if (!existingClient) {
+            throw new EntityNotFoundError('Client not found');
+        }
+
+        if (clientDto.version == null) {
+            throw new OptimisticLockingFailureError(
+                'Resource versions do not match',
+                existingClient.version,
+                -1
+            );
+        }
+
+        if (clientDto.version !== existingClient.version) {
+            throw new OptimisticLockingFailureError(
+                'Resource versions do not match',
+                existingClient.version,
+                clientDto.version
+            );
+        }
+
+        existingClient.name = clientDto.name;
+
+        if (clientDto.phone != null) {
+            existingClient.phone = clientDto.phone;
+        }
+
+        return await this.clientRepository.save(existingClient);
+    }
+
+    async delete(id: number): Promise<DeleteResult> {
+        return await this.clientRepository.delete(id);
     }
 }
