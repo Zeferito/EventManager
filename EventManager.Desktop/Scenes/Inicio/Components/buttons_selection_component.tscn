@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bpvcms5hqwerq"]
+[gd_scene load_steps=8 format=3 uid="uid://bpvcms5hqwerq"]
 
 [ext_resource type="Script" path="res://Scenes/Inicio/Components/AgregarEvento.cs" id="1_wqdvy"]
 [ext_resource type="Script" path="res://Scenes/Inicio/Components/Scripts/AdministrarCliente.cs" id="2_b56ch"]
+[ext_resource type="Script" path="res://Scenes/Inicio/Components/Scripts/AdministrarEmpleado.cs" id="3_wfcnd"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gtb51"]
 bg_color = Color(0.788235, 0.854902, 0.972549, 1)
@@ -42,6 +43,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_1t1ix")
 text = "Administar Empleados"
+script = ExtResource("3_wfcnd")
 
 [node name="AdministrarTarifas" type="Button" parent="."]
 custom_minimum_size = Vector2(0, 35)

@@ -6,6 +6,7 @@ using System;
 using System.Text.Json;
 using Array = Godot.Collections.Array;
 
+namespace EventManager.Desktop.Scenes.AdministrarEmpleado.Components.Scripts;
 public partial class ButtonRegistrarEmpleado : Button
 {
 	[Export]
@@ -45,7 +46,7 @@ public partial class ButtonRegistrarEmpleado : Button
 
             string body = JsonSerializer.Serialize(employeeDto);
 
-            Error error = httpRequest.Request($"{apiConnection.Url}/clients", headers, HttpClient.Method.Post, body);
+            Error error = httpRequest.Request($"{apiConnection.Url}/employees", headers, HttpClient.Method.Post, body);
 
             if (error != Error.Ok)
             {

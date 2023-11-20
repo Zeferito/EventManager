@@ -2,6 +2,7 @@ using EventManager.Desktop.Api.Entities;
 using Godot;
 using System;
 
+
 public partial class EmpleadoItemContainer : HBoxContainer
 {
 	private Label _labelNombre;

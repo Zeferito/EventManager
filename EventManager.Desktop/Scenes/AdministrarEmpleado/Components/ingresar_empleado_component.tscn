@@ -35,13 +35,14 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ButtonRegistrarEmpleado" type="Button" parent="VBoxContainer/VBoxContainer2/HBoxContainer2"]
+[node name="ButtonRegistrarEmpleado" type="Button" parent="VBoxContainer/VBoxContainer2/HBoxContainer2" node_paths=PackedStringArray("_lineEditNombre")]
 custom_minimum_size = Vector2(75, 25)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_qrovi")
 text = "Registrar"
 script = ExtResource("1_t3syr")
+_lineEditNombre = NodePath("../LineEditNombre")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 custom_minimum_size = Vector2(250, 100)

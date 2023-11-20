@@ -4,9 +4,10 @@
 [ext_resource type="PackedScene" uid="uid://lwg52psq3owg" path="res://Scenes/AdministrarEmpleado/Components/eliminar_empleado_component.tscn" id="2_4p6qb"]
 
 [node name="RightPanelComponent" type="Control"]
-custom_minimum_size = Vector2(640, 720)
 layout_mode = 3
 anchors_preset = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1

@@ -41,7 +41,9 @@ layout_mode = 2
 [node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 
-[node name="ButtonActualizarEmpleado" type="Button" parent="VBoxContainer/HBoxContainer2"]
+[node name="ButtonActualizarEmpleado" type="Button" parent="VBoxContainer/HBoxContainer2" node_paths=PackedStringArray("_lineEditNombre", "_optionButtonBuscarEmpleado")]
 layout_mode = 2
 text = "Actualizar"
 script = ExtResource("2_m0dlr")
+_lineEditNombre = NodePath("../../VBoxContainer3/LineEditNombre")
+_optionButtonBuscarEmpleado = NodePath("../../HBoxContainer/OptionButtonBuscarEmpleado")

@@ -6,6 +6,7 @@ using System;
 using System.Text.Json;
 using Array = Godot.Collections.Array;
 
+namespace EventManager.Desktop.Scenes.AdministrarEmpleado.Components.Scripts;
 public partial class ButtonActualizarEmpleado : Button
 {
 	[Export]

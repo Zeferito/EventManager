@@ -4,6 +4,7 @@ using Godot;
 using Godot.Collections;
 using System;
 
+namespace EventManager.Desktop.Scenes.AdministrarEmpleado.Components.Scripts;
 public partial class BorrarEmpleadoComponent : HBoxContainer
 {
 	private AdministrarEmpleado _administrarCliente;

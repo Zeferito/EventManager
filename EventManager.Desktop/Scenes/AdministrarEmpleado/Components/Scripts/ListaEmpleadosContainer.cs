@@ -6,6 +6,7 @@ using System;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
+namespace EventManager.Desktop.Scenes.AdministrarEmpleado.Components.Scripts;
 public partial class ListaEmpleadosContainer : VBoxContainer
 {
 	// Called when the node enters the scene tree for the first time.
@@ -92,7 +93,7 @@ public partial class ListaEmpleadosContainer : VBoxContainer
         string[] headers = { $"Content-Type: {contentType}", $"Authorization: Bearer {authToken}" };
 
         Error error = httpRequest.Request(
-            $"{apiConnection.Url}/clients",
+            $"{apiConnection.Url}/employees",
             headers,
             HttpClient.Method.Get
         );

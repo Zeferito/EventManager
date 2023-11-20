@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://ciwnsp6ow2upb" path="res://Scenes/AdministrarEmpleado/Components/left_panel_component.tscn" id="2_ahxft"]
 [ext_resource type="PackedScene" uid="uid://cmjwbcb5rodv2" path="res://Scenes/AdministrarEmpleado/Components/right_panel_component.tscn" id="3_tllpv"]
 
-[node name="AdministrarEmpleado" type="Control"]
+[node name="AdministrarEmpleado" type="Control" node_paths=PackedStringArray("_listaConsultarEmpleadosContainer", "_optionButtonBuscarEmpleado", "_listaEmpleadosContainer")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -13,6 +13,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_1jtu6")
+_listaConsultarEmpleadosContainer = NodePath("HBoxContainer/LeftPanelComponent/VBoxContainer/HBoxContainer2/IngresarEmpleadoComponent/ScrollContainer/ListaConsultarEmpleadosContainer")
+_optionButtonBuscarEmpleado = NodePath("HBoxContainer/RightPanelComponent/VBoxContainer/HBoxContainer/ActualizarEmpleadoItemComponent/VBoxContainer/HBoxContainer/OptionButtonBuscarEmpleado")
+_listaEmpleadosContainer = NodePath("HBoxContainer/RightPanelComponent/VBoxContainer/HBoxContainer2/EliminarEmpleadoComponent/ScrollContainer/ListaEmpleadosContainer")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
@@ -52,5 +55,17 @@ script = ExtResource("1_6wqof")
 [node name="LeftPanelComponent" parent="HBoxContainer" instance=ExtResource("2_ahxft")]
 layout_mode = 2
 
+[node name="ButtonRegistrarEmpleado" parent="HBoxContainer/LeftPanelComponent/VBoxContainer/HBoxContainer2/IngresarEmpleadoComponent/VBoxContainer/VBoxContainer2/HBoxContainer2" index="1" node_paths=PackedStringArray("_administrarEmpleado")]
+_administrarEmpleado = NodePath("../../../../../../../../..")
+
 [node name="RightPanelComponent" parent="HBoxContainer" instance=ExtResource("3_tllpv")]
 layout_mode = 2
+
+[node name="ButtonActualizarEmpleado" parent="HBoxContainer/RightPanelComponent/VBoxContainer/HBoxContainer/ActualizarEmpleadoItemComponent/VBoxContainer/HBoxContainer2" index="0" node_paths=PackedStringArray("_administrarEmpleado")]
+_administrarEmpleado = NodePath("../../../../../../../..")
+
+[editable path="HBoxContainer/LeftPanelComponent"]
+[editable path="HBoxContainer/LeftPanelComponent/VBoxContainer/HBoxContainer2/IngresarEmpleadoComponent"]
+[editable path="HBoxContainer/RightPanelComponent"]
+[editable path="HBoxContainer/RightPanelComponent/VBoxContainer/HBoxContainer/ActualizarEmpleadoItemComponent"]
+[editable path="HBoxContainer/RightPanelComponent/VBoxContainer/HBoxContainer2/EliminarEmpleadoComponent"]

@@ -77,7 +77,7 @@ public partial class OptionButtonBuscarEmpleado : OptionButton
 		string[] headers = { $"Content-Type: {contentType}", $"Authorization: Bearer {authToken}" };
 
 		Error error = httpRequest.Request(
-			$"{apiConnection.Url}/clients",
+			$"{apiConnection.Url}/employees",
 			headers,
 			HttpClient.Method.Get
 		);
