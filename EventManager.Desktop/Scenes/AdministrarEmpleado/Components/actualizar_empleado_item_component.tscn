@@ -1,0 +1,47 @@
+[gd_scene load_steps=3 format=3 uid="uid://vmajr1e7bs7c"]
+
+[ext_resource type="Script" path="res://Scenes/AdministrarEmpleado/Components/Scripts/OptionButtonBuscarEmpleado.cs" id="1_06fsy"]
+[ext_resource type="Script" path="res://Scenes/AdministrarEmpleado/Components/Scripts/ButtonActualizarEmpleado.cs" id="2_m0dlr"]
+
+[node name="ActualizarEmpleadoItemComponent" type="VBoxContainer"]
+custom_minimum_size = Vector2(400, 100)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+text = "Seleccione al empleado para actualizar"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="OptionButtonBuscarEmpleado" type="OptionButton" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("1_06fsy")
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="LabelNuevoNombre" type="Label" parent="VBoxContainer/VBoxContainer3"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+text = "Nuevo nombre empleado"
+
+[node name="LineEditNombre" type="LineEdit" parent="VBoxContainer/VBoxContainer3"]
+layout_mode = 2
+
+[node name="HSeparator3" type="HSeparator" parent="VBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="ButtonActualizarEmpleado" type="Button" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Actualizar"
+script = ExtResource("2_m0dlr")
