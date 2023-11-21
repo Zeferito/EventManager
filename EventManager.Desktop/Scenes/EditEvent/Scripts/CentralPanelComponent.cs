@@ -88,9 +88,6 @@ public partial class CentralPanelComponent : Control
             {
                 GD.PushError("An error occurred in the HTTP request.");
             }
-
-            GetTree()
-				.ChangeSceneToFile("res://Scenes/AdministrarEvento/add_evento_scene.tscn");
         };
     }
 
@@ -151,14 +148,8 @@ public partial class CentralPanelComponent : Control
                 Event = evt;
 
                 break;
-            case 401:
-                GD.Print(responseDictionary);
-                break;
-            case 404:
-                GD.Print(responseDictionary);
-                break;
             default:
-                GD.Print(responseDictionary);
+                GD.PrintErr(responseDictionary);
                 break;
         }
     }
@@ -304,17 +295,8 @@ public partial class CentralPanelComponent : Control
                 GetTree().ChangeSceneToFile("res://Scenes/AdministrarEvento/add_evento_scene.tscn");
                 GD.Print(responseDictionary);
                 break;
-            case 401:
-                GD.Print(responseDictionary);
-                break;
-            case 404:
-                GD.Print(responseDictionary);
-                break;
-            case 409:
-                GD.Print(responseDictionary);
-                break;
             default:
-                GD.Print(responseDictionary);
+                GD.PrintErr(responseDictionary);
                 break;
         }
     }
