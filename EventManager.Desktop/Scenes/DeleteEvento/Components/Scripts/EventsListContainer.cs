@@ -95,11 +95,8 @@ public partial class EventsListContainer : VBoxContainer
                 }
 
                 break;
-            case 401:
-                GD.Print(responseDictionary);
-                break;
             default:
-                GD.Print(responseDictionary);
+                GD.PrintErr(responseDictionary);
                 break;
         }
     }

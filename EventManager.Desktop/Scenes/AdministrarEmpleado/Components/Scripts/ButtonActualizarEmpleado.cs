@@ -7,9 +7,10 @@ using System.Text.Json;
 using Array = Godot.Collections.Array;
 
 namespace EventManager.Desktop.Scenes.AdministrarEmpleado.Components.Scripts;
+
 public partial class ButtonActualizarEmpleado : Button
 {
-	[Export]
+    [Export]
     private LineEdit _lineEditNombre;
 
     [Export]
@@ -17,10 +18,11 @@ public partial class ButtonActualizarEmpleado : Button
 
     [Export]
     private AdministrarEmpleado _administrarEmpleado;
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
-	{
-		ApiConnection apiConnection = GetNode<ApiConnection>("/root/ApiConnection");
+
+    // Called when the node enters the scene tree for the first time.
+    public override void _Ready()
+    {
+        ApiConnection apiConnection = GetNode<ApiConnection>("/root/ApiConnection");
 
         Pressed += () =>
         {
@@ -44,10 +46,7 @@ public partial class ButtonActualizarEmpleado : Button
                 $"Authorization: Bearer {authToken}"
             };
 
-            EmployeeDto employeeDto = new EmployeeDto
-            {
-                Name = _lineEditNombre.Text,
-            };
+            EmployeeDto employeeDto = new EmployeeDto { Name = _lineEditNombre.Text, };
 
             string body = JsonSerializer.Serialize(employeeDto);
 
@@ -61,9 +60,9 @@ public partial class ButtonActualizarEmpleado : Button
                 GD.PushError("An error occurred in the HTTP request.");
             }
         };
-	}
+    }
 
-	private void HttpRequestCompleted(long result, long responseCode, string[] headers, byte[] body)
+    private void HttpRequestCompleted(long result, long responseCode, string[] headers, byte[] body)
     {
         Json json = new Json();
         json.Parse(body.GetStringFromUtf8());
@@ -119,19 +118,19 @@ public partial class ButtonActualizarEmpleado : Button
                     GD.PushError("An error occurred in the HTTP request.");
                 }
                 break;
-            case 401:
-                GD.Print(responseDictionary);
-                break;
-            case 404:
-                GD.Print(responseDictionary);
-                break;
             default:
-                GD.Print(responseDictionary);
+                GD.PrintErr(responseDictionary);
                 break;
         }
     }
 
-    private void HttpRequestCompletedData (long result, long responseCode, string[] headers, byte[] body){
+    private void HttpRequestCompletedData(
+        long result,
+        long responseCode,
+        string[] headers,
+        byte[] body
+    )
+    {
         Json json = new Json();
         json.Parse(body.GetStringFromUtf8());
 
@@ -144,14 +143,8 @@ public partial class ButtonActualizarEmpleado : Button
                 GD.Print(responseDictionary);
                 _administrarEmpleado.RefreshContainers();
                 break;
-            case 401:
-                GD.Print(responseDictionary);
-                break;
-            case 404:
-                GD.Print(responseDictionary);
-                break;
             default:
-                GD.Print(responseDictionary);
+                GD.PrintErr(responseDictionary);
                 break;
         }
     }

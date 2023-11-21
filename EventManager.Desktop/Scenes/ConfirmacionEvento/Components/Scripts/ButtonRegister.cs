@@ -66,17 +66,8 @@ public partial class ButtonRegister : Button
                 GD.Print(responseDictionary);
                 GetTree().ChangeSceneToFile("res://Scenes/Inicio/scena_pantalla_inicio.tscn");
                 break;
-            case 401:
-                GD.Print(responseDictionary);
-                break;
-            case 404:
-                GD.Print(responseDictionary);
-                break;
-            case 409:
-                GD.Print(responseDictionary);
-                break;
             default:
-                GD.Print(responseDictionary);
+                GD.PrintErr(responseDictionary);
                 break;
         }
     }

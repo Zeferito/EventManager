@@ -99,14 +99,8 @@ public partial class AgregarButton : Button
 
 				empleadoItemComponent.Employee = employee;
 				break;
-			case 401:
-				GD.Print(responseDictionary);
-				break;
-			case 404:
-				GD.Print(responseDictionary);
-				break;
 			default:
-				GD.Print(responseDictionary);
+				GD.PrintErr(responseDictionary);
 				break;
 		}
 	}

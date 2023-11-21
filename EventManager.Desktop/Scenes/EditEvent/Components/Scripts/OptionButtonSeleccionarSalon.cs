@@ -25,13 +25,13 @@ public partial class OptionButtonSeleccionarSalon : OptionButton
 
         string contentType = "application/json";
         string authToken = apiConnection.AuthDetails.AuthToken;
-        string[] headers =
-        {
-            $"Content-Type: {contentType}",
-            $"Authorization: Bearer {authToken}"
-        };
+        string[] headers = { $"Content-Type: {contentType}", $"Authorization: Bearer {authToken}" };
 
-        Error error = httpRequest.Request($"{apiConnection.Url}/rooms", headers, HttpClient.Method.Get);
+        Error error = httpRequest.Request(
+            $"{apiConnection.Url}/rooms",
+            headers,
+            HttpClient.Method.Get
+        );
 
         if (error != Error.Ok)
         {
@@ -60,10 +60,7 @@ public partial class OptionButtonSeleccionarSalon : OptionButton
 
                     JsonSerializerOptions options = new JsonSerializerOptions
                     {
-                        Converters =
-                        {
-                            new JsonStringEnumConverter(JsonNamingPolicy.CamelCase)
-                        },
+                        Converters = { new JsonStringEnumConverter(JsonNamingPolicy.CamelCase) },
                     };
 
                     Room room = JsonSerializer.Deserialize<Room>(dictionaryJson, options);
@@ -73,14 +70,8 @@ public partial class OptionButtonSeleccionarSalon : OptionButton
                 }
 
                 break;
-            case 401:
-                GD.Print(responseDictionary);
-                break;
-            case 404:
-                GD.Print(responseDictionary);
-                break;
             default:
-                GD.Print(responseDictionary);
+                GD.PrintErr(responseDictionary);
                 break;
         }
     }

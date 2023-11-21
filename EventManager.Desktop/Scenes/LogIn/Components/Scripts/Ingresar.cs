@@ -67,11 +67,8 @@ public partial class Ingresar : Button
 				GetTree()
 				.ChangeSceneToFile("res://Scenes/Inicio/scena_pantalla_inicio.tscn");
 				break;
-			case 401:
-				GD.Print(responseDictionary);
-				break;
 			default:
-				GD.Print(responseDictionary);
+				GD.PrintErr(responseDictionary);
 				break;
 		}
 	}

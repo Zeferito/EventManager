@@ -63,11 +63,8 @@ public partial class RemoveEventButton : Button
                 _parentListContainer.RemoveChild(_parentContainer);
                 _parentContainer.QueueFree();
                 break;
-            case 401:
-                GD.Print(responseDictionary);
-                break;
             default:
-                GD.Print(responseDictionary);
+                GD.PrintErr(responseDictionary);
                 break;
         }
     }

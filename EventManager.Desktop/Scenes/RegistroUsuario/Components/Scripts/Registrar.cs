@@ -61,11 +61,8 @@ public partial class Registrar : Button
 			case 200:
 				GD.Print(responseDictionary);
 				break;
-			case 401:
-				GD.Print(responseDictionary);
-				break;
 			default:
-				GD.Print(responseDictionary);
+				GD.PrintErr(responseDictionary);
 				break;
 		}
 	}

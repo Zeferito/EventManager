@@ -45,14 +45,8 @@ public partial class OptionButtonBuscarEmpleado : OptionButton
 				}
 
 				break;
-			case 401:
-				GD.Print(responseDictionary);
-				break;
-			case 404:
-				GD.Print(responseDictionary);
-				break;
 			default:
-				GD.Print(responseDictionary);
+				GD.PrintErr(responseDictionary);
 				break;
 		}
 	}

@@ -69,14 +69,8 @@ public partial class ButtonRegistrarEmpleado : Button
                 GD.Print(responseArray);
                 _administrarEmpleado.RefreshContainers();
                 break;
-            case 401:
-                GD.Print(responseDictionary);
-                break;
-            case 404:
-                GD.Print(responseDictionary);
-                break;
             default:
-                GD.Print(responseDictionary);
+                GD.PrintErr(responseDictionary);
                 break;
         }
     }

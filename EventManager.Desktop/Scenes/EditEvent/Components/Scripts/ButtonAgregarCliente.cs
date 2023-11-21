@@ -96,14 +96,8 @@ public partial class ButtonAgregarCliente : Button
 
                 clienteItemContainer.Client = client;
                 break;
-            case 401:
-                GD.Print(responseDictionary);
-                break;
-            case 404:
-                GD.Print(responseDictionary);
-                break;
             default:
-                GD.Print(responseDictionary);
+                GD.PrintErr(responseDictionary);
                 break;
         }
     }
