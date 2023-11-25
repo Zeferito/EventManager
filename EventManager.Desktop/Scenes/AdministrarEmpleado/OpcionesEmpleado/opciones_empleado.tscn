@@ -1,9 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://cmdna06vveapn"]
+[gd_scene load_steps=3 format=3 uid="uid://dbofae5gx3icq"]
 
-[ext_resource type="Script" path="res://Scenes/OpcionesCliente/Components/scripts/ButtonReturn.cs" id="1_qb0bn"]
-[ext_resource type="PackedScene" uid="uid://b0jr3fifaemjd" path="res://Scenes/OpcionesCliente/bottons.tscn" id="2_qgphe"]
+[ext_resource type="Script" path="res://Scenes/AdministrarCliente/OpcionesCliente/Components/Scripts/ButtonReturn.cs" id="1_wc06f"]
+[ext_resource type="PackedScene" uid="uid://dy7wgfft7tbc2" path="res://Scenes/AdministrarEmpleado/OpcionesEmpleado/bottons.tscn" id="2_xtywe"]
 
-[node name="OpcionesCliente" type="Control"]
+[node name="OpcionesEmpleado" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -45,7 +45,7 @@ theme_override_constants/separation = 20
 [node name="ButtonReturn" type="Button" parent="HBoxContainer/Control/VBoxContainer"]
 layout_mode = 2
 text = "Regresar"
-script = ExtResource("1_qb0bn")
+script = ExtResource("1_wc06f")
 
-[node name="Bottons" parent="HBoxContainer" instance=ExtResource("2_qgphe")]
+[node name="Bottons" parent="HBoxContainer" instance=ExtResource("2_xtywe")]
 layout_mode = 2

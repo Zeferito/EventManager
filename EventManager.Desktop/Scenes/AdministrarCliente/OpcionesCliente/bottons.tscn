@@ -1,0 +1,51 @@
+[gd_scene load_steps=4 format=3 uid="uid://b0jr3fifaemjd"]
+
+[ext_resource type="Script" path="res://Scenes/AdministrarCliente/OpcionesCliente/Components/Scripts/ButtonRegistrar.cs" id="1_jnbyo"]
+[ext_resource type="Script" path="res://Scenes/AdministrarCliente/OpcionesCliente/Components/Scripts/ButtonActualizar.cs" id="2_q4l38"]
+[ext_resource type="Script" path="res://Scenes/AdministrarCliente/OpcionesCliente/Components/Scripts/ButtonEliminar.cs" id="4_4ymk8"]
+
+[node name="Bottons" type="Control"]
+custom_minimum_size = Vector2(640, 720)
+layout_mode = 3
+anchors_preset = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0.94902, 0.8, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -43.0
+offset_top = -50.5
+offset_right = 43.0
+offset_bottom = 50.5
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="ButtonRegistrar" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Registrar"
+script = ExtResource("1_jnbyo")
+
+[node name="ButtonActualizar" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Actualizar"
+script = ExtResource("2_q4l38")
+
+[node name="ButtonEliminar" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Eliminar"
+script = ExtResource("4_4ymk8")

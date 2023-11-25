@@ -9,7 +9,7 @@ public partial class AdministrarEmpleado : Button
 	{
 		 Pressed += () =>
         {
-            GetTree().ChangeSceneToFile("res://Scenes/AdministrarEmpleado/administrar_empleado_scene.tscn");
+                        GetTree().ChangeSceneToFile("res://Scenes/AdministrarEmpleado/OpcionesEmpleado/scena_opciones_empleado.tscn");
         };
 	}
 }

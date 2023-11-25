@@ -10,7 +10,7 @@ public partial class AdministrarCliente : Button
     {
         Pressed += () =>
         {
-            GetTree().ChangeSceneToFile("res://Scenes/AdministrarCliente/administrar_cliente.tscn");
+            GetTree().ChangeSceneToFile("res://Scenes/AdministrarCliente/OpcionesCliente/scena_opciones_cliente.tscn");
         };
     }
 }

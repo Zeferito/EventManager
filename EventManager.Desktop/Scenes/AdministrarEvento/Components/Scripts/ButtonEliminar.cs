@@ -1,6 +1,8 @@
 using Godot;
 using System;
 
+namespace EventManager.Desktop.Scenes.AdministrarEvento.Components.Scripts;
+
 public partial class ButtonEliminar : Button
 {
 	// Called when the node enters the scene tree for the first time.

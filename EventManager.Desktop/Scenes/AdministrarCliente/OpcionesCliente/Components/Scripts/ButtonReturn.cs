@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-namespace EventManager.Desktop.Scenes.AdministrarCliente.Components.Scripts;
+namespace EventManager.Desktop.Scenes.AdministrarCliente.OpcionesCliente.Components.Scripts;
 public partial class ButtonReturn : Button
 {
 	// Called when the node enters the scene tree for the first time.
