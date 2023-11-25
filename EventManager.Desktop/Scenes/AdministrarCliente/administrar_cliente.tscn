@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cil8k56pjo7i6"]
 
-[ext_resource type="Script" path="res://Scenes/AdministrarCliente/Components/Scripts/ButtonReturn.cs" id="1_leik3"]
+[ext_resource type="Script" path="res://Scenes/OpcionesCliente/Components/scripts/ButtonReturn.cs" id="1_leik3"]
 [ext_resource type="PackedScene" uid="uid://bgvca0qh7kpiu" path="res://Scenes/AdministrarCliente/Components/left_panel_component.tscn" id="1_wp38t"]
 [ext_resource type="Script" path="res://Scenes/AdministrarCliente/Components/Scripts/AdministrarCliente.cs" id="1_yj4o8"]
 [ext_resource type="PackedScene" uid="uid://m4iun53mgigc" path="res://Scenes/AdministrarCliente/Components/right_panel_component.tscn" id="2_gy025"]

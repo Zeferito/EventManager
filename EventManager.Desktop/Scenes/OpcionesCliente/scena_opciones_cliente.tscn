@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://ckain4jeclaak"]
+
+[ext_resource type="PackedScene" uid="uid://cmdna06vveapn" path="res://Scenes/OpcionesCliente/opciones_cliente.tscn" id="1_g4xxw"]
+
+[node name="ScenaOpcionesCliente" type="Node"]
+
+[node name="OpcionesCliente" parent="." instance=ExtResource("1_g4xxw")]

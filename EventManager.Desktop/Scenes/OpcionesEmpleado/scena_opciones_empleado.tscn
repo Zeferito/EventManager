@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://ladnx6h4mxmr"]
+
+[ext_resource type="PackedScene" uid="uid://dbofae5gx3icq" path="res://Scenes/OpcionesEmpleado/opciones_empleado.tscn" id="1_4cxd6"]
+
+[node name="ScenaOpcionesEmpleado" type="Node"]
+
+[node name="OpcionesEmpleado" parent="." instance=ExtResource("1_4cxd6")]
