@@ -1,6 +1,5 @@
 using Godot;
 using System;
-
 namespace EventManager.Desktop.Scenes.AdministrarEmpleado.OpcionesEmpleado.Components.Scripts;
 
 public partial class ButtonEliminar : Button
@@ -10,7 +9,7 @@ public partial class ButtonEliminar : Button
 	{
 		Pressed += () =>
 		{
-			GetTree().ChangeSceneToFile("res://Scenes/Inicio/scena_pantalla_inicio.tscn");
+			GetTree().ChangeSceneToFile("res://Scenes/AdministrarEmpleado/EliminarEmpleado/eliminar_empleado.tscn");
 		};
 	}
 }

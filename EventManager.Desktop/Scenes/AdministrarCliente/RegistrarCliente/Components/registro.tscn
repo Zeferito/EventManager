@@ -1,0 +1,64 @@
+[gd_scene load_steps=2 format=3 uid="uid://bh7ci4g2qaweg"]
+
+[ext_resource type="PackedScene" uid="uid://cxxf6inua14uq" path="res://Scenes/AdministrarCliente/RegistrarCliente/Components/ingresar_cliente_component.tscn" id="1_ma3bp"]
+
+[node name="Bottons" type="Control"]
+custom_minimum_size = Vector2(640, 720)
+layout_mode = 3
+anchors_preset = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0.94902, 0.8, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="VSeparator" type="VSeparator" parent="VBoxContainer/HBoxContainer4"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(35, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer4"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+text = "Registra el cliente"
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VSeparator" type="VSeparator" parent="VBoxContainer/HBoxContainer2"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(35, 0)
+layout_mode = 2
+
+[node name="IngresarClienteComponent" parent="VBoxContainer/HBoxContainer2" instance=ExtResource("1_ma3bp")]
+layout_mode = 2
+
+[node name="ButtonRegistrarCliente" parent="VBoxContainer/HBoxContainer2/IngresarClienteComponent/VBoxContainer/VBoxContainer2/HBoxContainer2" index="2" node_paths=PackedStringArray("_lineEditNombre", "_lineEditTelefono", "_listaConsultarClientesContainer")]
+_lineEditNombre = NodePath("../LineEditNombre")
+_lineEditTelefono = NodePath("../LineEditTelefono")
+_listaConsultarClientesContainer = NodePath("../../../../ScrollContainer/ListaConsultarClientesContainer")
+
+[editable path="VBoxContainer/HBoxContainer2/IngresarClienteComponent"]

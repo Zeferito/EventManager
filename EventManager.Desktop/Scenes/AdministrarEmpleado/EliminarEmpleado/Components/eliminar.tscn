@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://cohwuxgcr5yx1"]
+
+[ext_resource type="PackedScene" uid="uid://bocexsbs66uf7" path="res://Scenes/AdministrarEmpleado/EliminarEmpleado/Components/eliminar_empleado_component.tscn" id="1_xrqy6"]
+
+[node name="Eliminar" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0.94902, 0.8, 1)
+
+[node name="EliminarEmpleadoComponent" parent="." instance=ExtResource("1_xrqy6")]
+layout_mode = 0

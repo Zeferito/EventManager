@@ -1,0 +1,93 @@
+[gd_scene load_steps=4 format=3 uid="uid://bb4g2ai4cf0hk"]
+
+[ext_resource type="Script" path="res://Scenes/AdministrarCliente/ActualizarCliente/Components/Scripts/OptionButtonBuscarCliente.cs" id="1_dwyox"]
+[ext_resource type="Script" path="res://Scenes/AdministrarCliente/ActualizarCliente/Components/Scripts/ButtonActualizarCliente.cs" id="2_r7auv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q2jam"]
+
+[node name="Actualizar" type="Control"]
+custom_minimum_size = Vector2(640, 720)
+layout_mode = 3
+anchors_preset = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0.94902, 0.8, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VSeparator" type="VSeparator" parent="HBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(35, 0)
+layout_mode = 2
+
+[node name="ActualizarClienteItemComponent" type="VBoxContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(400, 100)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/ActualizarClienteItemComponent"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="HBoxContainer/ActualizarClienteItemComponent/VBoxContainer"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+text = "Seleccione al cliente para actualizar"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/ActualizarClienteItemComponent/VBoxContainer"]
+layout_mode = 2
+
+[node name="OptionButtonBuscarCliente" type="OptionButton" parent="HBoxContainer/ActualizarClienteItemComponent/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("1_dwyox")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/ActualizarClienteItemComponent/VBoxContainer"]
+layout_mode = 2
+
+[node name="LabelNuevoNombre" type="Label" parent="HBoxContainer/ActualizarClienteItemComponent/VBoxContainer/VBoxContainer"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+text = "Nuevo nombre cliente"
+
+[node name="LineEditNombre" type="LineEdit" parent="HBoxContainer/ActualizarClienteItemComponent/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer/ActualizarClienteItemComponent/VBoxContainer"]
+layout_mode = 2
+
+[node name="LabelNuevoTelefono" type="Label" parent="HBoxContainer/ActualizarClienteItemComponent/VBoxContainer/VBoxContainer2"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+text = "Nuevo numero cliente"
+
+[node name="LineEditTelefono" type="LineEdit" parent="HBoxContainer/ActualizarClienteItemComponent/VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainer/ActualizarClienteItemComponent/VBoxContainer"]
+layout_mode = 2
+
+[node name="ButtonActualizarCliente" type="Button" parent="HBoxContainer/ActualizarClienteItemComponent/VBoxContainer/HBoxContainer2" node_paths=PackedStringArray("_lineEditNombre", "_lineEditTelefono", "_optionButtonBuscarCliente")]
+custom_minimum_size = Vector2(100, 25)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_q2jam")
+text = "Actualizar
+"
+script = ExtResource("2_r7auv")
+_lineEditNombre = NodePath("../../VBoxContainer/LineEditNombre")
+_lineEditTelefono = NodePath("../../VBoxContainer2/LineEditTelefono")
+_optionButtonBuscarCliente = NodePath("../../HBoxContainer/OptionButtonBuscarCliente")

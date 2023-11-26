@@ -1,0 +1,59 @@
+[gd_scene load_steps=3 format=3 uid="uid://dhmdarfhvbsjy"]
+
+[ext_resource type="Script" path="res://Scenes/AdministrarEmpleado/ActualizarEmpleado/Components/Scripts/ButtonReturn.cs" id="1_ucdtp"]
+[ext_resource type="PackedScene" uid="uid://cxowlmsu5dfdu" path="res://Scenes/AdministrarEmpleado/ActualizarEmpleado/Components/actualizar.tscn" id="2_qn1df"]
+
+[node name="ActualizarEmpleado" type="Node"]
+
+[node name="ActualizarEmpleado" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ActualizarEmpleado"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="Control" type="Control" parent="ActualizarEmpleado/HBoxContainer"]
+custom_minimum_size = Vector2(135, 0)
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="ActualizarEmpleado/HBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.788235, 0.854902, 0.972549, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ActualizarEmpleado/HBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ButtonReturn" type="Button" parent="ActualizarEmpleado/HBoxContainer/Control/VBoxContainer"]
+layout_mode = 2
+text = "Regresar"
+script = ExtResource("1_ucdtp")
+
+[node name="Actualizar" parent="ActualizarEmpleado/HBoxContainer" instance=ExtResource("2_qn1df")]
+layout_mode = 2
+
+[node name="ButtonActualizarEmpleado" parent="ActualizarEmpleado/HBoxContainer/Actualizar/ActualizarEmpleadoItemComponent/VBoxContainer/HBoxContainer2" index="0" node_paths=PackedStringArray("_lineEditNombre", "_optionButtonBuscarEmpleado")]
+_lineEditNombre = NodePath("../../VBoxContainer3/LineEditNombre")
+_optionButtonBuscarEmpleado = NodePath("../../HBoxContainer/OptionButtonBuscarEmpleado")
+
+[editable path="ActualizarEmpleado/HBoxContainer/Actualizar"]
+[editable path="ActualizarEmpleado/HBoxContainer/Actualizar/ActualizarEmpleadoItemComponent"]

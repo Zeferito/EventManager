@@ -1,7 +1,6 @@
-[gd_scene load_steps=11 format=3 uid="uid://sk3ilteppaoj"]
+[gd_scene load_steps=10 format=3 uid="uid://sk3ilteppaoj"]
 
 [ext_resource type="PackedScene" uid="uid://cvukrhoewyp50" path="res://Scenes/CreateEventoSalon/Components/ingresar_cliente_component.tscn" id="1_5e4lm"]
-[ext_resource type="Script" path="res://Scenes/CreateEventoSalon/Components/Scripts/ButtonReturn.cs" id="2_4x0q3"]
 [ext_resource type="PackedScene" uid="uid://dmmy1vu622pvh" path="res://Scenes/CreateEventoSalon/Components/seleccion_materiales_component.tscn" id="2_f3tqq"]
 [ext_resource type="PackedScene" uid="uid://dti5nutah5l31" path="res://Scenes/CreateEventoSalon/Components/seleccion_salas_component.tscn" id="3_0knti"]
 [ext_resource type="PackedScene" uid="uid://c8hi6nae1o0xn" path="res://Scenes/CreateEventoSalon/Components/asignar_periodo_component.tscn" id="4_2xr1r"]
@@ -56,11 +55,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 20
-
-[node name="ButtonReturn" type="Button" parent="HBoxContainer/Control/VBoxContainer"]
-layout_mode = 2
-text = "Regresar"
-script = ExtResource("2_4x0q3")
 
 [node name="BottomButtonsComponents" parent="HBoxContainer/Control/VBoxContainer" instance=ExtResource("8_dy8vn")]
 layout_mode = 2

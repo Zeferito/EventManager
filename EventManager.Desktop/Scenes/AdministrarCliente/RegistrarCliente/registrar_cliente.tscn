@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://c3av4y7r0eqsc"]
+
+[ext_resource type="PackedScene" uid="uid://cdqqm42nb00nj" path="res://Scenes/AdministrarCliente/RegistrarCliente/Components/registrar_cliente.tscn" id="1_kaptq"]
+
+[node name="RegistrarCliente" type="Node"]
+
+[node name="RegistrarCliente" parent="." instance=ExtResource("1_kaptq")]

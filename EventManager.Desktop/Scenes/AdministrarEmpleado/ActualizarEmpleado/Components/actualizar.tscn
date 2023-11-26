@@ -1,0 +1,32 @@
+[gd_scene load_steps=2 format=3 uid="uid://cxowlmsu5dfdu"]
+
+[ext_resource type="PackedScene" uid="uid://d2apqvn4fkvrq" path="res://Scenes/AdministrarEmpleado/ActualizarEmpleado/Components/actualizar_empleado_item_component.tscn" id="1_xiydc"]
+
+[node name="Actualizar" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0.94902, 0.8, 1)
+
+[node name="ActualizarEmpleadoItemComponent" parent="." instance=ExtResource("1_xiydc")]
+layout_mode = 0
+anchors_preset = 0
+anchor_bottom = 0.0
+grow_vertical = 1
+
+[node name="_PopupMenu_1060393" type="PopupMenu" parent="ActualizarEmpleadoItemComponent/VBoxContainer/HBoxContainer/OptionButtonBuscarEmpleado" index="1"]
+
+[node name="ButtonActualizarEmpleado" parent="ActualizarEmpleadoItemComponent/VBoxContainer/HBoxContainer2" index="0" node_paths=PackedStringArray("_lineEditNombre", "_optionButtonBuscarEmpleado")]
+_lineEditNombre = NodePath("")
+_optionButtonBuscarEmpleado = NodePath("")
+
+[editable path="ActualizarEmpleadoItemComponent"]

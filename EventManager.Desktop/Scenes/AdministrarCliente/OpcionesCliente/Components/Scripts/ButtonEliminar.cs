@@ -8,7 +8,7 @@ public partial class ButtonEliminar : Button
 	{
 		Pressed += () =>
 		{
-			GetTree().ChangeSceneToFile("res://Scenes/Inicio/scena_pantalla_inicio.tscn");
+			GetTree().ChangeSceneToFile("res://Scenes/AdministrarCliente/EliminarCliente/eliminar_cliente.tscn");
 		};
 	}
 }

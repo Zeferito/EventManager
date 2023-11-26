@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://bocexsbs66uf7"]
+
+[ext_resource type="Script" path="res://Scenes/AdministrarEmpleado/EliminarEmpleado/Components/Scripts/ListaEmpleadosContainer.cs" id="1_k2qbu"]
+[ext_resource type="PackedScene" uid="uid://c56ba6hqrmsow" path="res://Scenes/AdministrarEmpleado/EliminarEmpleado/Components/BorrarEmpleadoComponent.tscn" id="2_qojv4"]
+
+[node name="EliminarEmpleadoComponent" type="VBoxContainer"]
+custom_minimum_size = Vector2(400, 100)
+
+[node name="Label" type="Label" parent="."]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+text = "Eliminar Ciente"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+custom_minimum_size = Vector2(250, 100)
+layout_mode = 2
+
+[node name="ListaEmpleadosContainer" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+script = ExtResource("1_k2qbu")
+
+[node name="BorrarEmpleadoComponent" parent="ScrollContainer/ListaEmpleadosContainer" instance=ExtResource("2_qojv4")]
+layout_mode = 2
+size_flags_vertical = 3

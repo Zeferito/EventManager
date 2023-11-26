@@ -10,7 +10,7 @@ namespace EventManager.Desktop.Scenes.AdministrarCliente.OpcionesCliente.Compone
         {
             Pressed += () =>
             {
-                GetTree().ChangeSceneToFile("res://Scenes/Inicio/scena_pantalla_inicio.tscn");
+                GetTree().ChangeSceneToFile("res://Scenes/AdministrarCliente/RegistrarCliente/registrar_cliente.tscn");
             };
         }
     }

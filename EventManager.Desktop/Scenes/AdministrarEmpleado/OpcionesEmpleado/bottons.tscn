@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://dy7wgfft7tbc2"]
 
-[ext_resource type="Script" path="res://Scenes/AdministrarCliente/OpcionesCliente/Components/Scripts/ButtonRegistrar.cs" id="1_e7eaj"]
-[ext_resource type="Script" path="res://Scenes/AdministrarCliente/OpcionesCliente/Components/Scripts/ButtonActualizar.cs" id="2_dil1n"]
-[ext_resource type="Script" path="res://Scenes/AdministrarCliente/OpcionesCliente/Components/Scripts/ButtonEliminar.cs" id="4_ljl73"]
+[ext_resource type="Script" path="res://Scenes/AdministrarEmpleado/OpcionesEmpleado/Components/Scripts/ButtonRegistrar.cs" id="1_leh8k"]
+[ext_resource type="Script" path="res://Scenes/AdministrarEmpleado/OpcionesEmpleado/Components/Scripts/ButtonActualizar.cs" id="2_ettx2"]
+[ext_resource type="Script" path="res://Scenes/AdministrarEmpleado/OpcionesEmpleado/Components/Scripts/ButtonEliminar.cs" id="3_yaip6"]
 
 [node name="Bottons" type="Control"]
 custom_minimum_size = Vector2(640, 720)
@@ -37,14 +37,14 @@ grow_vertical = 2
 [node name="ButtonRegistrar" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "Registrar"
-script = ExtResource("1_e7eaj")
+script = ExtResource("1_leh8k")
 
 [node name="ButtonActualizar" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "Actualizar"
-script = ExtResource("2_dil1n")
+script = ExtResource("2_ettx2")
 
 [node name="ButtonEliminar" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "Eliminar"
-script = ExtResource("4_ljl73")
+script = ExtResource("3_yaip6")

@@ -1,0 +1,55 @@
+[gd_scene load_steps=3 format=3 uid="uid://bjdg43fq1d5kx"]
+
+[ext_resource type="Script" path="res://Scenes/AdministrarEmpleado/RegistrarEmpleado/Components/Scripts/ButtonReturn.cs" id="1_4h23r"]
+[ext_resource type="PackedScene" uid="uid://bt5uf3i38e3v2" path="res://Scenes/AdministrarEmpleado/RegistrarEmpleado/Components/registro.tscn" id="2_2yw6b"]
+
+[node name="RegistrarEmpleado" type="Node"]
+
+[node name="RegistrarEmpleado" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="RegistrarEmpleado"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="Control" type="Control" parent="RegistrarEmpleado/HBoxContainer"]
+custom_minimum_size = Vector2(135, 0)
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="RegistrarEmpleado/HBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.788235, 0.854902, 0.972549, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="RegistrarEmpleado/HBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ButtonReturn" type="Button" parent="RegistrarEmpleado/HBoxContainer/Control/VBoxContainer"]
+layout_mode = 2
+text = "Regresar"
+script = ExtResource("1_4h23r")
+
+[node name="Registro" parent="RegistrarEmpleado/HBoxContainer" instance=ExtResource("2_2yw6b")]
+layout_mode = 2
+
+[editable path="RegistrarEmpleado/HBoxContainer/Registro"]
+[editable path="RegistrarEmpleado/HBoxContainer/Registro/VBoxContainer/HBoxContainer2/IngresarEmpleadoComponent"]
