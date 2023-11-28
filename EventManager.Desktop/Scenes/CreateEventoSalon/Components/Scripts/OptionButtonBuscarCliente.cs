@@ -80,7 +80,7 @@ public partial class OptionButtonBuscarCliente : OptionButton
 				break;
 		}
 	}
-	public void Clear()
+	public new void Clear()
     {
         foreach (Node node in GetChildren())
         {
