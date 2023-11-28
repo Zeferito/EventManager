@@ -80,4 +80,42 @@ public partial class OptionButtonBuscarCliente : OptionButton
 				break;
 		}
 	}
+	public void Clear()
+    {
+        foreach (Node node in GetChildren())
+        {
+            RemoveChild(node);
+            node.QueueFree();
+        }
+    }
+    public void Refresh()
+    {
+        Clear();
+        ApiConnection apiConnection = GetNode<ApiConnection>("/root/ApiConnection");
+
+        HttpRequest httpRequest = new HttpRequest();
+        httpRequest.UseThreads = true;
+        AddChild(httpRequest);
+        httpRequest.RequestCompleted += HttpRequestCompleted;
+        httpRequest.RequestCompleted += (result, code, strings, body) =>
+        {
+            RemoveChild(httpRequest);
+            httpRequest.QueueFree();
+        };
+
+        string contentType = "application/json";
+        string authToken = apiConnection.AuthDetails.AuthToken;
+        string[] headers = { $"Content-Type: {contentType}", $"Authorization: Bearer {authToken}" };
+
+        Error error = httpRequest.Request(
+            $"{apiConnection.Url}/clients",
+            headers,
+            HttpClient.Method.Get
+        );
+
+        if (error != Error.Ok)
+        {
+            GD.PushError("An error occurred in the HTTP request.");
+        }
+    }
 }

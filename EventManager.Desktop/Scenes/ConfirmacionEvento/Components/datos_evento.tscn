@@ -1,0 +1,140 @@
+[gd_scene load_steps=4 format=3 uid="uid://mmqg8hbeq1d0"]
+
+[ext_resource type="PackedScene" uid="uid://cxkk47xdgaf38" path="res://Scenes/ConfirmacionEvento/Components/sala_item_component.tscn" id="1_58suu"]
+[ext_resource type="PackedScene" uid="uid://fgsdgul3icoo" path="res://Scenes/ConfirmacionEvento/Components/material_item_component.tscn" id="2_obygf"]
+[ext_resource type="PackedScene" uid="uid://bob77ck87t0lw" path="res://Scenes/ConfirmacionEvento/Components/empleados_item_component.tscn" id="3_q7itc"]
+
+[node name="DatosEvento" type="HBoxContainer"]
+theme_override_constants/separation = 200
+
+[node name="LeftData" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="LeftData"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="LeftData/HBoxContainer"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+text = "Cliente : "
+
+[node name="LabelNombreCliente" type="Label" parent="LeftData/HBoxContainer"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+text = "nombrecliente"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="LeftData"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="LeftData/HBoxContainer2"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+text = "Nombre Evento : "
+
+[node name="LabelNombreEvento" type="Label" parent="LeftData/HBoxContainer2"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+text = "nombreevento"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="LeftData"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="LeftData/HBoxContainer3"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+text = "Descripción Evento : "
+
+[node name="LabelDescripcionEvento" type="Label" parent="LeftData/HBoxContainer3"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+text = "descripcionevento"
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="LeftData"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="LeftData/HBoxContainer4"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+text = "Sala : "
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LeftData/HBoxContainer4"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="LeftData/HBoxContainer4/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="SalaItemComponent" parent="LeftData/HBoxContainer4/VBoxContainer/ScrollContainer" instance=ExtResource("1_58suu")]
+layout_mode = 2
+
+[node name="RigthData" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="RigthData"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="RigthData/HBoxContainer"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+text = "Agregable : "
+
+[node name="VBoxContainer" type="VBoxContainer" parent="RigthData/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="RigthData/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MaterialItemComponent" parent="RigthData/HBoxContainer/VBoxContainer/ScrollContainer" instance=ExtResource("2_obygf")]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="RigthData"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="RigthData/HBoxContainer2"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+text = "Fecha Inicio : "
+
+[node name="LabelFechaInicio" type="Label" parent="RigthData/HBoxContainer2"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+text = "fechainicio"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="RigthData"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="RigthData/HBoxContainer3"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+text = "Fecha Termino : "
+
+[node name="LabelFechaTermino" type="Label" parent="RigthData/HBoxContainer3"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+text = "fechatermino"
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="RigthData"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="RigthData/HBoxContainer4"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+text = "Empleados : "
+
+[node name="VBoxContainer" type="VBoxContainer" parent="RigthData/HBoxContainer4"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="RigthData/HBoxContainer4/VBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="EmpleadosItemComponent" parent="RigthData/HBoxContainer4/VBoxContainer/ScrollContainer" instance=ExtResource("3_q7itc")]
+layout_mode = 2

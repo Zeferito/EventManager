@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://cxkk47xdgaf38"]
+[gd_scene load_steps=3 format=3 uid="uid://cxkk47xdgaf38"]
 
 [ext_resource type="Script" path="res://Scenes/ConfirmacionEvento/Components/Scripts/SalaItemComponent.cs" id="1_u4uim"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ykgh6"]
+line_spacing = 12.0
+font_color = Color(0, 0, 0, 1)
 
 [node name="SalaItemComponent" type="HBoxContainer"]
 script = ExtResource("1_u4uim")
@@ -9,3 +13,4 @@ script = ExtResource("1_u4uim")
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Sala"
+label_settings = SubResource("LabelSettings_ykgh6")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://yjqd5iak0t1u"]
+[gd_scene load_steps=20 format=3 uid="uid://yjqd5iak0t1u"]
 
 [ext_resource type="PackedScene" uid="uid://fgsdgul3icoo" path="res://Scenes/ConfirmacionEvento/Components/material_item_component.tscn" id="1_yjnsn"]
 [ext_resource type="PackedScene" uid="uid://bp0tio07wte3b" path="res://Scenes/ConfirmacionEvento/Components/evento_descripcion_component.tscn" id="2_45hes"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bfm44n2tmqyxv" path="res://Scenes/ConfirmacionEvento/Components/cliente_item_component.tscn" id="3_e6s3x"]
 [ext_resource type="PackedScene" uid="uid://bob77ck87t0lw" path="res://Scenes/ConfirmacionEvento/Components/empleados_item_component.tscn" id="4_bfs2l"]
 [ext_resource type="PackedScene" uid="uid://cxkk47xdgaf38" path="res://Scenes/ConfirmacionEvento/Components/sala_item_component.tscn" id="4_chsho"]
+[ext_resource type="PackedScene" uid="uid://mmqg8hbeq1d0" path="res://Scenes/ConfirmacionEvento/Components/datos_evento.tscn" id="8_g1vma"]
 [ext_resource type="Script" path="res://Scenes/ConfirmacionEvento/Components/Scripts/ButtonCancel.cs" id="10_xg6fg"]
 [ext_resource type="Script" path="res://Scenes/ConfirmacionEvento/Components/Scripts/ButtonRegister.cs" id="11_hqqxb"]
 
@@ -260,6 +261,22 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="VSeparator2" type="VSeparator" parent="VBoxContainer/HBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="VSeparator" type="VSeparator" parent="VBoxContainer/HBoxContainer5"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="DatosEvento" parent="VBoxContainer/HBoxContainer5" instance=ExtResource("8_g1vma")]
+layout_mode = 2
+
+[node name="VSeparator2" type="VSeparator" parent="VBoxContainer/HBoxContainer5"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 size_flags_horizontal = 3

@@ -15,7 +15,8 @@ public partial class ButtonRegistrarCliente : Button
 
     [Export]
     private LineEdit _lineEditTelefono;
-
+    [Export]
+    private OptionButtonBuscarCliente _optionButtonBuscarCliente;
     [Export]
     private VBoxContainer _listaClientesContainer;
 
@@ -71,39 +72,36 @@ public partial class ButtonRegistrarCliente : Button
 
         switch (responseCode)
         {
-            case 200:
-                GD.Print(responseArray);
+            case 201:
+                GD.Print(responseDictionary);
 
-                for (int i = 0; i < responseArray.Count; i++)
+                string dictionaryJson = Json.Stringify(responseDictionary);
+
+                JsonSerializerOptions options = new JsonSerializerOptions
                 {
-                    Dictionary dictionaryItem = responseArray[i].AsGodotDictionary();
-
-                    string dictionaryJson = Json.Stringify(dictionaryItem);
-
-                    JsonSerializerOptions options = new JsonSerializerOptions
-                    {
-                        Converters =
+                    Converters =
                         {
                             new JsonStringEnumConverter(JsonNamingPolicy.CamelCase)
                         },
-                    };
+                };
 
-                    Client client = JsonSerializer.Deserialize<Client>(dictionaryJson, options);
+                Client client = JsonSerializer.Deserialize<Client>(dictionaryJson, options);
 
-                    PackedScene _clienteItemContainerScene = ResourceLoader.Load<PackedScene>(
-                            "res://Scenes/CreateEventoSalon/Components/cliente_item_container.tscn");
+                PackedScene _clienteItemContainerScene = ResourceLoader.Load<PackedScene>(
+                        "res://Scenes/CreateEventoSalon/Components/cliente_item_container.tscn");
 
-                    ClienteItemContainer clienteItemContainer = (ClienteItemContainer)_clienteItemContainerScene.Instantiate();
+                ClienteItemContainer clienteItemContainer = (ClienteItemContainer)_clienteItemContainerScene.Instantiate();
 
-                    _listaClientesContainer.AddChild(clienteItemContainer);
+                _listaClientesContainer.AddChild(clienteItemContainer);
 
-                    clienteItemContainer.Client = client;
-                }
+                clienteItemContainer.Client = client;
 
+                _optionButtonBuscarCliente.Refresh();
                 break;
             default:
                 GD.PrintErr(responseDictionary);
                 break;
         }
     }
+    
 }

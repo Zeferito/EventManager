@@ -59,6 +59,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="Label" parent="RegistrarEmpleado/HBoxContainer/Eliminar/EliminarEmpleadoComponent" index="0"]
+text = "Eliminar Empleado "
+
 [node name="ScrollContainer" parent="RegistrarEmpleado/HBoxContainer/Eliminar/EliminarEmpleadoComponent" index="1"]
 size_flags_vertical = 3
 
