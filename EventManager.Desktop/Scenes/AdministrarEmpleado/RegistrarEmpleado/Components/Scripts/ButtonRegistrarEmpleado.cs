@@ -72,6 +72,7 @@ public partial class ButtonRegistrarEmpleado : Button
             case 201:
                 GD.Print(responseArray);
                 _listaConsultarEmpleadosContainer.Refresh();
+                _lineEditNombre.Clear();
                 break;
             default:
                 GD.PrintErr(responseDictionary);

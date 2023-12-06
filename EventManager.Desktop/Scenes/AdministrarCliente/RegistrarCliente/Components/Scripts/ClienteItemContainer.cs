@@ -6,7 +6,7 @@ namespace EventManager.Desktop.Scenes.AdministrarCliente.RegistrarCliente.Compon
 
 public partial class ClienteItemContainer : HBoxContainer
 {
-  private Label _labelNombre;
+    private Label _labelNombre;
 
     private Label _labelTelefono;
     private Client _client;

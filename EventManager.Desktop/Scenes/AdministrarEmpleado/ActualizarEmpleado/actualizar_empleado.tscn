@@ -51,9 +51,5 @@ script = ExtResource("1_ucdtp")
 [node name="Actualizar" parent="ActualizarEmpleado/HBoxContainer" instance=ExtResource("2_qn1df")]
 layout_mode = 2
 
-[node name="ButtonActualizarEmpleado" parent="ActualizarEmpleado/HBoxContainer/Actualizar/ActualizarEmpleadoItemComponent/VBoxContainer/HBoxContainer2" index="0" node_paths=PackedStringArray("_lineEditNombre", "_optionButtonBuscarEmpleado")]
-_lineEditNombre = NodePath("../../VBoxContainer3/LineEditNombre")
-_optionButtonBuscarEmpleado = NodePath("../../HBoxContainer/OptionButtonBuscarEmpleado")
-
 [editable path="ActualizarEmpleado/HBoxContainer/Actualizar"]
 [editable path="ActualizarEmpleado/HBoxContainer/Actualizar/ActualizarEmpleadoItemComponent"]

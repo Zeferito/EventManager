@@ -86,13 +86,16 @@ public partial class ButtonConfirm : Button
                 materialsReserved.Add(materialReserved);
             }
 
+            string fechaInicio = ConvertToMySQLFormat(_lineEditStartDateEvent.Text);
+            string fechaTermino = ConvertToMySQLFormat(_lineEditEndDateEvent.Text);
+
             EventDto eventDto = new EventDto
             {
                 Status = "active",
                 Name = _lineEditTitleEvent.Text,
                 Description = _textEditDescriptionEvent.Text,
-                StartDate = parsedStartDate.ToString("o", CultureInfo.InvariantCulture),
-                EndDate = parsedEndDate.ToString("o", CultureInfo.InvariantCulture),
+                StartDate = fechaInicio,
+                EndDate = fechaTermino,
                 UserId = 1,
                 ClientIds = clientIds,
                 EmployeeIds = employeeIds,
@@ -147,5 +150,15 @@ public partial class ButtonConfirm : Button
                 GD.PrintErr(responseDictionary);
                 break;
         }
+    }
+    public string ConvertToMySQLFormat(string inputDateTime)
+    {
+        DateTime parsedDate;
+        if (!DateTime.TryParse(inputDateTime, out parsedDate))
+        {
+            return null;
+        }
+
+        return parsedDate.ToString("o", CultureInfo.InvariantCulture);
     }
 }

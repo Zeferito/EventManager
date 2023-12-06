@@ -46,6 +46,7 @@ text = "Administar Empleados"
 script = ExtResource("3_wfcnd")
 
 [node name="AdministrarTarifas" type="Button" parent="."]
+visible = false
 custom_minimum_size = Vector2(0, 35)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -53,6 +54,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_1t1ix")
 text = "Administar Tarifas"
 
 [node name="GenerarReporteDePagos" type="Button" parent="."]
+visible = false
 custom_minimum_size = Vector2(0, 35)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -60,6 +62,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_obhkl")
 text = "Generar Reporte de Pagos"
 
 [node name="RevisarAgenda" type="Button" parent="."]
+visible = false
 custom_minimum_size = Vector2(0, 35)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)

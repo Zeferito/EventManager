@@ -80,6 +80,8 @@ public partial class ButtonRegistrarCliente : Button
             case 201:
                 GD.Print(responseArray);
                 _listaConsultarClientesContainer.Refresh();
+                _lineEditNombre.Clear();
+                _lineEditTelefono.Clear();
                 break;
             default:
                 GD.PrintErr(responseDictionary);

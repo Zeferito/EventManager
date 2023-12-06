@@ -6,18 +6,18 @@ using System;
 using System.Text.Json;
 using Array = Godot.Collections.Array;
 
+namespace EventManager.Desktop.Scenes.AdministrarEmpleado.ActualizarEmpleado.Components.Scripts;
 public partial class ButtonActualizarEmpleado : Button
 {
-    [Export]
     private LineEdit _lineEditNombre;
-
-    [Export]
-    private OptionButton _optionButtonBuscarEmpleado;
+    private OptionButtonBuscarEmpleado _optionButtonBuscarEmpleado;
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
         ApiConnection apiConnection = GetNode<ApiConnection>("/root/ApiConnection");
+        _optionButtonBuscarEmpleado = GetParent().GetParent().GetNode<HBoxContainer>("HBoxContainer").GetNode<OptionButtonBuscarEmpleado>("OptionButtonBuscarEmpleado");
+        _lineEditNombre = GetParent().GetParent().GetNode<VBoxContainer>("VBoxContainer3").GetNode<LineEdit>("LineEditNombre");
 
         Pressed += () =>
         {
@@ -40,10 +40,6 @@ public partial class ButtonActualizarEmpleado : Button
                 $"Content-Type: {contentType}",
                 $"Authorization: Bearer {authToken}"
             };
-
-            EmployeeDto employeeDto = new EmployeeDto { Name = _lineEditNombre.Text, };
-
-            string body = JsonSerializer.Serialize(employeeDto);
 
             Error error = httpRequest.Request(
                 $"{apiConnection.Url}/employees/{id}",
@@ -136,6 +132,8 @@ public partial class ButtonActualizarEmpleado : Button
         {
             case 200:
                 GD.Print(responseDictionary);
+                _optionButtonBuscarEmpleado.Refresh();
+                _lineEditNombre.Clear();
                 break;
             default:
                 GD.PrintErr(responseDictionary);

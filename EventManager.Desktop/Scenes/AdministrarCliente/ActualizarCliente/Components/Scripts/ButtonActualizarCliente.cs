@@ -19,7 +19,7 @@ public partial class ButtonActualizarCliente : Button
     private LineEdit _lineEditTelefono;
 
     [Export]
-    private OptionButton _optionButtonBuscarCliente;
+    private OptionButtonBuscarCliente _optionButtonBuscarCliente;
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
@@ -107,7 +107,8 @@ public partial class ButtonActualizarCliente : Button
 
 
                 string phone = null;
-                if(!_lineEditTelefono.Text.Equals("")){
+                if (!_lineEditTelefono.Text.Equals(""))
+                {
                     phone = _lineEditTelefono.Text;
                 }
 
@@ -143,7 +144,8 @@ public partial class ButtonActualizarCliente : Button
         }
     }
 
-    private void HttpRequestCompletedData (long result, long responseCode, string[] headers, byte[] body){
+    private void HttpRequestCompletedData(long result, long responseCode, string[] headers, byte[] body)
+    {
         Json json = new Json();
         json.Parse(body.GetStringFromUtf8());
 
@@ -154,6 +156,9 @@ public partial class ButtonActualizarCliente : Button
         {
             case 200:
                 GD.Print(responseDictionary);
+                _optionButtonBuscarCliente.Refresh();
+                _lineEditNombre.Clear();
+                _lineEditTelefono.Clear();
                 break;
             default:
                 GD.PrintErr(responseDictionary);

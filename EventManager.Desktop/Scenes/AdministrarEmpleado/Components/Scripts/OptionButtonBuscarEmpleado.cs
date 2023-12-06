@@ -6,6 +6,8 @@ using System;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
+namespace EventManager.Desktop.Scenes.AdministrarEmpleado.Components.Scripts;
+
 public partial class OptionButtonBuscarEmpleado : OptionButton
 {
 	// Called when the node enters the scene tree for the first time.
