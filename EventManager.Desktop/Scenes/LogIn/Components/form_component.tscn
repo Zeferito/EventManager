@@ -41,6 +41,9 @@ layout_mode = 2
 [node name="Password" parent="." instance=ExtResource("3_kregf")]
 layout_mode = 2
 
+[node name="LineEditPassword" parent="Password" index="2"]
+secret = true
+
 [node name="HSeparator3" type="HSeparator" parent="."]
 custom_minimum_size = Vector2(0, 35)
 layout_mode = 2
