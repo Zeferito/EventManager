@@ -140,9 +140,6 @@ layout_mode = 2
 [node name="IngresarClienteComponent" parent="HBoxContainer/Control2/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer" instance=ExtResource("1_5e4lm")]
 layout_mode = 2
 
-[node name="ButtonRegistrarCliente" parent="HBoxContainer/Control2/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/IngresarClienteComponent/VBoxContainer/VBoxContainer2/HBoxContainer2" index="2" node_paths=PackedStringArray("_optionButtonBuscarCliente")]
-_optionButtonBuscarCliente = NodePath("../../../HBoxContainer/OptionButtonBuscarCliente")
-
 [node name="SeleccionMaterialesComponent" parent="HBoxContainer/Control2/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer" instance=ExtResource("2_f3tqq")]
 layout_mode = 2
 
