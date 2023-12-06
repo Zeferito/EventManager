@@ -473,6 +473,7 @@ export class EventService {
                 const overlappingEvents = await this.eventRepository.find({
                     relations: { rooms: true },
                     where: {
+                        id: Not(event.id),
                         status: Not(EventStatus.Inactive),
                         startDate: LessThan(eventDto.endDate),
                         endDate: MoreThan(eventDto.startDate),
@@ -635,19 +636,27 @@ export class EventService {
         await this.eventRepository.save(event);
 
         for (const client of clients) {
-            await this.clientRepository.save(client);
+            try {
+                await this.clientRepository.save(client);
+            } catch (error) {}
         }
-
+        
         for (const employee of employees) {
-            await this.employeeRepository.save(employee);
+            try {
+                await this.employeeRepository.save(employee);
+            } catch (error) {}
         }
-
+        
         for (const room of rooms) {
-            await this.roomRepository.save(room);
+            try {
+                await this.roomRepository.save(room);
+            } catch (error) {}
         }
-
+        
         for (const eventToMaterial of eventToMaterials) {
-            await this.eventToMaterialRepository.save(eventToMaterial);
+            try {
+                await this.eventToMaterialRepository.save(eventToMaterial);
+            } catch (error) {}
         }
     }
 }

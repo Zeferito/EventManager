@@ -58,6 +58,6 @@ export class Client {
     })
     phone!: string;
 
-    @ManyToMany(() => Event, (event) => event.clients)
+    @ManyToMany(() => Event, (event) => event.clients, { onDelete: 'CASCADE' })
     events!: Event[];
 }

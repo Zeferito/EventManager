@@ -53,6 +53,6 @@ export class Employee {
     })
     name!: string;
 
-    @ManyToMany(() => Event, (event) => event.employees)
+    @ManyToMany(() => Event, (event) => event.employees, { onDelete: 'CASCADE' })
     events!: Event[];
 }

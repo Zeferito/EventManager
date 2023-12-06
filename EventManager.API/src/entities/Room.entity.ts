@@ -58,6 +58,6 @@ export class Room {
     })
     type!: RoomType;
 
-    @ManyToMany(() => Event, (event) => event.rooms)
+    @ManyToMany(() => Event, (event) => event.rooms, { onDelete: 'CASCADE' })
     events!: Event[];
 }
