@@ -28,3 +28,10 @@ window/size/viewport_height=720
 [dotnet]
 
 project/assembly_name="EventManager.Desktop"
+
+[gui]
+
+theme/custom="res://Theme_default.tres"
+theme/custom_font="res://Montserrat-Medium.ttf"
+theme/default_font_antialiasing=0
+theme/default_font_hinting=0

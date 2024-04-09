@@ -1,9 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://b62wsog6piu3w"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8x6vw"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kp3eg"]
-bg_color = Color(1, 1, 1, 1)
+[gd_scene format=3 uid="uid://b62wsog6piu3w"]
 
 [node name="VBoxContainer" type="VBoxContainer"]
 offset_right = 192.0
@@ -11,17 +6,8 @@ offset_bottom = 80.0
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Usuario"
 horizontal_alignment = 1
 
-[node name="HSeparator" type="HSeparator" parent="."]
-custom_minimum_size = Vector2(0, 25)
-layout_mode = 2
-theme_override_styles/separator = SubResource("StyleBoxEmpty_8x6vw")
-
 [node name="LineEditUsuario" type="LineEdit" parent="."]
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_kp3eg")

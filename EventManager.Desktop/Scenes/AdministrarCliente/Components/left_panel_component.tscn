@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bgvca0qh7kpiu"]
+[gd_scene load_steps=3 format=3 uid="uid://bgvca0qh7kpiu"]
 
 [ext_resource type="PackedScene" uid="uid://dmbaa7fv50v3p" path="res://Scenes/AdministrarCliente/Components/ingresar_cliente_component.tscn" id="1_pgmg7"]
+[ext_resource type="Theme" uid="uid://i0moekm2stt5" path="res://Theme_default.tres" id="2_xj4iu"]
 
 [node name="LeftPanelComponent" type="Control"]
 custom_minimum_size = Vector2(640, 720)
@@ -16,7 +17,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(1, 0.94902, 0.8, 1)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -25,7 +25,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 5
 
 [node name="HSeparator2" type="HSeparator" parent="VBoxContainer"]
 modulate = Color(1, 1, 1, 0)
@@ -66,3 +65,4 @@ layout_mode = 2
 
 [node name="IngresarClienteComponent" parent="VBoxContainer/HBoxContainer2" instance=ExtResource("1_pgmg7")]
 layout_mode = 2
+theme = ExtResource("2_xj4iu")

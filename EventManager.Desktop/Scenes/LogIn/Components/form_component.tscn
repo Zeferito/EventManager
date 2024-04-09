@@ -1,11 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://d3s05lbx4rjlw"]
+[gd_scene load_steps=5 format=3 uid="uid://d3s05lbx4rjlw"]
 
-[ext_resource type="Texture2D" uid="uid://c76ipdqdqytb6" path="res://Textures/gabi.png" id="1_qnnbu"]
 [ext_resource type="PackedScene" uid="uid://b62wsog6piu3w" path="res://Scenes/LogIn/Components/login_usuario_component.tscn" id="2_mvtj2"]
 [ext_resource type="PackedScene" uid="uid://jm6b1dnt82ci" path="res://Scenes/LogIn/Components/login_password_component.tscn" id="3_kregf"]
 [ext_resource type="PackedScene" uid="uid://bpp6oy5b4ykgu" path="res://Scenes/LogIn/Components/buttons_ingres_component.tscn" id="4_p1hmq"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ej3li"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8j4gw"]
 
@@ -14,26 +11,10 @@ custom_minimum_size = Vector2(500, 500)
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="TextureRect" type="TextureRect" parent="."]
-layout_mode = 2
-texture = ExtResource("1_qnnbu")
-stretch_mode = 3
-
-[node name="HSeparator" type="HSeparator" parent="."]
-custom_minimum_size = Vector2(0, 35)
-layout_mode = 2
-theme_override_styles/separator = SubResource("StyleBoxEmpty_ej3li")
-
 [node name="Label" type="Label" parent="."]
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Inicio Sesion"
 horizontal_alignment = 1
-
-[node name="HSeparator2" type="HSeparator" parent="."]
-custom_minimum_size = Vector2(0, 35)
-layout_mode = 2
-theme_override_styles/separator = SubResource("StyleBoxEmpty_8j4gw")
 
 [node name="Usuario" parent="." instance=ExtResource("2_mvtj2")]
 layout_mode = 2
@@ -41,7 +22,7 @@ layout_mode = 2
 [node name="Password" parent="." instance=ExtResource("3_kregf")]
 layout_mode = 2
 
-[node name="LineEditPassword" parent="Password" index="2"]
+[node name="LineEditPassword" parent="Password" index="1"]
 secret = true
 
 [node name="HSeparator3" type="HSeparator" parent="."]

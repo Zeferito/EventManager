@@ -1,6 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://dvv7soetujfvi"]
+[gd_scene load_steps=5 format=3 uid="uid://dvv7soetujfvi"]
 
 [ext_resource type="PackedScene" uid="uid://d3s05lbx4rjlw" path="res://Scenes/LogIn/Components/form_component.tscn" id="1_iy2kf"]
+[ext_resource type="Texture2D" uid="uid://doxsacda4pbos" path="res://Textures/BibliotecaIcon.png" id="2_4k270"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xm3mr"]
+bg_color = Color(0.6, 0.6, 0.6, 0.537255)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
+[sub_resource type="Theme" id="Theme_u8wog"]
+Panel/styles/panel = SubResource("StyleBoxFlat_xm3mr")
 
 [node name="Login" type="Control"]
 layout_mode = 3
@@ -18,7 +29,14 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(1, 0.898039, 0.6, 1)
+
+[node name="Panel" type="Panel" parent="ColorRect"]
+layout_mode = 0
+offset_left = 379.0
+offset_top = 161.0
+offset_right = 905.0
+offset_bottom = 425.0
+theme = SubResource("Theme_u8wog")
 
 [node name="FormComponent" parent="." instance=ExtResource("1_iy2kf")]
 layout_mode = 1
@@ -27,9 +45,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -250.0
-offset_top = -307.0
-offset_right = 250.0
-offset_bottom = 307.0
+offset_left = -254.0
+offset_top = -190.0
+offset_right = 246.0
+offset_bottom = 314.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="BibliotecaIcon" type="Sprite2D" parent="."]
+position = Vector2(635, 548)
+scale = Vector2(0.24015, 0.24015)
+texture = ExtResource("2_4k270")

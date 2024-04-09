@@ -1,8 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://b4o4spw8l6se"]
+[gd_scene load_steps=2 format=3 uid="uid://b4o4spw8l6se"]
 
 [ext_resource type="PackedScene" uid="uid://dloiugj4sxb0e" path="res://Scenes/AdministrarCliente/Components/cliente_item_container.tscn" id="1_45eno"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uja2o"]
 
 [node name="ConsultarClienteComponent" type="VBoxContainer"]
 custom_minimum_size = Vector2(0, 100)
@@ -30,8 +28,6 @@ size_flags_horizontal = 3
 [node name="ButtonBuscarCliente" type="Button" parent="VBoxContainer2/HBoxContainer2"]
 custom_minimum_size = Vector2(75, 25)
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_uja2o")
 text = "Buscar"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]

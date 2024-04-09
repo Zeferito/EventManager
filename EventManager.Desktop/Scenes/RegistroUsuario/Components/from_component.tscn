@@ -1,6 +1,5 @@
-[gd_scene load_steps=7 format=3 uid="uid://dbjvpdjkmrcc0"]
+[gd_scene load_steps=6 format=3 uid="uid://dbjvpdjkmrcc0"]
 
-[ext_resource type="Texture2D" uid="uid://c76ipdqdqytb6" path="res://Textures/gabi.png" id="1_ohdui"]
 [ext_resource type="PackedScene" uid="uid://b62wsog6piu3w" path="res://Scenes/LogIn/Components/login_usuario_component.tscn" id="2_0ed2h"]
 [ext_resource type="PackedScene" uid="uid://jm6b1dnt82ci" path="res://Scenes/LogIn/Components/login_password_component.tscn" id="3_0wair"]
 [ext_resource type="PackedScene" uid="uid://35h735a4a6tw" path="res://Scenes/RegistroUsuario/Components/button_registrar_usuario.tscn" id="4_sbvs6"]
@@ -13,11 +12,6 @@
 custom_minimum_size = Vector2(500, 500)
 offset_right = 40.0
 offset_bottom = 40.0
-
-[node name="TextureRect" type="TextureRect" parent="."]
-layout_mode = 2
-texture = ExtResource("1_ohdui")
-stretch_mode = 3
 
 [node name="HSeparator" type="HSeparator" parent="."]
 custom_minimum_size = Vector2(0, 35)

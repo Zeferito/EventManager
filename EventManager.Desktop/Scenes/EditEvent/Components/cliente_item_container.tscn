@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cfkwn1g0b6x4x"]
 
 [ext_resource type="Script" path="res://Scenes/EditEvent/Components/Scripts/ClienteItemContainer.cs" id="1_fqu0i"]
-[ext_resource type="Texture2D" uid="uid://dbjtxqn6aoqgt" path="res://Textures/minum.png" id="2_neyad"]
+[ext_resource type="Texture2D" uid="uid://bxe371rj6vq82" path="res://Textures/minus_112446.png" id="2_67qyp"]
 
 [node name="ClienteItemContainer" type="HBoxContainer"]
 script = ExtResource("1_fqu0i")
@@ -37,7 +37,7 @@ size_flags_vertical = 3
 [node name="TextureButtonEliminar" type="TextureButton" parent="VBoxContainer"]
 custom_minimum_size = Vector2(25, 25)
 layout_mode = 2
-texture_normal = ExtResource("2_neyad")
+texture_normal = ExtResource("2_67qyp")
 ignore_texture_size = true
 stretch_mode = 0
 

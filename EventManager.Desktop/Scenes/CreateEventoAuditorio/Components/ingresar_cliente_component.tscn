@@ -1,8 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://c6ov4p8timmbo"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jdunk"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vp2ma"]
+[gd_scene load_steps=3 format=3 uid="uid://c6ov4p8timmbo"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_r015t"]
 font_size = 14
@@ -47,8 +43,6 @@ layout_mode = 2
 [node name="Button" type="Button" parent="HBoxContainer"]
 custom_minimum_size = Vector2(75, 20)
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_jdunk")
 text = "Buscar"
 
 [node name="VSeparator3" type="VSeparator" parent="HBoxContainer"]
@@ -59,8 +53,6 @@ layout_mode = 2
 [node name="Button2" type="Button" parent="HBoxContainer"]
 custom_minimum_size = Vector2(75, 20)
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_vp2ma")
 text = "Registrar"
 
 [node name="VSeparator" type="VSeparator" parent="HBoxContainer"]
@@ -74,7 +66,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-text = "Nobre del evento"
+text = "Nombre del evento"
 label_settings = SubResource("LabelSettings_r015t")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]

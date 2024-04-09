@@ -1,11 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://3v46tspkr7ir"]
 
-[ext_resource type="Texture2D" uid="uid://bjfmg2m4dw6na" path="res://Textures/biblioteca.png" id="1_1o2x0"]
 [ext_resource type="Script" path="res://Scenes/Inicio/Components/Scripts/HandleButtonsInicio.cs" id="1_fpkws"]
+[ext_resource type="Texture2D" uid="uid://ckykib5fq4p3k" path="res://Textures/TextLessIcon.png" id="2_c70wv"]
 [ext_resource type="PackedScene" uid="uid://bpvcms5hqwerq" path="res://Scenes/Inicio/Components/buttons_selection_component.tscn" id="2_nc3h6"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a4pn0"]
-bg_color = Color(0.788235, 0.854902, 0.972549, 1)
+[ext_resource type="Theme" uid="uid://bqkuypbq5qpwl" path="res://Main_Menu_Button.tres" id="4_30f4g"]
 
 [node name="LeftPanelComponent" type="Control"]
 custom_minimum_size = Vector2(250, 720)
@@ -28,7 +26,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.788235, 0.854902, 0.972549, 1)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -41,12 +38,8 @@ grow_vertical = 2
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
 custom_minimum_size = Vector2(220, 200)
 layout_mode = 2
-texture = ExtResource("1_1o2x0")
-
-[node name="HSeparator2" type="HSeparator" parent="VBoxContainer"]
-modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
+texture = ExtResource("2_c70wv")
+expand_mode = 1
 
 [node name="ButtonsSelectionComponent" parent="VBoxContainer" instance=ExtResource("2_nc3h6")]
 custom_minimum_size = Vector2(220, 0)
@@ -61,6 +54,5 @@ size_flags_vertical = 3
 [node name="ButtonQuitar" type="Button" parent="VBoxContainer"]
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_a4pn0")
+theme = ExtResource("4_30f4g")
 text = "Quitar"

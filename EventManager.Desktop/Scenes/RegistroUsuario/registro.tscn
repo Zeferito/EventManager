@@ -1,6 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://00cp1ehvestx"]
+[gd_scene load_steps=5 format=3 uid="uid://00cp1ehvestx"]
 
 [ext_resource type="PackedScene" uid="uid://dbjvpdjkmrcc0" path="res://Scenes/RegistroUsuario/Components/from_component.tscn" id="1_xnii6"]
+[ext_resource type="Texture2D" uid="uid://doxsacda4pbos" path="res://Textures/BibliotecaIcon.png" id="2_ewnsu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lklmk"]
+bg_color = Color(0.6, 0.6, 0.6, 0.537255)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
+[sub_resource type="Theme" id="Theme_28mwp"]
+Panel/styles/panel = SubResource("StyleBoxFlat_lklmk")
 
 [node name="Registro" type="Control"]
 layout_mode = 3
@@ -17,7 +28,14 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(1, 0.898039, 0.6, 1)
+
+[node name="Panel" type="Panel" parent="ColorRect"]
+layout_mode = 0
+offset_left = 380.0
+offset_top = 83.0
+offset_right = 906.0
+offset_bottom = 440.0
+theme = SubResource("Theme_28mwp")
 
 [node name="FromComponent" parent="." instance=ExtResource("1_xnii6")]
 layout_mode = 1
@@ -32,3 +50,8 @@ offset_right = 250.0
 offset_bottom = 282.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="BibliotecaIcon" type="Sprite2D" parent="."]
+position = Vector2(635, 548)
+scale = Vector2(0.24015, 0.24015)
+texture = ExtResource("2_ewnsu")

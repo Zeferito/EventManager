@@ -1,47 +1,33 @@
-[gd_scene load_steps=8 format=3 uid="uid://bpvcms5hqwerq"]
+[gd_scene load_steps=5 format=3 uid="uid://bpvcms5hqwerq"]
 
+[ext_resource type="Theme" uid="uid://bqkuypbq5qpwl" path="res://Main_Menu_Button.tres" id="1_dlhte"]
 [ext_resource type="Script" path="res://Scenes/Inicio/Components/AgregarEvento.cs" id="1_wqdvy"]
 [ext_resource type="Script" path="res://Scenes/Inicio/Components/Scripts/AdministrarCliente.cs" id="2_b56ch"]
 [ext_resource type="Script" path="res://Scenes/Inicio/Components/Scripts/AdministrarEmpleado.cs" id="3_wfcnd"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gtb51"]
-bg_color = Color(0.788235, 0.854902, 0.972549, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1t1ix"]
-bg_color = Color(0.788235, 0.854902, 0.972549, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_obhkl"]
-bg_color = Color(0.788235, 0.854902, 0.972549, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3q84q"]
-bg_color = Color(0.788235, 0.854902, 0.972549, 1)
-
 [node name="ButtonsSelectionComponent" type="VBoxContainer"]
 offset_right = 192.0
-offset_bottom = 88.0
+offset_bottom = 145.0
 theme_override_constants/separation = 20
 
 [node name="AgregarEvento" type="Button" parent="."]
 custom_minimum_size = Vector2(0, 35)
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_gtb51")
+theme = ExtResource("1_dlhte")
 text = "Administrar Evento"
 script = ExtResource("1_wqdvy")
 
 [node name="AdministrarCliente" type="Button" parent="."]
 custom_minimum_size = Vector2(0, 35)
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_1t1ix")
+theme = ExtResource("1_dlhte")
 text = "Administar Clientes"
 script = ExtResource("2_b56ch")
 
 [node name="AdministrarEmpleado" type="Button" parent="."]
 custom_minimum_size = Vector2(0, 35)
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_1t1ix")
+theme = ExtResource("1_dlhte")
 text = "Administar Empleados"
 script = ExtResource("3_wfcnd")
 
@@ -49,22 +35,19 @@ script = ExtResource("3_wfcnd")
 visible = false
 custom_minimum_size = Vector2(0, 35)
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_1t1ix")
+theme = ExtResource("1_dlhte")
 text = "Administar Tarifas"
 
 [node name="GenerarReporteDePagos" type="Button" parent="."]
 visible = false
 custom_minimum_size = Vector2(0, 35)
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_obhkl")
+theme = ExtResource("1_dlhte")
 text = "Generar Reporte de Pagos"
 
 [node name="RevisarAgenda" type="Button" parent="."]
 visible = false
 custom_minimum_size = Vector2(0, 35)
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_3q84q")
+theme = ExtResource("1_dlhte")
 text = "Revisar Agenda"

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bystsh2k7hqyo"]
 
 [ext_resource type="Script" path="res://Scenes/AdministrarEmpleado/Components/Scripts/BorrarEmpleadoComponent.cs" id="1_7etxh"]
-[ext_resource type="Texture2D" uid="uid://dbjtxqn6aoqgt" path="res://Textures/minum.png" id="1_di7ik"]
+[ext_resource type="Texture2D" uid="uid://bxe371rj6vq82" path="res://Textures/minus_112446.png" id="2_l3gjn"]
 
 [node name="BorrarEmpleadoComponent" type="HBoxContainer"]
 script = ExtResource("1_7etxh")
@@ -27,7 +27,7 @@ size_flags_vertical = 3
 [node name="TextureButtonEliminar" type="TextureButton" parent="VBoxContainer"]
 custom_minimum_size = Vector2(25, 25)
 layout_mode = 2
-texture_normal = ExtResource("1_di7ik")
+texture_normal = ExtResource("2_l3gjn")
 ignore_texture_size = true
 stretch_mode = 0
 

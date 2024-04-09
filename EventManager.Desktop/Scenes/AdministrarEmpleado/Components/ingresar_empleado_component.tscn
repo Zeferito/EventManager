@@ -1,10 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://chg76g7i7546v"]
+[gd_scene load_steps=4 format=3 uid="uid://chg76g7i7546v"]
 
 [ext_resource type="Script" path="res://Scenes/AdministrarEmpleado/Components/Scripts/ButtonRegistrarEmpleado.cs" id="1_t3syr"]
 [ext_resource type="PackedScene" uid="uid://6je7k5j2iewi" path="res://Scenes/AdministrarEmpleado/Components/empleado_item_container.tscn" id="2_8m4jt"]
 [ext_resource type="Script" path="res://Scenes/AdministrarEmpleado/Components/Scripts/ListaConsultarEmpleadosContainer.cs" id="2_s7lh0"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qrovi"]
 
 [node name="IngresarEmpleadoComponent" type="VBoxContainer"]
 custom_minimum_size = Vector2(400, 100)
@@ -38,8 +36,6 @@ size_flags_horizontal = 3
 [node name="ButtonRegistrarEmpleado" type="Button" parent="VBoxContainer/VBoxContainer2/HBoxContainer2" node_paths=PackedStringArray("_lineEditNombre")]
 custom_minimum_size = Vector2(75, 25)
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_qrovi")
 text = "Registrar"
 script = ExtResource("1_t3syr")
 _lineEditNombre = NodePath("../LineEditNombre")

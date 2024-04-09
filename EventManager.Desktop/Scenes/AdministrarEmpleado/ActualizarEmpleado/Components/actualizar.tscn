@@ -25,8 +25,4 @@ grow_vertical = 1
 
 [node name="_PopupMenu_1060393" type="PopupMenu" parent="ActualizarEmpleadoItemComponent/VBoxContainer/HBoxContainer/OptionButtonBuscarEmpleado" index="1"]
 
-[node name="ButtonActualizarEmpleado" parent="ActualizarEmpleadoItemComponent/VBoxContainer/HBoxContainer2" index="0" node_paths=PackedStringArray("_lineEditNombre", "_optionButtonBuscarEmpleado")]
-_lineEditNombre = NodePath("")
-_optionButtonBuscarEmpleado = NodePath("")
-
 [editable path="ActualizarEmpleadoItemComponent"]

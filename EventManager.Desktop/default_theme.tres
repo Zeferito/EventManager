@@ -1,0 +1,8 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://dynrh2mnwqv2o"]
+
+[ext_resource type="FontFile" uid="uid://bnv6ysro40qmi" path="res://Montserrat-Medium.ttf" id="3_b2dga"]
+
+[resource]
+default_base_scale = 1.6
+default_font = ExtResource("3_b2dga")
+Label/fonts/font = ExtResource("3_b2dga")

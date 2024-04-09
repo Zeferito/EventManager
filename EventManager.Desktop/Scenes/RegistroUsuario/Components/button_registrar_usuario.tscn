@@ -1,12 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://35h735a4a6tw"]
+[gd_scene load_steps=5 format=3 uid="uid://35h735a4a6tw"]
 
 [ext_resource type="Script" path="res://Scenes/RegistroUsuario/Components/Scripts/Registrar.cs" id="1_7r0jx"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4ul5t"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_utf2n"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3ygxs"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n4ay7"]
 
@@ -30,8 +28,6 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_utf2n")
 
 [node name="Registrar" type="Button" parent="HBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_3ygxs")
 text = "Registrar"
 script = ExtResource("1_7r0jx")
 

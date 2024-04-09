@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://yjqd5iak0t1u"]
+[gd_scene load_steps=18 format=3 uid="uid://yjqd5iak0t1u"]
 
 [ext_resource type="PackedScene" uid="uid://fgsdgul3icoo" path="res://Scenes/ConfirmacionEvento/Components/material_item_component.tscn" id="1_yjnsn"]
 [ext_resource type="PackedScene" uid="uid://bp0tio07wte3b" path="res://Scenes/ConfirmacionEvento/Components/evento_descripcion_component.tscn" id="2_45hes"]
@@ -39,12 +39,6 @@ font_color = Color(0, 0, 0, 1)
 font_size = 30
 font_color = Color(0, 0, 0, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7ttkl"]
-bg_color = Color(1, 0.85098, 0.4, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_huvry"]
-bg_color = Color(1, 0.85098, 0.4, 1)
-
 [node name="ConfirmacionEvento" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -60,7 +54,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(1, 0.898039, 0.6, 1)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -309,20 +302,6 @@ size_flags_horizontal = 3
 [node name="ButtonCancel" type="Button" parent="VBoxContainer/HBoxContainer4"]
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
-theme_override_colors/icon_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/icon_hover_color = Color(0, 0, 0, 1)
-theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/icon_focus_color = Color(0, 0, 0, 1)
-theme_override_colors/icon_disabled_color = Color(0, 0, 0, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_7ttkl")
 text = "Cancelar"
 script = ExtResource("10_xg6fg")
 
@@ -334,20 +313,6 @@ size_flags_horizontal = 3
 [node name="ButtonRegister" type="Button" parent="VBoxContainer/HBoxContainer4"]
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
-theme_override_colors/icon_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/icon_hover_color = Color(0, 0, 0, 1)
-theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/icon_focus_color = Color(0, 0, 0, 1)
-theme_override_colors/icon_disabled_color = Color(0, 0, 0, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_huvry")
 text = "Registrar"
 script = ExtResource("11_hqqxb")
 

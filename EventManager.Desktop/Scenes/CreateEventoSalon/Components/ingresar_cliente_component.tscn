@@ -1,14 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://cvukrhoewyp50"]
+[gd_scene load_steps=6 format=3 uid="uid://cvukrhoewyp50"]
 
 [ext_resource type="Script" path="res://Scenes/CreateEventoSalon/Components/Scripts/ListaClientesContainer.cs" id="1_fwvpn"]
 [ext_resource type="PackedScene" uid="uid://gfdgauakk47w" path="res://Scenes/CreateEventoSalon/Components/cliente_item_container.tscn" id="1_sy7c4"]
 [ext_resource type="Script" path="res://Scenes/CreateEventoSalon/Components/Scripts/OptionButtonBuscarCliente.cs" id="3_d7ebx"]
 [ext_resource type="Script" path="res://Scenes/CreateEventoSalon/Components/Scripts/ButtonAgregarCliente.cs" id="3_ifjro"]
 [ext_resource type="Script" path="res://Scenes/CreateEventoSalon/Components/Scripts/ButtonRegistrarCliente.cs" id="4_tdahr"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jdunk"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vp2ma"]
 
 [node name="IngresarClienteComponent" type="VBoxContainer"]
 custom_minimum_size = Vector2(400, 100)
@@ -34,8 +30,6 @@ script = ExtResource("3_d7ebx")
 [node name="ButtonAgregarCliente" type="Button" parent="VBoxContainer/HBoxContainer" node_paths=PackedStringArray("_listaClientesContainer", "_optionButtonBuscarCliente")]
 custom_minimum_size = Vector2(75, 25)
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_jdunk")
 text = "Agregar"
 script = ExtResource("3_ifjro")
 _listaClientesContainer = NodePath("../../../ScrollContainer/ListaClientesContainer")
@@ -76,8 +70,6 @@ size_flags_horizontal = 3
 [node name="ButtonRegistrarCliente" type="Button" parent="VBoxContainer/VBoxContainer2/HBoxContainer2" node_paths=PackedStringArray("_lineEditNombre", "_lineEditTelefono", "_listaClientesContainer")]
 custom_minimum_size = Vector2(75, 25)
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_vp2ma")
 text = "Registrar"
 script = ExtResource("4_tdahr")
 _lineEditNombre = NodePath("../LineEditNombre")

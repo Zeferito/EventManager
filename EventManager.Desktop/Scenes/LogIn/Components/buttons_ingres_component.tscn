@@ -1,12 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://bpp6oy5b4ykgu"]
+[gd_scene load_steps=8 format=3 uid="uid://bpp6oy5b4ykgu"]
 
 [ext_resource type="Script" path="res://Scenes/LogIn/Components/Scripts/Ingresar.cs" id="1_yx553"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7plpu"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2dlwk"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u8tfv"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_crtxa"]
 
@@ -35,8 +33,7 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_2dlwk")
 
 [node name="Ingresar" type="Button" parent="HBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_u8tfv")
+theme_override_font_sizes/font_size = 24
 text = "Ingresar"
 script = ExtResource("1_yx553")
 

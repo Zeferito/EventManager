@@ -1,9 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bqykplqqgb1yh"]
+[gd_scene load_steps=3 format=3 uid="uid://bqykplqqgb1yh"]
 
 [ext_resource type="Script" path="res://Scenes/AdministrarCliente/Components/Scripts/OptionButtonBuscarCliente.cs" id="1_t8hl2"]
 [ext_resource type="Script" path="res://Scenes/AdministrarCliente/Components/Scripts/ButtonActualizarCliente.cs" id="2_c32lp"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q2jam"]
 
 [node name="ActualizarClienteItemComponent" type="VBoxContainer"]
 custom_minimum_size = Vector2(400, 100)
@@ -55,8 +53,6 @@ layout_mode = 2
 [node name="ButtonActualizarCliente" type="Button" parent="VBoxContainer/HBoxContainer2" node_paths=PackedStringArray("_lineEditNombre", "_lineEditTelefono", "_optionButtonBuscarCliente")]
 custom_minimum_size = Vector2(100, 25)
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_q2jam")
 text = "Actualizar
 "
 script = ExtResource("2_c32lp")

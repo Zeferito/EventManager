@@ -1,0 +1,43 @@
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://i0moekm2stt5"]
+
+[ext_resource type="StyleBox" uid="uid://cn7n0jj4j6bym" path="res://Botton_Normal.tres" id="1_dnuhh"]
+[ext_resource type="StyleBox" uid="uid://dv7we0egyfi21" path="res://Button_Disabled.tres" id="1_jew2o"]
+[ext_resource type="StyleBox" uid="uid://c8b7p5jp3hglh" path="res://Button_Pressed.tres" id="2_w371i"]
+[ext_resource type="StyleBox" uid="uid://bfj674domeb3b" path="res://Button_Hover.tres" id="2_yvfth"]
+[ext_resource type="StyleBox" uid="uid://resp8jshnins" path="res://Line_Edit_Normal.tres" id="5_afklw"]
+[ext_resource type="StyleBox" uid="uid://dis7cgc8oean3" path="res://OptionButtonHover.tres" id="6_xl4sp"]
+
+[resource]
+Button/font_sizes/font_size = 16
+Button/styles/disabled = ExtResource("1_jew2o")
+Button/styles/focus = ExtResource("2_yvfth")
+Button/styles/hover = ExtResource("2_yvfth")
+Button/styles/normal = ExtResource("1_dnuhh")
+Button/styles/pressed = ExtResource("1_dnuhh")
+HSlider/styles/grabber_area = ExtResource("5_afklw")
+HSlider/styles/grabber_area_highlight = ExtResource("5_afklw")
+HSlider/styles/slider = ExtResource("5_afklw")
+Label/colors/font_color = Color(0, 0, 0, 1)
+LineEdit/styles/focus = ExtResource("5_afklw")
+LineEdit/styles/normal = ExtResource("5_afklw")
+LineEdit/styles/read_only = ExtResource("5_afklw")
+MenuButton/styles/disabled = ExtResource("1_jew2o")
+MenuButton/styles/focus = ExtResource("2_w371i")
+MenuButton/styles/hover = ExtResource("2_yvfth")
+MenuButton/styles/normal = ExtResource("1_dnuhh")
+MenuButton/styles/pressed = ExtResource("2_w371i")
+OptionButton/styles/disabled = ExtResource("6_xl4sp")
+OptionButton/styles/disabled_mirrored = ExtResource("6_xl4sp")
+OptionButton/styles/focus = ExtResource("6_xl4sp")
+OptionButton/styles/hover = ExtResource("6_xl4sp")
+OptionButton/styles/hover_mirrored = ExtResource("6_xl4sp")
+OptionButton/styles/normal = ExtResource("6_xl4sp")
+OptionButton/styles/normal_mirrored = ExtResource("6_xl4sp")
+OptionButton/styles/pressed = ExtResource("6_xl4sp")
+OptionButton/styles/pressed_mirrored = ExtResource("6_xl4sp")
+TextEdit/styles/focus = ExtResource("5_afklw")
+TextEdit/styles/normal = ExtResource("5_afklw")
+TextEdit/styles/read_only = ExtResource("5_afklw")
+VSlider/styles/grabber_area = ExtResource("5_afklw")
+VSlider/styles/grabber_area_highlight = ExtResource("5_afklw")
+VSlider/styles/slider = ExtResource("5_afklw")

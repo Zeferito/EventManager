@@ -5,36 +5,36 @@ namespace EventManager.Desktop.Scenes.EditEvent.Components.Scripts;
 
 public partial class EmpleadoItemComponent : HBoxContainer
 {
-    private VBoxContainer _parentContainer;
+	private VBoxContainer _parentContainer;
 
-    private Label _labelNombreEmpleado;
+	private Label _labelNombreEmpleado;
 
-    private TextureButton _textureButtonEliminar;
+	private TextureButton _textureButtonEliminar;
 
-    private Employee _employee;
+	private Employee _employee;
 
-    public Employee Employee
-    {
-        get => _employee;
-        set => SetEmployee(value);
-    }
+	public Employee Employee
+	{
+		get => _employee;
+		set => SetEmployee(value);
+	}
 
-    public override void _Ready()
-    {
-        _parentContainer = GetParent<VBoxContainer>();
-        _labelNombreEmpleado = GetNode<Label>("LabelNombreEmpleado");
-        _textureButtonEliminar = GetNode<TextureButton>("VBoxContainer/TextureButtonEliminar");
+	public override void _Ready()
+	{
+		_parentContainer = GetParent<VBoxContainer>();
+		_labelNombreEmpleado = GetNode<Label>("LabelNombreEmpleado");
+		_textureButtonEliminar = GetNode<TextureButton>("VBoxContainer/TextureButtonEliminar");
 
-        _textureButtonEliminar.Pressed += () =>
-        {
-            _parentContainer.RemoveChild(this);
-            QueueFree();
-        };
-    }
+		_textureButtonEliminar.Pressed += () =>
+		{
+			_parentContainer.RemoveChild(this);
+			QueueFree();
+		};
+	}
 
-    private void SetEmployee(Employee value)
-    {
-        _employee = value;
-        _labelNombreEmpleado.Text = _employee.Name;
-    }
+	private void SetEmployee(Employee value)
+	{
+		_employee = value;
+		_labelNombreEmpleado.Text = _employee.Name;
+	}
 }

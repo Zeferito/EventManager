@@ -1,13 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://c7n6oaqdae416"]
+[gd_scene load_steps=6 format=3 uid="uid://c7n6oaqdae416"]
 
 [ext_resource type="Script" path="res://Scenes/EditEvent/Components/Scripts/OptionButtonSeleccionarMaterial.cs" id="1_x28r4"]
-[ext_resource type="Texture2D" uid="uid://bigt8ixwsindh" path="res://Textures/icon.png" id="2_rkso6"]
+[ext_resource type="Texture2D" uid="uid://dgebofek6s6hu" path="res://Textures/Plus_Icon.png" id="2_yvsul"]
 [ext_resource type="Script" path="res://Scenes/EditEvent/Components/Scripts/ButtonAgregarMaterial.cs" id="3_pycnu"]
 [ext_resource type="Script" path="res://Scenes/CreateEventoSalon/Components/Scripts/ListaMaterialesContainer.cs" id="4_ty37b"]
 [ext_resource type="PackedScene" uid="uid://xfwpxuinlia3" path="res://Scenes/EditEvent/Components/agregable_material_item_component.tscn" id="5_hj7r5"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4yj07"]
-bg_color = Color(1, 1, 1, 1)
 
 [node name="SeleccionMaterialesComponent" type="VBoxContainer"]
 custom_minimum_size = Vector2(350, 200)
@@ -23,7 +20,6 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Selecciona Material"
 
 [node name="OptionButtonSeleccionarMaterial" type="OptionButton" parent="HBoxContainer/VBoxContainer"]
@@ -41,14 +37,11 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="HBoxContainer/VBoxContainer2"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Cantidad"
 
 [node name="LineEditCantidadMaterial" type="LineEdit" parent="HBoxContainer/VBoxContainer2"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_4yj07")
+text = "Cantidad"
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="HBoxContainer"]
 custom_minimum_size = Vector2(100, 100)
@@ -64,9 +57,9 @@ alignment = 1
 [node name="ButtonAgregarMaterial" type="TextureButton" parent="HBoxContainer/VBoxContainer3/HBoxContainer" node_paths=PackedStringArray("_listaMaterialesContainer", "_optionButtonSeleccionarMaterial", "_lineEditCantidadMaterial")]
 custom_minimum_size = Vector2(60, 30)
 layout_mode = 2
-texture_normal = ExtResource("2_rkso6")
+texture_normal = ExtResource("2_yvsul")
 ignore_texture_size = true
-stretch_mode = 0
+stretch_mode = 4
 script = ExtResource("3_pycnu")
 _listaMaterialesContainer = NodePath("../../../../ScrollContainer/ListaMaterialesContainer")
 _optionButtonSeleccionarMaterial = NodePath("../../../VBoxContainer/OptionButtonSeleccionarMaterial")

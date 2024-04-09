@@ -37,7 +37,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.788235, 0.854902, 0.972549, 1)
+color = Color(0.854902, 0.854902, 0.823529, 1)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Control"]
 layout_mode = 1
@@ -55,11 +55,17 @@ script = ExtResource("1_6wqof")
 [node name="LeftPanelComponent" parent="HBoxContainer" instance=ExtResource("2_ahxft")]
 layout_mode = 2
 
+[node name="ColorRect" parent="HBoxContainer/LeftPanelComponent" index="0"]
+color = Color(1, 1, 1, 1)
+
 [node name="ButtonRegistrarEmpleado" parent="HBoxContainer/LeftPanelComponent/VBoxContainer/HBoxContainer2/IngresarEmpleadoComponent/VBoxContainer/VBoxContainer2/HBoxContainer2" index="1" node_paths=PackedStringArray("_administrarEmpleado")]
 _administrarEmpleado = NodePath("../../../../../../../../..")
 
 [node name="RightPanelComponent" parent="HBoxContainer" instance=ExtResource("3_tllpv")]
 layout_mode = 2
+
+[node name="ColorRect" parent="HBoxContainer/RightPanelComponent" index="0"]
+color = Color(1, 1, 1, 1)
 
 [node name="ButtonActualizarEmpleado" parent="HBoxContainer/RightPanelComponent/VBoxContainer/HBoxContainer/ActualizarEmpleadoItemComponent/VBoxContainer/HBoxContainer2" index="0" node_paths=PackedStringArray("_administrarEmpleado")]
 _administrarEmpleado = NodePath("../../../../../../../..")

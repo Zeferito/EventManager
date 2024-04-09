@@ -16,7 +16,6 @@ layout_mode = 2
 
 [node name="LabelNombreEvento" type="Label" parent="."]
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Nombre del evento"
 
 [node name="LineEditNuevoNombreEvento" type="LineEdit" parent="."]
@@ -26,7 +25,6 @@ placeholder_text = "Ingrese nuevo nombre"
 
 [node name="LabelDescripcionEvento" type="Label" parent="."]
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Descripcion del evento"
 
 [node name="LineEditNuevaDescripcionEvento" type="LineEdit" parent="."]

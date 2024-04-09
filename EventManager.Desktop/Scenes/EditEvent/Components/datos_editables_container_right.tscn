@@ -17,7 +17,6 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Fecha y hora de inicio"
 
 [node name="LineEditFechaInicio" type="LineEdit" parent="."]
@@ -27,7 +26,6 @@ placeholder_text = "Ingrese nueva fecha de inicio"
 
 [node name="Label2" type="Label" parent="."]
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Fecha y hora de termino"
 
 [node name="LineEditFechaTermino" type="LineEdit" parent="."]

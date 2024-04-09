@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://cil8k56pjo7i6"]
+[gd_scene load_steps=7 format=3 uid="uid://cil8k56pjo7i6"]
 
 [ext_resource type="Script" path="res://Scenes/AdministrarCliente/OpcionesCliente/Components/Scripts/ButtonReturn.cs" id="1_leik3"]
 [ext_resource type="PackedScene" uid="uid://bgvca0qh7kpiu" path="res://Scenes/AdministrarCliente/Components/left_panel_component.tscn" id="1_wp38t"]
 [ext_resource type="Script" path="res://Scenes/AdministrarCliente/Components/Scripts/AdministrarCliente.cs" id="1_yj4o8"]
+[ext_resource type="Theme" uid="uid://bqkuypbq5qpwl" path="res://Main_Menu_Button.tres" id="2_1yj6e"]
 [ext_resource type="PackedScene" uid="uid://m4iun53mgigc" path="res://Scenes/AdministrarCliente/Components/right_panel_component.tscn" id="2_gy025"]
+[ext_resource type="Texture2D" uid="uid://bxe371rj6vq82" path="res://Textures/minus_112446.png" id="6_7wcyb"]
 
 [node name="AdministrarCliente" type="Control" node_paths=PackedStringArray("_listaConsultarClientesContainer", "_optionButtonBuscarCliente", "_listaClientesContainer")]
 layout_mode = 3
@@ -37,7 +39,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.788235, 0.854902, 0.972549, 1)
+color = Color(0.85098, 0.85098, 0.85098, 1)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Control"]
 layout_mode = 1
@@ -50,6 +52,7 @@ theme_override_constants/separation = 20
 
 [node name="ButtonReturn" type="Button" parent="HBoxContainer/Control/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("2_1yj6e")
 text = "Regresar"
 script = ExtResource("1_leik3")
 
@@ -57,6 +60,9 @@ script = ExtResource("1_leik3")
 custom_minimum_size = Vector2(0, 720)
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="ColorRect" parent="HBoxContainer/LeftPanelComponent" index="0"]
+color = Color(1, 1, 1, 1)
 
 [node name="ButtonRegistrarCliente" parent="HBoxContainer/LeftPanelComponent/VBoxContainer/HBoxContainer2/IngresarClienteComponent/VBoxContainer/VBoxContainer2/HBoxContainer2" index="2" node_paths=PackedStringArray("_administrarCliente")]
 _administrarCliente = NodePath("../../../../../../../../..")
@@ -66,8 +72,15 @@ custom_minimum_size = Vector2(0, 720)
 layout_mode = 2
 size_flags_horizontal = 3
 
+[node name="ColorRect" parent="HBoxContainer/RightPanelComponent" index="0"]
+offset_bottom = -3.0
+color = Color(1, 1, 1, 1)
+
 [node name="ButtonActualizarCliente" parent="HBoxContainer/RightPanelComponent/VBoxContainer/HBoxContainer/ActualizarClienteItemComponent/VBoxContainer/HBoxContainer2" index="0" node_paths=PackedStringArray("_administrarCliente")]
 _administrarCliente = NodePath("../../../../../../../..")
+
+[node name="TextureButtonEliminar" parent="HBoxContainer/RightPanelComponent/VBoxContainer/HBoxContainer2/EliminarClienteComponent/ScrollContainer/ListaClientesContainer/BorrarClienteComponent/VBoxContainer" index="1"]
+texture_normal = ExtResource("6_7wcyb")
 
 [editable path="HBoxContainer/LeftPanelComponent"]
 [editable path="HBoxContainer/LeftPanelComponent/VBoxContainer/HBoxContainer2/IngresarClienteComponent"]

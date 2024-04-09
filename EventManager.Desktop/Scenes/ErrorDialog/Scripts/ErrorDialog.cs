@@ -11,8 +11,8 @@ public partial class ErrorDialog : Control
 	}
 
 	 public void SetErrorMessage(string message)
-    {
-        Label _error = GetNode<Label>("ErrorMessageLabel");
-        _error.Text = message;
-    }
+	{
+		Label _error = GetNode<Label>("ErrorMessageLabel");
+		_error.Text = message;
+	}
 }

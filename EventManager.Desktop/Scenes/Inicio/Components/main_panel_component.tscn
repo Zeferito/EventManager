@@ -2,6 +2,7 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_h3lcv"]
 font_size = 50
+font_color = Color(0.921569, 0.917647, 0.976471, 1)
 
 [node name="MainPanelComponent" type="Control"]
 custom_minimum_size = Vector2(500, 500)
@@ -18,7 +19,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 0
 
 [node name="Control" type="Control" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 200)
@@ -31,7 +31,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.976471, 0.796078, 0.611765, 1)
+color = Color(0.796078, 0.133333, 0.305882, 1)
 
 [node name="Label" type="Label" parent="VBoxContainer/Control"]
 custom_minimum_size = Vector2(0, 200)
@@ -41,9 +41,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-text = "Inicio"
+text = "Bienvenido"
 label_settings = SubResource("LabelSettings_h3lcv")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -51,4 +49,3 @@ vertical_alignment = 1
 [node name="ColorRect" type="ColorRect" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-color = Color(1, 0.94902, 0.8, 1)
